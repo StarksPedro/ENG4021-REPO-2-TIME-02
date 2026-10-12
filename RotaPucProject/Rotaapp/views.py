@@ -6,7 +6,6 @@ def home(request):
 def universidades(request):
     return render(request, 'Pedro/html-paginas-pedro/index2.html')
 
-
 def paises(request):
     return render(request, 'Manu/html-paginas-manu/paises.html')
 
