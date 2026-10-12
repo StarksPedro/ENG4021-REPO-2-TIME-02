@@ -1,0 +1,158 @@
+   body {
+       background-color: #ffffff;
+       font-family: 'Inter', sans-serif;
+   }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+nav a{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #165dad;
+    border-radius:999px;
+    color:#165dad;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color:#103b66;
+    text-decoration:none;
+    display: flex;       
+    align-items: center;
+}
+
+.logo span{
+    color :#f4b942;
+}
+
+.selo{
+    background-color: #165dad;
+    color:#ffffff;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.botao-azul {
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:999px;
+    text-decoration:none;
+    background-color:#165dad;
+    color:#ffffff; 
+}
+
+.rodape{
+    background-color: #eaf3fc;
+    padding: 56px 48px;
+}
+
+.contatos{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.contatos h3{
+    color:#103b66;
+    font-size: 16px;
+}
+
+.contatos p{
+    color: #667684;
+    font-size: 14px;
+}
+
+.filtros {
+    background-color: #eaf3fc;
+    padding: 40px 48px;
+}
+
+.filtros h2 {
+    color: #103b66;
+    font-size: 32px;
+}
+
+label {
+    color: #103b66;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input, select {
+    padding: 10px 16px;
+    border: 1px solid #dbe4ec;
+    border-radius: 999px;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.campos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resultados {
+    padding: 48px;
+}
+
+.bloco-pais {
+    margin-top: 32px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.card-univ {
+    box-sizing: border-box;
+    width: calc(50% - 12px);
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-univ h3 {
+    color: #103b66;
+    font-size: 18px;
+    margin: 0;
+}
+
+.card-univ p {
+    color: #667684;
+    font-size: 14px;
+    margin: 0;
+}
+
+.card-univ .botao-azul {
+    margin-top: auto;
+    align-self: flex-start;
+}
