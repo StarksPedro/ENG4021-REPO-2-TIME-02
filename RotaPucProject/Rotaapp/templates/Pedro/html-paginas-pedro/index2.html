@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-Br">
 <head>
@@ -7,22 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../static/css/Pedro/universidades.css">
+    <link rel="stylesheet" href="{% static 'css/Pedro/universidades.css' %}">
 </head>
 <body>
     <header>
-        <a href="#" class= 'logo'>
-          <img src="../../../static/css/Manu/logo.jpg" alt="Logo do RotaPUC" width="58">
+        <a href="{% url 'home' %}" class= 'logo'>
+          <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
             Rota<span>PUC</span>
         </a>
         <nav>
             <ul>
-                 <li><a href="index.html">Inicio</a></li>
-                 <li><a href="#">Universidades</a></li>
-                 <li><a href="../../Manu/html-paginas-manu/paises.html">Países</a></li>
+                 <li><a href="{% url 'home' %}">Inicio</a></li>
+                 <li><a href="{% url 'universidades' %}">Universidades</a></li>
+                 <li><a href="{% url 'paises' %}">Países</a></li>
                  <li><a href="#">Processo Seletivo</a></li>
                  <li><a href="#">Fórum</a></li>
-                 <li><a href="../../Daniel/html-paginas-daniel/contatos.html">Contatos</a></li>
+                 <li><a href="{% url 'contatos' %}">Contatos</a></li>
                  <li><a href="#">Quem somos</a></li>
             </ul>
         </nav>
@@ -165,7 +166,7 @@
 </section>
 <footer class="rodape">
 
-    <a class="selo" href="../../Daniel/html-paginas-daniel/contatos.html">contato com a coordenação</a>
+    <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
 
     <div class="contatos">
         <div>

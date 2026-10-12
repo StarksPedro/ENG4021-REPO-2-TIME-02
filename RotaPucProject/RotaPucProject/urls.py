@@ -20,5 +20,9 @@ from Rotaapp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
+    path('', home, name='home'),
+    path('universidades/', universidades, name='universidades'),
+    path('paises/', paises, name='paises'),
+    path('contatos/', contatos, name='contatos'),
+    path('nova-pergunta/', nova_pergunta, name='nova_pergunta'),
 ]

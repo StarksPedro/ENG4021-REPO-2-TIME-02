@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatos - PUC Global</title>
-    <link rel="stylesheet" href="../../../static/css/Daniel/contatos.css">""
+    <link rel="stylesheet" href="{% static 'css/Daniel/contatos.css' %}">""
 </head>
 </head>
 <body>
@@ -14,12 +15,12 @@
             <strong>PUC GLOBAL</strong>
         </div>
         <div class="menu">
-            <a href="../../Pedro/html-paginas-pedro/index.html">Início</a>
-            <a href="../../Pedro/html-paginas-pedro/index2.html">Universidades</a>
-            <a href="../../Manu/html-paginas-manu/paises.html">Países</a>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'universidades' %}">Universidades</a>
+            <a href="{% url 'paises' %}">Países</a>
             <a href="#">Processo seletivo</a>
             <a href="#">Fórum</a>
-            <a href="#">Contatos</a>
+            <a href="{% url 'contatos' %}">Contatos</a>
             <a href="#">Quem somos</a>
 </div>
     </header>

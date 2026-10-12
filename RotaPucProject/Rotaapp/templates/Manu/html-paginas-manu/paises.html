@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-Br">
 <head>
@@ -7,22 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../static/css/Manu/paises.css">
+    <link rel="stylesheet" href="{% static 'css/Manu/paises.css' %}">
 </head>
 <body>
     <header>
-        <a href="../../Pedro/html-paginas-pedro/index.html" class= 'logo'>
-          <img src="../../../static/css/Manu/logo.jpg" alt="Logo do RotaPUC" width="58">
+        <a href="{% url 'home' %}" class= 'logo'>
+          <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
             Rota<span>PUC</span>
         </a>
         <nav>
             <ul>
-                 <li><a href="../../Pedro/html-paginas-pedro/index.html">Inicio</a></li>
-                 <li><a href="../../Pedro/html-paginas-pedro/index2.html">Universidades</a></li>
-                 <li><a href="#">Países</a></li>
+                 <li><a href="{% url 'home' %}">Inicio</a></li>
+                 <li><a href="{% url 'universidades' %}">Universidades</a></li>
+                 <li><a href="{% url 'paises' %}">Países</a></li>
                  <li><a href="#">Processo Seletivo</a></li>
                  <li><a href="#">Fórum</a></li>
-                 <li><a href="../../Daniel/html-paginas-daniel/contatos.html">Contatos</a></li>
+                 <li><a href="{% url 'contatos' %}">Contatos</a></li>
                  <li><a href="#">Quem somos</a></li>
             </ul>
         </nav>
@@ -39,12 +40,12 @@
     <h3 class="titulo-continentes">Europa</h3>
     <div class="continentes">
         <div class="card-pais">
-            <img src="../../../static/css/Pedro/alemanha.jpg">
+            <img src="{% static 'css/Pedro/alemanha.jpg' %}">
             <h4 class="titulos-paises">Alemanha</h4>
             <p class="card-texto">2 universidades conveniadas</p>
         </div>
         <div class="card-pais">
-            <img src="../../../static/css/Pedro/espanha.jpg">
+            <img src="{% static 'css/Pedro/espanha.jpg' %}">
             <h4 class="titulos-paises">Espanha</h4>
             <p class="card-texto">2 universidades conveniadas</p>
         </div>
@@ -52,18 +53,18 @@
     <h3 class="titulo-continentes">América do Sul</h3>
     <div class="continentes">
         <div class="card-pais">
-            <img src="../../../static/css/Pedro/argentina.jpg">
+            <img src="{% static 'css/Pedro/argentina.jpg' %}">
             <h4 class="titulos-paises">Argentina</h4>
             <p class="card-texto">2 universidades conveniadas</p>
         </div>
         <div class="card-pais">
-            <img src="../../../static/css/Pedro/chile.jpg">
+            <img src="{% static 'css/Pedro/chile.jpg' %}">
             <h4 class="titulos-paises">Chile</h4>
             <p class="card-texto">2 universidades conveniadas</p>
         </div>
     </div>
     <footer class="rodape">
-        <a class="selo" href="../../Daniel/html-paginas-daniel/contatos.html">contato com a coordenação</a>
+        <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
 
         <div class="contatos">
             <div>
