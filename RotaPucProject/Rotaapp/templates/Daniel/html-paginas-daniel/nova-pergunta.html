@@ -7,59 +7,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Pergunta - PUC Global</title>
     <link rel="stylesheet" href="{% static 'css/Daniel/nova-pergunta.css' %}">
-</head>">
 </head>
 
 <body>
 
     <header>
-        <div class="logo">
-            <span>Logo</span>
-            <strong>PUC GLOBAL</strong>
-        </div>
+        <div class="cabecalho">
+            <div class="logo">
+                <span class="logo-caixa">Logo</span>
+                <strong>PUC GLOBAL</strong>
+            </div>
 
-        <div class="menu">
-            <span>Início</span>
-            <span>Universidades</span>
-            <span>Países</span>
-            <span>Processo seletivo</span>
-            <span>Fórum</span>
-            <span>Contatos</span>
-            <span>Quem somos</span>
+            <nav class="menu">
+                <a href="{% url 'home' %}">Início</a>
+                <a href="{% url 'universidades' %}">Universidades</a>
+                <a href="{% url 'paises' %}">Países</a>
+                <a href="#">Processo seletivo</a>
+                <a href="{% url 'nova_pergunta' %}" class="selecionado">Fórum</a>
+                <a href="{% url 'contatos' %}">Contatos</a>
+                <a href="#">Quem somos</a>
+            </nav>
         </div>
     </header>
 
     <main>
+        <section class="secao-pergunta">
 
-        <h2>FÓRUM DE PERGUNTAS</h2>
-
-        <h1>Nova Pergunta</h1>
-
-        <p>Compartilhe sua dúvida com a comunidade</p>
-
-        <div class="formulario">
-
-            <h3>Título</h3>
-            <input type="text" placeholder="Digite o título da sua pergunta">
-
-            <h3>Descrição detalhada</h3>
-            <textarea placeholder="Descreva sua dúvida"></textarea>
-
-            <h3>Tags sugeridas</h3>
-
-            <div class="tags">
-                <span>+ Alemanha</span>
-                <span>+ Europa</span>
-                <span>+ Matrícula</span>
-                <span>+ Visto</span>
+            <div class="titulo-secao">
+                FÓRUM DE PERGUNTAS
             </div>
 
-            <button>Postar</button>
+            <h1>Nova Pergunta</h1>
 
-        </div>
+            <p class="subtitulo">
+                Formule sua dúvida de maneira clara para obter
+                melhores respostas da comunidade.
+            </p>
 
+            <div class="caixa-formulario">
+                <form>
+
+                    <div class="campo">
+                        <label for="titulo">
+                            Título da Pergunta
+                        </label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            placeholder="Digite o título..."
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="descricao">
+                            Descrição detalhada
+                        </label>
+                        <textarea
+                            id="descricao"
+                            placeholder="Digite o problema..."
+                        ></textarea>
+                    </div>
+
+                    <div class="marcadores">
+                        <span class="texto-marcadores">
+                            Marcadores sugeridos:
+                        </span>
+
+                        <div class="lista-marcadores">
+                            <span>+Alemanha</span>
+                            <span>+Europa</span>
+                            <span>+Matrícula</span>
+                            <span>+Visto</span>
+                        </div>
+                    </div>
+
+                    <div class="area-botao">
+                        <button type="button" class="botao-postar">
+                            <span>➤</span>
+                            Postar
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
     </main>
 
-</body>
+    <footer>
+        <div class="conteudo-rodape">
 
+            <div class="titulo-secao">
+                CONTATO COM A COORDENAÇÃO
+            </div>
+
+            <div class="caixa-contatos">
+
+                <div class="coluna-contato">
+                    <h3>Endereço</h3>
+                    <p>R. Marquês de São Vicente, 225</p>
+                    <p>Gávea, Rio de Janeiro - RJ</p>
+                    <p>Edifício Padre Leonel Franca</p>
+                </div>
+
+                <div class="coluna-contato">
+                    <h3>Email</h3>
+                    <p>
+                        <a href="mailto:central-pucglobal@puc-rio.br">
+                            central-pucglobal@puc-rio.br
+                        </a>
+                    </p>
+                    <p>
+                        <a href="mailto:duvidas.exchange@puc-rio.br">
+                            duvidas.exchange@puc-rio.br
+                        </a>
+                    </p>
+                </div>
+
+                <div class="coluna-contato">
+                    <h3>Telefone</h3>
+                    <p>+55 21 3527-1000</p>
+                    <p>Ramal 1543 / 1544</p>
+                </div>
+
+                <div class="coluna-contato">
+                    <h3>Instagram</h3>
+                    <p>@pucglorio</p>
+                    <p>@ccci.pucrio</p>
+                </div>
+
+                <div class="coluna-contato">
+                    <h3>Horário de funcionamento</h3>
+                    <p>Segunda a Sexta-feira</p>
+                    <p>Das 09:00 às 12:00</p>
+                    <p>Das 14:00 às 17:00</p>
+                </div>
+
+            </div>
+
+            <div class="redes-sociais">
+                <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+                <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+                <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+                <a href="https://www.puc-rio.br/" aria-label="Site">◎</a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
 </html>

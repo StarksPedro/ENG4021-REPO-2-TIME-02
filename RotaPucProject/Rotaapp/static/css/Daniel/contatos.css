@@ -1,40 +1,263 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #26364a;
+}
+
+/* CABEÇALHO */
+
 header {
+    background-color: #e9f3fd;
+    border-bottom: 1px solid #d8e5f0;
+}
+
+.cabecalho {
+    width: 95%;
+    max-width: 1250px;
+    min-height: 60px;
+    margin: 0 auto;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    gap: 20px;
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.logo-caixa {
+    background-color: #1766b5;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.logo strong {
+    font-size: 16px;
+    color: #263f58;
+}
+
+/* MENU */
 
 .menu {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-.contatos {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px;
-    border: 1px solid black;
-    margin-top: 40px;
+.menu a {
+    text-decoration: none;
+    background-color: white;
+    color: #40566d;
+    border: 1px solid #dbe5ef;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
 }
+
+.menu a:hover {
+    background-color: #d8eafb;
+}
+
+.menu .selecionado {
+    background-color: #1766b5;
+    color: white;
+    border-color: #1766b5;
+}
+
+/* CONTEÚDO PRINCIPAL */
 
 main {
-    padding: 20px;
+    width: 95%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-top: 42px;
 }
 
-main h2 {
+.titulo-pagina {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 24px auto;
+
+    background-color: #e2edf9;
+    color: #385775;
+    padding: 12px 30px;
+
+    border-radius: 4px;
     text-align: center;
+    font-size: 13px;
+    font-weight: bold;
 }
 
-.redes {
+/* CAIXA DE CONTATOS */
+
+.caixa-principal {
+    border: 1px solid #e0e6eb;
+    border-radius: 5px;
+    padding: 20px 8px;
+    background-color: white;
+    box-shadow: 0 1px 4px #e8edf2;
+}
+
+/* FAIXA AZUL COM OS TÍTULOS */
+
+.faixa-titulos {
+    background-color: #d8e9f8;
+    min-height: 105px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.titulo-contato {
+    width: 20%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #314c66;
+    padding: 10px;
+}
+
+/* INFORMAÇÕES ABAIXO DA FAIXA */
+
+.faixa-informacoes {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 16px 8px 4px;
+}
+
+.informacao {
+    width: 20%;
+    text-align: center;
+    min-width: 0;
+}
+
+.informacao p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+.informacao a {
+    color: #405a75;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.informacao a:hover {
+    text-decoration: underline;
+}
+
+/* BOTÕES DAS REDES SOCIAIS */
+
+.redes-sociais {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+    gap: 12px;
+    margin-top: 58px;
 }
 
 .rede {
-    border: 1px solid black;
-    padding: 30px;
-    text-align: center;
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e9f3fd;
+    border: 1px solid #d2e1ef;
+    border-radius: 4px;
+
+    color: #3b739f;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.rede:hover {
+    background-color: #d5e9fa;
+}
+
+/* TELAS MENORES */
+
+@media (max-width: 900px) {
+
+    .cabecalho {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .faixa-titulos {
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+
+    .titulo-contato {
+        width: 33%;
+    }
+
+    .faixa-informacoes {
+        flex-wrap: wrap;
+    }
+
+    .informacao {
+        width: 30%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .titulo-pagina {
+        font-size: 11px;
+        padding: 12px 15px;
+    }
+
+    .faixa-titulos {
+        flex-direction: column;
+    }
+
+    .titulo-contato {
+        width: 100%;
+    }
+
+    .faixa-informacoes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .informacao {
+        width: 100%;
+    }
+
+    .redes-sociais {
+        gap: 8px;
+    }
+
+    .rede {
+        width: 65px;
+        height: 65px;
+    }
 }
