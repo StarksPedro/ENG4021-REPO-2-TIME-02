@@ -44,28 +44,32 @@
                 melhores respostas da comunidade.
             </p>
 
+            {% for mensagem in messages %}
+            <p class="mensagem-sucesso">{{ mensagem }}</p>
+            {% endfor %}
+
             <div class="caixa-formulario">
-                <form>
+                <form method="post">
+                    {% csrf_token %}
 
                     <div class="campo">
-                        <label for="titulo">
-                            Título da Pergunta
+                        <label for="{{ form.titulo.id_for_label }}">
+                            {{ form.titulo.label }}
                         </label>
-                        <input
-                            type="text"
-                            id="titulo"
-                            placeholder="Digite o título..."
-                        >
+                        {{ form.titulo }}
+                        {% for erro in form.titulo.errors %}
+                        <p class="erro">{{ erro }}</p>
+                        {% endfor %}
                     </div>
 
                     <div class="campo">
-                        <label for="descricao">
-                            Descrição detalhada
+                        <label for="{{ form.descricao.id_for_label }}">
+                            {{ form.descricao.label }}
                         </label>
-                        <textarea
-                            id="descricao"
-                            placeholder="Digite o problema..."
-                        ></textarea>
+                        {{ form.descricao }}
+                        {% for erro in form.descricao.errors %}
+                        <p class="erro">{{ erro }}</p>
+                        {% endfor %}
                     </div>
 
                     <div class="marcadores">
@@ -82,13 +86,26 @@
                     </div>
 
                     <div class="area-botao">
-                        <button type="button" class="botao-postar">
+                        <button type="submit" class="botao-postar">
                             <span>➤</span>
                             Postar
                         </button>
                     </div>
 
                 </form>
+            </div>
+
+            <div class="perguntas-recentes">
+                <h2>Perguntas recentes</h2>
+                {% for pergunta in perguntas %}
+                <article class="pergunta">
+                    <h3>{{ pergunta.titulo }}</h3>
+                    <p>{{ pergunta.descricao|truncatewords:30 }}</p>
+                    <span class="data-pergunta">{{ pergunta.data_criacao|date:"d/m/Y H:i" }}</span>
+                </article>
+                {% empty %}
+                <p>Nenhuma pergunta postada ainda. Seja o primeiro!</p>
+                {% endfor %}
             </div>
 
         </section>

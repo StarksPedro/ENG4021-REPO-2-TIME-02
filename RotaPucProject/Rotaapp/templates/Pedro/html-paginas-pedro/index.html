@@ -61,30 +61,20 @@
         <a href="{% url 'processo_seletivo' %}" class='botao-azul'>Ver processo seletivo</a>
     </section>
 
+    {% regroup paises by continente as grupos %}
+    {% for grupo in grupos %}
     <section class="continentes">
+        {% for pais in grupo.list %}
+        {% with total=pais.universidades.count %}
         <div class="card-pais">
-            <img src="{% static 'css/Pedro/alemanha.jpg' %}">
-            <h4 class="titulos-paises">Alemanha</h4>
-            <p class="card-texto">2 universidades conveniadas</p>
+            <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
+            <h4 class="titulos-paises">{{ pais.nome }}</h4>
+            <p class="card-texto">{{ total }} universidade{{ total|pluralize }} conveniada{{ total|pluralize }}</p>
         </div>
-        <div class="card-pais">
-            <img src="{% static 'css/Pedro/espanha.jpg' %}">
-            <h4 class="titulos-paises">Espanha</h4>
-            <p class="card-texto">2 universidades conveniadas</p>
-        </div>
+        {% endwith %}
+        {% endfor %}
     </section>
-    <section class="continentes">
-        <div class="card-pais">
-            <img src="{% static 'css/Pedro/argentina.jpg' %}">
-            <h4 class="titulos-paises">Argentina</h4>
-            <p class="card-texto">2 universidades conveniadas</p>
-        </div>
-        <div class="card-pais">
-            <img src="{% static 'css/Pedro/chile.jpg' %}">
-            <h4 class="titulos-paises">Chile</h4>
-            <p class="card-texto">2 universidades conveniadas</p>
-        </div>
-    </section>
+    {% endfor %}
 
    <footer class="rodape">
 

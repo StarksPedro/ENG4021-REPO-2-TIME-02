@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Pais(models.Model):
     nome = models.CharField(max_length=70)
@@ -14,6 +15,12 @@ class Pais(models.Model):
     def __str__(self):
         return self.nome
 
+    @property
+    def imagem(self):
+        # Caminho da foto do país dentro da pasta static (ex.: "css/Pedro/alemanha.jpg").
+        # slugify tira acentos e espaços: "Itália" vira "italia".
+        return f"css/Pedro/{slugify(self.nome)}.jpg"
+
 
 class Curso(models.Model):
     nome = models.CharField(max_length=100)
@@ -27,7 +34,7 @@ class Universidade(models.Model):
     sigla = models.CharField(max_length=15)
     site_oficial = models.URLField()
     ranking = models.PositiveIntegerField()
-    foto = models.URLField()
+    foto = models.URLField(blank=True)
     endereco = models.CharField(max_length=150)
     numero_de_vagas_disponiveis = models.PositiveIntegerField()
     pais = models.ForeignKey(Pais, on_delete=models.CASCADE, related_name="universidades")
@@ -62,3 +69,16 @@ class Aluno(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class Pergunta(models.Model):
+    titulo = models.CharField(max_length=150)
+    descricao = models.TextField()
+    data_criacao = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Pergunta"
+        verbose_name_plural = "Perguntas"
+
+    def __str__(self):
+        return self.titulo

@@ -94,75 +94,26 @@
 </section>
 
 <section class="resultados">
-    <p>8 universidades encontradas</p>
-    <section class="bloco-pais">
-        <span class=" selo">Alemanha</span>
-        <div class="cards">
+    <p>{{ total_universidades }} universidade{{ total_universidades|pluralize }} encontrada{{ total_universidades|pluralize }}</p>
+    {% for pais in paises %}
+        {% if pais.universidades.all %}
+        <section class="bloco-pais">
+            <span class="selo">{{ pais.nome }}</span>
+            <div class="cards">
+                {% for universidade in pais.universidades.all %}
                 <article class="card-univ">
-                    <h3>Technical University of Munich</h3>
-                    <p>Munique</p>
-                    <a href="https://www.tum.de/" target="_blank">www.tum.de/</a>
-                    <a class="botao-azul" href='#'>saiba mais</a>
-                </article >
-                <article class="card-univ" >
-                    <h3>Heidelberg University</h3>
-                    <p>Heildelberg</p>
-                    <a href="https://www.uni-heidelberg.de/en" target="_blank">www.uni-heidelberg.de/en</a>
+                    <h3>{{ universidade.nome }}</h3>
+                    <p>{{ universidade.endereco }}</p>
+                    <a href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a>
                     <a class="botao-azul" href="#">saiba mais</a>
                 </article>
+                {% endfor %}
             </div>
-    </section>
-    <section class="bloco-pais">
-        <span class="selo">Espanha</span>
-         <div class="cards">
-                <article class="card-univ">
-                    <h3>Universidad de Salamanca</h3>
-                    <p>Salamanca</p>
-                    <a href="https://usal.es/" target="_blank">usal.es/</a>
-                    <a class="botao-azul" href="#">saiba mais</a>
-                </article>
-                <article class="card-univ">
-                    <h3>Universidad Politécnica de Madrid</h3>
-                    <p>Madri</p>
-                    <a href="https://www.upm.es/" target="_blank">www.upm.es/</a>
-                    <a class="botao-azul" href="#">saiba mais</a>
-                </article>
-            </div>
-    </section>
-    <section class="bloco-pais">
-        <span class="selo">Argentina</span>
-        <div class="cards">
-                <article class="card-univ">
-                    <h3>Universidad de Buenos Aires</h3>
-                    <p>Buenos Aires</p>
-                    <a href="https://www.uba.ar/" target="_blank">www.uba.ar/</a>
-                    <a class="botao-azul" href="#">saiba mais</a>
-                </article>
-                <article class="card-univ">
-                    <h3>Pontificia Universidad Católica Argentina</h3>
-                    <p>Buenos Aires</p>
-                    <a href="https://uca.edu.ar/es/home" target="_blank">uca.edu.ar</a>
-                    <a class="botao-azul" href="#">saiba mais</a>
-                </article>
-            </div>
-    </section>
-    <section class="bloco-pais">
-        <span class=" selo">Chile</span>
-        <div class="cards">
-                <article class="card-univ">
-                    <h3>Pontificia Universidad Católica de Chile</h3>
-                    <p>Santiago</p>
-                    <a href="https://www.uc.cl/" target="_blank">www.uc.cl/</a>
-                    <a class="botao-azul" href="#">saiba mais</a>
-                </article>
-                <article class="card-univ">
-                    <h3>Universidad de Chile</h3>
-                    <p>Santiago</p>
-                    <a href="https://uchile.cl/" target="_blank">uchile.cl/</a>
-                    <a class="botao-azul" href="#">saiba mais</a>
-                </article>
-            </div>
-    </section>
+        </section>
+        {% endif %}
+    {% empty %}
+        <p>Nenhuma universidade cadastrada ainda.</p>
+    {% endfor %}
 </section>
 <footer class="rodape">
 
