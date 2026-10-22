@@ -14,3 +14,6 @@ def contatos(request):
 
 def nova_pergunta(request):
     return render(request, 'Daniel/html-paginas-daniel/nova-pergunta.html')
+
+def forum(request):
+    return render(request, 'Manu/html-paginas-manu/forum.html')

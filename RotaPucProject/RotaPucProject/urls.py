@@ -25,4 +25,5 @@ urlpatterns = [
     path('paises/', paises, name='paises'),
     path('contatos/', contatos, name='contatos'),
     path('nova-pergunta/', nova_pergunta, name='nova_pergunta'),
+    path('forum/', forum, name='forum'),
 ]
