@@ -213,6 +213,63 @@ header {
     background-color: #1052a2;
 }
 
+/* MENSAGENS DO FORMULÁRIO */
+
+.mensagem-sucesso {
+    max-width: 790px;
+    margin: 0 auto 18px;
+    background-color: #e6f6ec;
+    color: #1d7a44;
+    border: 1px solid #b7e2c6;
+    border-radius: 7px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.erro {
+    color: #c62828;
+    font-size: 12px;
+    margin: 6px 0 0;
+}
+
+/* PERGUNTAS RECENTES */
+
+.perguntas-recentes {
+    max-width: 790px;
+    margin: 40px auto 0;
+    text-align: left;
+}
+
+.perguntas-recentes h2 {
+    font-size: 18px;
+    color: #1766c4;
+    margin-bottom: 14px;
+}
+
+.pergunta {
+    border: 1px solid #c5defa;
+    border-radius: 9px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+}
+
+.pergunta h3 {
+    font-size: 15px;
+    margin: 0 0 6px;
+}
+
+.pergunta p {
+    font-size: 13px;
+    color: #4a5b75;
+    margin: 0 0 8px;
+}
+
+.data-pergunta {
+    font-size: 11px;
+    color: #7183a0;
+}
+
 /* RODAPÉ */
 
 footer {

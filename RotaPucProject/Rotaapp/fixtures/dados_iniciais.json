@@ -1,0 +1,405 @@
+[
+  {
+    "model": "Rotaapp.pais",
+    "pk": 1,
+    "fields": {
+      "nome": "Alemanha",
+      "continente": "Europa",
+      "idioma_oficial": "Alemão",
+      "moeda": "Euro",
+      "requisitos_para_entrar": "Passaporte válido. Para estudar por mais de 90 dias, brasileiros precisam de visto nacional de estudante (tipo D), pedido no consulado alemão antes da viagem, e de registro de residência após a chegada."
+    }
+  },
+  {
+    "model": "Rotaapp.pais",
+    "pk": 2,
+    "fields": {
+      "nome": "Espanha",
+      "continente": "Europa",
+      "idioma_oficial": "Espanhol",
+      "moeda": "Euro",
+      "requisitos_para_entrar": "Passaporte válido. Para estudar por mais de 90 dias, é preciso visto de estudante pedido no consulado espanhol antes da viagem e, após a chegada, solicitar a TIE (cartão de identidade de estrangeiro)."
+    }
+  },
+  {
+    "model": "Rotaapp.pais",
+    "pk": 3,
+    "fields": {
+      "nome": "Argentina",
+      "continente": "América do Sul",
+      "idioma_oficial": "Espanhol",
+      "moeda": "Peso argentino",
+      "requisitos_para_entrar": "Brasileiros entram com RG ou passaporte (acordo do Mercosul). Para estudar por mais de 90 dias, é preciso pedir residência temporária na Dirección Nacional de Migraciones."
+    }
+  },
+  {
+    "model": "Rotaapp.pais",
+    "pk": 4,
+    "fields": {
+      "nome": "Chile",
+      "continente": "América do Sul",
+      "idioma_oficial": "Espanhol",
+      "moeda": "Peso chileno",
+      "requisitos_para_entrar": "Brasileiros entram com RG ou passaporte (acordo do Mercosul). Para estudar por mais de 90 dias, é preciso pedir residência temporária de estudante no Servicio Nacional de Migraciones."
+    }
+  },
+  {
+    "model": "Rotaapp.curso",
+    "pk": 1,
+    "fields": {
+      "nome": "Engenharias"
+    }
+  },
+  {
+    "model": "Rotaapp.curso",
+    "pk": 2,
+    "fields": {
+      "nome": "Design"
+    }
+  },
+  {
+    "model": "Rotaapp.curso",
+    "pk": 3,
+    "fields": {
+      "nome": "Direito"
+    }
+  },
+  {
+    "model": "Rotaapp.curso",
+    "pk": 4,
+    "fields": {
+      "nome": "Economia"
+    }
+  },
+  {
+    "model": "Rotaapp.curso",
+    "pk": 5,
+    "fields": {
+      "nome": "Ciência da Computação"
+    }
+  },
+  {
+    "model": "Rotaapp.curso",
+    "pk": 6,
+    "fields": {
+      "nome": "Arquitetura"
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 1,
+    "fields": {
+      "nome": "Technical University of Munich",
+      "sigla": "TUM",
+      "site_oficial": "https://www.tum.de/",
+      "ranking": 28,
+      "foto": "",
+      "endereco": "Arcisstraße 21, Munique",
+      "numero_de_vagas_disponiveis": 6,
+      "pais": 1,
+      "cursos": [
+        1,
+        5,
+        6,
+        4
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 2,
+    "fields": {
+      "nome": "Heidelberg University",
+      "sigla": "UHEI",
+      "site_oficial": "https://www.uni-heidelberg.de/en",
+      "ranking": 80,
+      "foto": "",
+      "endereco": "Grabengasse 1, Heidelberg",
+      "numero_de_vagas_disponiveis": 4,
+      "pais": 1,
+      "cursos": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 3,
+    "fields": {
+      "nome": "Universidad de Salamanca",
+      "sigla": "USAL",
+      "site_oficial": "https://usal.es/",
+      "ranking": 600,
+      "foto": "",
+      "endereco": "Patio de Escuelas 1, Salamanca",
+      "numero_de_vagas_disponiveis": 5,
+      "pais": 2,
+      "cursos": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 4,
+    "fields": {
+      "nome": "Universidad Politécnica de Madrid",
+      "sigla": "UPM",
+      "site_oficial": "https://www.upm.es/",
+      "ranking": 300,
+      "foto": "",
+      "endereco": "Calle Ramiro de Maeztu 7, Madri",
+      "numero_de_vagas_disponiveis": 5,
+      "pais": 2,
+      "cursos": [
+        1,
+        6,
+        5,
+        2
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 5,
+    "fields": {
+      "nome": "Universidad de Buenos Aires",
+      "sigla": "UBA",
+      "site_oficial": "https://www.uba.ar/",
+      "ranking": 85,
+      "foto": "",
+      "endereco": "Viamonte 430, Buenos Aires",
+      "numero_de_vagas_disponiveis": 8,
+      "pais": 3,
+      "cursos": [
+        3,
+        4,
+        6,
+        2,
+        1
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 6,
+    "fields": {
+      "nome": "Pontificia Universidad Católica Argentina",
+      "sigla": "UCA",
+      "site_oficial": "https://uca.edu.ar/es/home",
+      "ranking": 500,
+      "foto": "",
+      "endereco": "Av. Alicia Moreau de Justo 1300, Buenos Aires",
+      "numero_de_vagas_disponiveis": 4,
+      "pais": 3,
+      "cursos": [
+        3,
+        4,
+        1
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 7,
+    "fields": {
+      "nome": "Pontificia Universidad Católica de Chile",
+      "sigla": "UC",
+      "site_oficial": "https://www.uc.cl/",
+      "ranking": 95,
+      "foto": "",
+      "endereco": "Av. Libertador Bernardo O'Higgins 340, Santiago",
+      "numero_de_vagas_disponiveis": 6,
+      "pais": 4,
+      "cursos": [
+        1,
+        2,
+        6,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.universidade",
+    "pk": 8,
+    "fields": {
+      "nome": "Universidad de Chile",
+      "sigla": "UCHILE",
+      "site_oficial": "https://uchile.cl/",
+      "ranking": 150,
+      "foto": "",
+      "endereco": "Av. Libertador Bernardo O'Higgins 1058, Santiago",
+      "numero_de_vagas_disponiveis": 5,
+      "pais": 4,
+      "cursos": [
+        1,
+        3,
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 1,
+    "fields": {
+      "universidade": 1,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Alemão e inglês",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 6
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 2,
+    "fields": {
+      "universidade": 2,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Alemão e inglês",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 4
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 3,
+    "fields": {
+      "universidade": 3,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 5
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 4,
+    "fields": {
+      "universidade": 4,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 5
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 5,
+    "fields": {
+      "universidade": 5,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 8
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 6,
+    "fields": {
+      "universidade": 6,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 4
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 7,
+    "fields": {
+      "universidade": 7,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 6
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 8,
+    "fields": {
+      "universidade": 8,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 6,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Convênio",
+      "numero_de_vagas": 5
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 9,
+    "fields": {
+      "universidade": 1,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 24,
+      "prazo_de_inscricao": "2027-03-31",
+      "idioma": "Alemão e inglês",
+      "tipo_de_intercambio": "Duplo diploma",
+      "numero_de_vagas": 2
+    }
+  },
+  {
+    "model": "Rotaapp.programa",
+    "pk": 10,
+    "fields": {
+      "universidade": 7,
+      "nivel": "Graduação",
+      "custo": "0.00",
+      "duracao": 1,
+      "prazo_de_inscricao": "2026-11-30",
+      "idioma": "Espanhol",
+      "tipo_de_intercambio": "Verão",
+      "numero_de_vagas": 10
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 1,
+    "fields": {
+      "titulo": "Preciso de visto para estudar um semestre na Alemanha?",
+      "descricao": "Fui aprovado para o convênio com a TUM e vou ficar 6 meses. Alguém sabe se dá para pedir o visto depois de chegar lá ou se tem que ser no consulado aqui no Brasil?",
+      "data_criacao": "2026-10-20T14:00:00Z"
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 2,
+    "fields": {
+      "titulo": "Como funciona a equivalência de disciplinas na volta?",
+      "descricao": "Quem já fez intercâmbio pela PUC: as matérias cursadas lá fora são aproveitadas automaticamente ou preciso pedir equivalência para cada uma?",
+      "data_criacao": "2026-10-21T10:30:00Z"
+    }
+  }
+]

@@ -1,0 +1,305 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+nav a{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #165dad;
+    border-radius:999px;
+    color:#165dad;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color:#103b66;
+    text-decoration:none;
+    display: flex;
+    align-items: center;
+}
+
+.logo span{
+    color :#f4b942;
+}
+
+.selo{
+    background-color: #165dad;
+    color:#ffffff;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.rodape{
+    background-color: #eaf3fc;
+    padding: 56px 48px;
+}
+
+.contatos{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.contatos h3{
+    color:#103b66;
+    font-size: 16px;
+}
+
+.contatos p{
+    color: #667684;
+    font-size: 14px;
+}
+
+.topo-processo {
+    padding: 48px 48px 0 48px;
+}
+
+.topo-processo h1 {
+    margin-top: 16px;
+    color: #103b66;
+    font-size: 32px;
+}
+
+.topo-processo p {
+    margin-top: 8px;
+    color: #667684;
+}
+
+.prerequisitos,
+.lista-cr {
+    padding: 32px 48px 0 48px;
+}
+
+.prerequisitos h2,
+.lista-cr h2 {
+    color: #103b66;
+    font-size: 24px;
+}
+
+.lista-simples {
+    display: block;
+    margin-top: 16px;
+    padding-left: 20px;
+    color: #667684;
+    font-size: 14px;
+    line-height: 1.8;
+    list-style: disc;
+}
+
+.nota {
+    margin-top: 16px;
+    color: #667684;
+    font-size: 12px;
+    max-width: 800px;
+}
+
+.passos {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 48px 48px 16px 48px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    transform: rotateX(180deg);
+}
+
+.passo {
+    flex: 0 0 560px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+    padding: 28px;
+    transform: rotateX(180deg);
+}
+
+.passo h3 {
+    margin-top: 16px;
+    color: #103b66;
+    font-size: 20px;
+}
+
+.passo h4 {
+    margin-top: 24px;
+    color: #103b66;
+    font-size: 16px;
+}
+
+.passo p,
+.passo li {
+    color: #667684;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.passo p {
+    margin-top: 12px;
+}
+
+.passo ol,
+.passo ul {
+    display: block;
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+.passo ol {
+    list-style: decimal;
+}
+
+.passo ul {
+    list-style: disc;
+}
+
+.passo li {
+    margin-bottom: 8px;
+}
+
+.passo .nota {
+    margin-top: 16px;
+    font-size: 12px;
+}
+
+.destaque {
+    margin-top: 16px;
+    color: #165dad;
+    font-weight: 600;
+}
+
+.caixa {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: #eaf3fc;
+}
+
+.passo .caixa p {
+    color: #103b66;
+    margin-top: 12px;
+}
+
+.passo .caixa p:first-child {
+    margin-top: 0;
+}
+
+.passo ul.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.chips li {
+    margin-bottom: 0;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background-color: #eaf3fc;
+    color: #103b66;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tabela-pontos {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-pontos th {
+    background-color: #eaf3fc;
+    color: #103b66;
+    text-align: left;
+    padding: 10px 16px;
+}
+
+.tabela-pontos td {
+    padding: 8px 16px;
+    border-top: 1px solid #dbe4ec;
+    color: #667684;
+    font-size: 14px;
+}
+
+.cards-idiomas {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card-idioma {
+    box-sizing: border-box;
+    width: calc(50% - 8px);
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #eaf3fc;
+}
+
+.passo .card-idioma h4 {
+    margin-top: 0;
+}
+
+.passo .card-idioma p {
+    margin-top: 8px;
+}
+
+.bloco-cr {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+    padding: 24px 24px 12px 24px;
+    overflow-x: auto;
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+    transform: rotateX(180deg);
+}
+
+.coluna-cr {
+    flex: 0 0 360px;
+    border-collapse: collapse;
+    transform: rotateX(180deg);
+}
+
+.coluna-cr th {
+    background-color: #eaf3fc;
+    color: #165dad;
+    text-align: left;
+    padding: 12px 16px;
+}
+
+.coluna-cr th:last-child,
+.coluna-cr td:last-child {
+    text-align: right;
+}
+
+.coluna-cr td {
+    padding: 10px 16px;
+    border-top: 1px solid #dbe4ec;
+    color: #667684;
+    font-size: 14px;
+}
+
+.coluna-cr .nota-cr {
+    color: #165dad;
+    font-weight: 600;
+}
