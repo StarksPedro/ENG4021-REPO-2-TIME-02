@@ -17,3 +17,6 @@ def nova_pergunta(request):
 
 def forum(request):
     return render(request, 'Manu/html-paginas-manu/forum.html')
+
+def universidade(request):
+    return render(request, 'Manu/html-paginas-manu/universidade.html')

@@ -26,4 +26,5 @@ urlpatterns = [
     path('contatos/', contatos, name='contatos'),
     path('nova-pergunta/', nova_pergunta, name='nova_pergunta'),
     path('forum/', forum, name='forum'),
+    path('universidade/', universidade, name='universidade'),
 ]

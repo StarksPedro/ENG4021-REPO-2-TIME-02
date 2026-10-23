@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical University of Munich | RotaPUC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/Manu/universidade.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
+            Rota<span>PUC</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'universidades' %}">Universidades</a></li>
+                <li><a href="{% url 'paises' %}">Países</a></li>
+                <li><a href="#">Processo Seletivo</a></li>
+                <li><a href="{% url 'forum' %}">Fórum</a></li>
+                <li><a href="{% url 'contatos' %}">Contatos</a></li>
+                <li><a href="#">Quem somos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <div class="caminho">
+        <a href="{% url 'universidades' %}">Universidades</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        <a href="{% url 'paises' %}">Alemanha</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        <span>TUM</span>
+    </div>
+
+    <span class="selo">TUM</span>
+    <h1 class="titulo-universidade">Technical University of Munich</h1>
+    <p class="subtitulo">Munique · <a href="{% url 'paises' %}">Alemanha</a></p>
+
+    <img class="foto-universidade" src="{% static 'css/Pedro/alemanha.jpg' %}" alt="Campus da Technical University of Munich">
+
+    <div class="duas-colunas">
+        <div class="card-info">
+            <h3>Sobre a universidade</h3>
+            <p>Universidade técnica de referência na Alemanha, com forte atuação em engenharia, tecnologia e ciências naturais.</p>
+            <p class="espaco">Endereço: Arcisstraße 21, 80333 München</p>
+            <p>Ranking: #28 no ranking global</p>
+            <p>Site oficial: <a href="https://www.tum.de" target="_blank">www.tum.de</a></p>
+            <p>Vagas disponíveis: 6</p>
+        </div>
+        <div class="card-info">
+            <h3>Perfil acadêmico</h3>
+            <p>Perfil orientado à pesquisa aplicada, com laboratórios integrados à indústria e disciplinas em alemão e inglês.</p>
+            <div class="chips espaco">
+                <span class="chip">Engenharia</span>
+                <span class="chip">Ciência da Computação</span>
+                <span class="chip">Física</span>
+                <span class="chip">Administração</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="titulo-secao">Programas</h2>
+    <div class="tabela-caixa">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nível</th>
+                    <th>Tipo</th>
+                    <th>Duração</th>
+                    <th>Idioma</th>
+                    <th>Custo</th>
+                    <th>Prazo</th>
+                    <th>Vagas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Graduação</td>
+                    <td>Convênio</td>
+                    <td>1 semestre</td>
+                    <td>Alemão / Inglês</td>
+                    <td>Isento (convênio)</td>
+                    <td>15/03/2027</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Pós-graduação</td>
+                    <td>Duplo diploma</td>
+                    <td>2 semestres</td>
+                    <td>Inglês</td>
+                    <td>Isento (convênio)</td>
+                    <td>01/02/2027</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="duas-colunas mais-espaco">
+        <div class="card-info">
+            <h3>Requisitos acadêmicos</h3>
+            <ul class="lista-info">
+                <li>CR mínimo de 7,0</li>
+                <li>Ter concluído pelo menos 40% do curso na PUC-Rio</li>
+                <li>Comprovante de proficiência em alemão (B2) ou inglês</li>
+            </ul>
+        </div>
+        <div class="card-info">
+            <h3>Certificados de aptidão e línguas aceitos</h3>
+            <ul class="lista-info">
+                <li>TestDaF nível 4</li>
+                <li>IELTS 6.5</li>
+                <li>TOEFL iBT 88</li>
+            </ul>
+        </div>
+        <div class="card-info">
+            <h3>Custos e bolsas</h3>
+            <ul class="lista-info">
+                <li>Isenção de mensalidade por convênio</li>
+                <li>Taxa semestral aproximada de €150</li>
+                <li>Custo de vida estimado em €1.000/mês</li>
+                <li>DAAD (auxílio parcial)</li>
+                <li>Bolsa de mobilidade PUC-Rio</li>
+            </ul>
+        </div>
+        <div class="card-info">
+            <h3>Documentação necessária</h3>
+            <ul class="lista-info">
+                <li>Histórico escolar em inglês</li>
+                <li>Carta de motivação</li>
+                <li>Comprovante de proficiência</li>
+                <li>Cópia do passaporte</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card-info">
+        <h3>Contato com a instituição</h3>
+        <p>international@tum.de</p>
+    </div>
+
+    <div class="depoimentos">
+        <h3>Depoimentos</h3>
+        <p>Ainda não há depoimentos publicados para esta universidade. Relatos de ex-intercambistas serão exibidos aqui após moderação da coordenação.</p>
+    </div>
+
+    <footer class="rodape">
+        <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
+
+        <div class="contatos">
+            <div>
+                <h3>Endereço</h3>
+                <p>Rua Marquês de São Vicente, 225</p>
+                <p>Gávea, Rio de Janeiro - RJ</p>
+                <p>Edificio Cardeal Leme, Sala 130</p>
+            </div>
+
+            <div>
+                <h3>Email</h3>
+                <p>ccci-puc@puc-rio.br</p>
+                <p>info.ccci@puc-rio.br</p>
+                <p>intercambio@puc-rio.br</p>
+            </div>
+
+            <div>
+                <h3>Telefone</h3>
+                <p>+55 (21) 3527-1577</p>
+                <p>+55 (21) 3527-1578</p>
+                <p>Fax: ramal 1579</p>
+            </div>
+
+            <div>
+                <h3>Instagram</h3>
+                <p>@ccci_pucrio</p>
+                <p>#PUCRioIntercambio</p>
+            </div>
+
+            <div>
+                <h3>Horário de funcionamento</h3>
+                <p>9h00 às 12h00</p>
+                <p>14h00 às 17h00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
