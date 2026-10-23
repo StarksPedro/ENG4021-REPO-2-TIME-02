@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaPuc-Universidades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/Manu/forum.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class= 'logo'>
+          <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
+            Rota<span>PUC</span>
+        </a>
+        <nav>
+            <ul>
+                 <li><a href="{% url 'home' %}">Inicio</a></li>
+                 <li><a href="{% url 'universidades' %}">Universidades</a></li>
+                 <li><a href="{% url 'paises' %}">Países</a></li>
+                 <li><a href="#">Processo Seletivo</a></li>
+                 <li><a href="#">Fórum</a></li>
+                 <li><a href="{% url 'contatos' %}">Contatos</a></li>
+                 <li><a href="#">Quem somos</a></li>
+            </ul>
+        </nav>
+    </header>
+        <hr>
+    <div class="centro">
+        <span class="selo">FÓRUM DE PERGUNTAS</span>
+        <h2 class="titulo-forum">Comunidade de Intercâmbio</h2>
+        <p class="explore">Troque experiências com alunos e ex-intercambistas da
+            PUC-Rio sobre processo seletivo, destinos e vida acadêmica no exterior.
+        </p>
+    </div>
+
+    <div class="barra-forum">
+        <h3 class="contagem">Todas as discussões (6)</h3>
+        <a class="botao" href="{% url 'nova_pergunta' %}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            Adicionar Pergunta
+        </a>
+    </div>
+
+    <div class="lista-discussoes">
+
+        <div class="card-discussao">
+            <h4 class="titulo-discussao">Como é o processo de matrícula na TUM?</h4>
+            <p class="descricao">Fui nomeada para a Technical University of Munich e estou com dúvidas sobre o prazo de escolha das disciplinas e o registro no sistema deles. Alguém já passou por isso?</p>
+            <div class="info">
+                <span class="avatar">MC</span>
+                <span class="autor">Mariana Costa</span>
+                <span>·</span>
+                <span>12/08/2026</span>
+                <div class="info-direita">
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
+                        24
+                    </span>
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        3 respostas
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-discussao">
+            <h4 class="titulo-discussao">Alguém já fez intercâmbio na UBA?</h4>
+            <p class="descricao">Queria saber como funciona a vida acadêmica na Universidad de Buenos Aires, principalmente carga horária e moradia perto da faculdade.</p>
+            <div class="info">
+                <span class="avatar">RL</span>
+                <span class="autor">Rafael Lima</span>
+                <span>·</span>
+                <span>05/08/2026</span>
+                <div class="info-direita">
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
+                        17
+                    </span>
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        1 resposta
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-discussao">
+            <h4 class="titulo-discussao">Qual nível de proficiência em espanhol exigido na Universidad de Salamanca?</h4>
+            <p class="descricao">Tenho DELE B1 e estou em dúvida se é suficiente para as disciplinas regulares ou se preciso subir para B2 antes da inscrição.</p>
+            <div class="info">
+                <span class="avatar">BN</span>
+                <span class="autor">Beatriz Nunes</span>
+                <span>·</span>
+                <span>28/07/2026</span>
+                <div class="info-direita">
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
+                        11
+                    </span>
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        1 resposta
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-discussao">
+            <h4 class="titulo-discussao">Visto de estudante para a Alemanha: quanto tempo demora?</h4>
+            <p class="descricao">Estou organizando a documentação e a comprovação financeira. Quanto tempo levou entre o agendamento no consulado e a emissão do visto?</p>
+            <div class="info">
+                <span class="avatar">LA</span>
+                <span class="autor">Lucas Andrade</span>
+                <span>·</span>
+                <span>20/07/2026</span>
+                <div class="info-direita">
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
+                        9
+                    </span>
+                    <span class="icone-texto">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        0 respostas
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bolinhas">
+        <span class="bolinha ativa"></span>
+        <span class="bolinha"></span>
+    </div>
+    <footer class="rodape">
+        <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
+
+        <div class="contatos">
+            <div>
+                <h3>Endereço</h3>
+                <p>Rua Marquês de São VIcente, 225</p>
+                <p>Gáveia, RIo de Janeiro - RJ</p>
+                <p>Edificio Cardeal Leme, Sala 130</p>
+            </div>
+
+            <div>
+                <h3>Email</h3>
+                <p>ccci-puc@puc-rio.br</p>
+                <p>info.ccci@puc-rio.br</p>
+                <p>intercambio@puc-rio.br</p>
+            </div>
+
+            <div>
+                <h3>Telefone</h3>
+                <p>+55 (21) 3527-1577</p>
+                <p>+55 (21) 3527-1578</p>
+                <p>Fax: ramal 1579</p>
+            </div>
+
+            <div>
+                <h3>Instragram</h3>
+                <p>@ccci_pucrio</p>
+                <p>#PUCRioIntercambio</p>
+            </div>
+
+            <div>
+                <h3>Horário de funcionamento</h3>
+                <p>9h00 às 12h00</p>
+                <p>14h00 às 17h00</p>
+            </div>
+        </div>
+    </footer>
+</body>

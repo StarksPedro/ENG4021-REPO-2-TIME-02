@@ -46,10 +46,15 @@ def nova_pergunta(request):
         'perguntas': perguntas,
     })
 
-
 def quem_somos(request):
     return render(request, 'Pedro/html-paginas-pedro/index3.html')
 
 
 def processo_seletivo(request):
     return render(request, 'Pedro/html-paginas-pedro/index4.html')
+    
+def forum(request):
+    return render(request, 'Manu/html-paginas-manu/forum.html')
+
+def universidade(request):
+    return render(request, 'Manu/html-paginas-manu/universidade.html')
