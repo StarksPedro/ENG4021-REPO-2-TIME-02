@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Pais, Universidade, Pergunta
 from .forms import PerguntaForm
@@ -56,5 +56,10 @@ def processo_seletivo(request):
 def forum(request):
     return render(request, 'Manu/html-paginas-manu/forum.html')
 
-def universidade(request):
-    return render(request, 'Manu/html-paginas-manu/universidade.html')
+def universidade(request, id):
+    universidade = get_object_or_404(Universidade, id=id)
+    programas = universidade.programas.all()
+    return render(request, 'Manu/html-paginas-manu/universidade.html', {
+        'universidade': universidade,
+        'programas': programas,
+    })

@@ -28,5 +28,5 @@ urlpatterns = [
     path('quemsomos/', quem_somos, name='quem_somos'),
     path('processo-seletivo/', processo_seletivo, name='processo_seletivo'),
     path('forum/', forum, name='forum'),
-    path('universidade/', universidade, name='universidade'),
+    path('universidade/<int:id>/', universidade, name='universidade'),
 ]
