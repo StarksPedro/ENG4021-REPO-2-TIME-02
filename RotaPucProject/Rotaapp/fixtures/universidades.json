@@ -1,0 +1,842 @@
+[
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 1,
+    "fields": {
+      "universidade": 1,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 7,0",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 2,
+    "fields": {
+      "universidade": 1,
+      "tipo": "requisito",
+      "texto": "Ter concluído pelo menos 40% do curso na PUC-Rio",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 3,
+    "fields": {
+      "universidade": 1,
+      "tipo": "requisito",
+      "texto": "Comprovante de proficiência em alemão (B2) ou inglês",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 4,
+    "fields": {
+      "universidade": 1,
+      "tipo": "certificado",
+      "texto": "TestDaF nível 4",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 5,
+    "fields": {
+      "universidade": 1,
+      "tipo": "certificado",
+      "texto": "IELTS 6.5",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 6,
+    "fields": {
+      "universidade": 1,
+      "tipo": "certificado",
+      "texto": "TOEFL iBT 88",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 7,
+    "fields": {
+      "universidade": 1,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 8,
+    "fields": {
+      "universidade": 1,
+      "tipo": "custo",
+      "texto": "Taxa semestral aproximada de €150",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 9,
+    "fields": {
+      "universidade": 1,
+      "tipo": "custo",
+      "texto": "Custo de vida estimado em €1.000/mês",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 10,
+    "fields": {
+      "universidade": 1,
+      "tipo": "bolsa",
+      "texto": "DAAD (auxílio parcial)",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 11,
+    "fields": {
+      "universidade": 1,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 12,
+    "fields": {
+      "universidade": 1,
+      "tipo": "documento",
+      "texto": "Histórico escolar em inglês",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 13,
+    "fields": {
+      "universidade": 1,
+      "tipo": "documento",
+      "texto": "Carta de motivação",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 14,
+    "fields": {
+      "universidade": 1,
+      "tipo": "documento",
+      "texto": "Comprovante de proficiência",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 15,
+    "fields": {
+      "universidade": 1,
+      "tipo": "documento",
+      "texto": "Cópia do passaporte",
+      "ordem": 4
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 16,
+    "fields": {
+      "universidade": 2,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 7,5",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 17,
+    "fields": {
+      "universidade": 2,
+      "tipo": "requisito",
+      "texto": "Nível B2 de alemão para disciplinas regulares",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 18,
+    "fields": {
+      "universidade": 2,
+      "tipo": "certificado",
+      "texto": "TestDaF nível 4",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 19,
+    "fields": {
+      "universidade": 2,
+      "tipo": "certificado",
+      "texto": "IELTS 6.0",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 20,
+    "fields": {
+      "universidade": 2,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 21,
+    "fields": {
+      "universidade": 2,
+      "tipo": "custo",
+      "texto": "Custo de vida estimado em €900/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 22,
+    "fields": {
+      "universidade": 2,
+      "tipo": "bolsa",
+      "texto": "DAAD",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 23,
+    "fields": {
+      "universidade": 2,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 24,
+    "fields": {
+      "universidade": 2,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 25,
+    "fields": {
+      "universidade": 2,
+      "tipo": "documento",
+      "texto": "Carta de motivação",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 26,
+    "fields": {
+      "universidade": 2,
+      "tipo": "documento",
+      "texto": "Passaporte",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 27,
+    "fields": {
+      "universidade": 3,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 6,5",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 28,
+    "fields": {
+      "universidade": 3,
+      "tipo": "requisito",
+      "texto": "Espanhol nível B1 comprovado",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 29,
+    "fields": {
+      "universidade": 3,
+      "tipo": "certificado",
+      "texto": "DELE B1",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 30,
+    "fields": {
+      "universidade": 3,
+      "tipo": "certificado",
+      "texto": "SIELE 700 pontos",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 31,
+    "fields": {
+      "universidade": 3,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 32,
+    "fields": {
+      "universidade": 3,
+      "tipo": "custo",
+      "texto": "Custo de vida de €750/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 33,
+    "fields": {
+      "universidade": 3,
+      "tipo": "bolsa",
+      "texto": "Erasmus+ (mobilidade internacional)",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 34,
+    "fields": {
+      "universidade": 3,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 35,
+    "fields": {
+      "universidade": 3,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 36,
+    "fields": {
+      "universidade": 3,
+      "tipo": "documento",
+      "texto": "Passaporte",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 37,
+    "fields": {
+      "universidade": 3,
+      "tipo": "documento",
+      "texto": "Comprovante de proficiência",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 38,
+    "fields": {
+      "universidade": 4,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 7,0",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 39,
+    "fields": {
+      "universidade": 4,
+      "tipo": "requisito",
+      "texto": "Espanhol nível B2",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 40,
+    "fields": {
+      "universidade": 4,
+      "tipo": "certificado",
+      "texto": "DELE B2",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 41,
+    "fields": {
+      "universidade": 4,
+      "tipo": "certificado",
+      "texto": "IELTS 6.0",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 42,
+    "fields": {
+      "universidade": 4,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 43,
+    "fields": {
+      "universidade": 4,
+      "tipo": "custo",
+      "texto": "Custo de vida de €1.000/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 44,
+    "fields": {
+      "universidade": 4,
+      "tipo": "bolsa",
+      "texto": "Erasmus+",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 45,
+    "fields": {
+      "universidade": 4,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 46,
+    "fields": {
+      "universidade": 4,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 47,
+    "fields": {
+      "universidade": 4,
+      "tipo": "documento",
+      "texto": "Carta de motivação",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 48,
+    "fields": {
+      "universidade": 4,
+      "tipo": "documento",
+      "texto": "Passaporte",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 49,
+    "fields": {
+      "universidade": 5,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 6,0",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 50,
+    "fields": {
+      "universidade": 5,
+      "tipo": "requisito",
+      "texto": "Espanhol nível B1",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 51,
+    "fields": {
+      "universidade": 5,
+      "tipo": "certificado",
+      "texto": "DELE B1",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 52,
+    "fields": {
+      "universidade": 5,
+      "tipo": "certificado",
+      "texto": "CELU intermediário",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 53,
+    "fields": {
+      "universidade": 5,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 54,
+    "fields": {
+      "universidade": 5,
+      "tipo": "custo",
+      "texto": "Custo de vida estimado em US$600/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 55,
+    "fields": {
+      "universidade": 5,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 56,
+    "fields": {
+      "universidade": 5,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 57,
+    "fields": {
+      "universidade": 5,
+      "tipo": "documento",
+      "texto": "Passaporte ou RG",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 58,
+    "fields": {
+      "universidade": 5,
+      "tipo": "documento",
+      "texto": "Seguro saúde",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 59,
+    "fields": {
+      "universidade": 6,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 6,5",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 60,
+    "fields": {
+      "universidade": 6,
+      "tipo": "requisito",
+      "texto": "Espanhol nível B1",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 61,
+    "fields": {
+      "universidade": 6,
+      "tipo": "certificado",
+      "texto": "DELE B1",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 62,
+    "fields": {
+      "universidade": 6,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 63,
+    "fields": {
+      "universidade": 6,
+      "tipo": "custo",
+      "texto": "Moradia a partir de US$350/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 64,
+    "fields": {
+      "universidade": 6,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 65,
+    "fields": {
+      "universidade": 6,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 66,
+    "fields": {
+      "universidade": 6,
+      "tipo": "documento",
+      "texto": "Carta de motivação",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 67,
+    "fields": {
+      "universidade": 6,
+      "tipo": "documento",
+      "texto": "Passaporte ou RG",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 68,
+    "fields": {
+      "universidade": 7,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 7,0",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 69,
+    "fields": {
+      "universidade": 7,
+      "tipo": "requisito",
+      "texto": "Espanhol nível B1",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 70,
+    "fields": {
+      "universidade": 7,
+      "tipo": "certificado",
+      "texto": "DELE B1",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 71,
+    "fields": {
+      "universidade": 7,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 72,
+    "fields": {
+      "universidade": 7,
+      "tipo": "custo",
+      "texto": "Custo de vida de US$800/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 73,
+    "fields": {
+      "universidade": 7,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 74,
+    "fields": {
+      "universidade": 7,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 75,
+    "fields": {
+      "universidade": 7,
+      "tipo": "documento",
+      "texto": "Passaporte",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 76,
+    "fields": {
+      "universidade": 7,
+      "tipo": "documento",
+      "texto": "Seguro saúde",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 77,
+    "fields": {
+      "universidade": 8,
+      "tipo": "requisito",
+      "texto": "CR mínimo de 6,5",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 78,
+    "fields": {
+      "universidade": 8,
+      "tipo": "requisito",
+      "texto": "Espanhol nível B1",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 79,
+    "fields": {
+      "universidade": 8,
+      "tipo": "certificado",
+      "texto": "DELE B1",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 80,
+    "fields": {
+      "universidade": 8,
+      "tipo": "custo",
+      "texto": "Isenção de mensalidade por convênio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 81,
+    "fields": {
+      "universidade": 8,
+      "tipo": "custo",
+      "texto": "Custo de vida de US$700/mês",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 82,
+    "fields": {
+      "universidade": 8,
+      "tipo": "bolsa",
+      "texto": "Bolsa de mobilidade PUC-Rio",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 83,
+    "fields": {
+      "universidade": 8,
+      "tipo": "documento",
+      "texto": "Histórico escolar",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.itemuniversidade",
+    "pk": 84,
+    "fields": {
+      "universidade": 8,
+      "tipo": "documento",
+      "texto": "Passaporte",
+      "ordem": 2
+    }
+  }
+]

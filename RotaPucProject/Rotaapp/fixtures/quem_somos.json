@@ -1,0 +1,12 @@
+[
+  {
+    "model": "Rotaapp.paginainstitucional",
+    "pk": 1,
+    "fields": {
+      "slug": "quem-somos",
+      "selo": "Quem somos",
+      "titulo": "Sobre o RotaPUC",
+      "texto": "O RotaPUC é um site criado por alunos da PUC-Rio com o objetivo de facilitar o acesso às informações sobre intercâmbio.\n\nNa hora de planejar um intercâmbio, as informações costumam estar espalhadas em vários lugares. Por isso, reunimos em um só site os países parceiros, as universidades conveniadas, as etapas do processo seletivo e um fórum para tirar dúvidas com outros alunos.\n\nNossa proposta é oferecer um site mais completo e moderno, para que cada aluno encontre com facilidade tudo o que precisa para dar o primeiro passo rumo ao intercâmbio."
+    }
+  }
+]

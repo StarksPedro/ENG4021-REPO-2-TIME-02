@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/Pedro/universidades.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 <body>
     <header>
@@ -105,7 +106,7 @@
                     <h3>{{ universidade.nome }}</h3>
                     <p>{{ universidade.endereco }}</p>
                     <a href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a>
-                    <a class="botao-azul" href="{% url 'universidade' %}">saiba mais</a>
+                    <a class="botao-azul" href="{% url 'universidade' universidade.id %}">saiba mais</a>
                 </article>
                 {% endfor %}
             </div>
