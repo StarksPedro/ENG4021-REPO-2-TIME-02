@@ -1,0 +1,238 @@
+/*
+   RESPONSIVIDADE DO RotaPUC
+   Este arquivo é carregado em TODAS as páginas, sempre depois do CSS da própria página.
+   Ele não muda nada no computador: só entra em ação quando a tela fica menor,
+   por meio das media queries (@media). Assim o CSS de cada página continua igual.
+
+   Tamanhos usados:
+   - até 1100px: tablets deitados e notebooks pequenos
+   - até 768px: tablets em pé
+   - até 480px: celulares
+*/
+
+/* Vale para qualquer tela: nenhuma imagem passa da largura do que a contém */
+img {
+    max-width: 100%;
+}
+
+/* ===================== TABLET DEITADO / NOTEBOOK PEQUENO ===================== */
+@media (max-width: 1100px) {
+
+    /* O menu deixa de caber numa linha só ao lado do logo:
+       o logo fica em cima e os botões descem e quebram de linha, centralizados */
+    header {
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 8px;
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        margin: 8px 0;
+    }
+
+    /* Rodapé "contato com a coordenação": as 5 colunas passam a quebrar de linha */
+    .contatos {
+        flex-wrap: wrap;
+        gap: 8px 32px;
+    }
+
+    .contatos > div {
+        flex: 1 1 180px;
+    }
+
+    /* Textos que tinham margem fixa de 200px dos lados */
+    .explore {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+/* ===================== TABLET EM PÉ ===================== */
+@media (max-width: 768px) {
+
+    nav a {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    /* Títulos grandes ficam menores */
+    .titulo-paises,
+    .titulo-forum,
+    .titulo-universidade,
+    .topo-contatos h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .explore {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Página inicial: banner principal e caixa de inscrições */
+    .hero {
+        padding: 32px 20px;
+        min-height: 0;
+    }
+
+    .botoes {
+        flex-wrap: wrap;
+    }
+
+    .banner {
+        margin: 24px 0;
+        padding: 24px;
+    }
+
+    /* Cards de países (Início e Países): um por linha e com altura automática,
+       em vez de dois lado a lado com 65% da altura da tela */
+    .continentes {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .card-pais {
+        width: 100%;
+        height: auto;
+        margin-bottom: 24px;
+    }
+
+    .card-pais img {
+        height: 220px;
+    }
+
+    /* Página Universidades: filtros um embaixo do outro e cards em largura total */
+    .filtros,
+    .resultados {
+        padding: 24px 16px;
+    }
+
+    .filtros h2 {
+        font-size: 26px;
+    }
+
+    .campo {
+        flex: 1 1 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-univ {
+        width: 100%;
+    }
+
+    /* Página de uma universidade: colunas viram uma só */
+    .duas-colunas {
+        grid-template-columns: 1fr;
+    }
+
+    .foto-universidade {
+        height: 220px;
+    }
+
+    .titulo-secao {
+        font-size: 24px;
+    }
+
+    /* Fórum: barra com o botão e informações dos cards podem quebrar de linha */
+    .barra-forum,
+    .info {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .info-direita {
+        margin-left: 0;
+    }
+
+    /* Processo seletivo: menos espaço nas laterais e passos mais estreitos */
+    .topo-processo,
+    .prerequisitos,
+    .lista-cr {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topo-processo h1 {
+        font-size: 26px;
+    }
+
+    .passos {
+        padding: 32px 16px 16px;
+    }
+
+    .passo {
+        flex-basis: 85%;
+        padding: 20px;
+    }
+
+    .card-idioma {
+        width: 100%;
+    }
+
+    .coluna-cr {
+        flex-basis: 280px;
+    }
+
+    /* Rodapé com menos espaço nas laterais */
+    .rodape {
+        padding: 40px 20px;
+    }
+
+    /* Contatos */
+    main {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* ===================== CELULAR ===================== */
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav a {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    header nav ul {
+        gap: 6px;
+    }
+
+    .titulo-paises,
+    .titulo-forum,
+    .titulo-universidade,
+    .topo-contatos h1 {
+        font-size: 26px;
+    }
+
+    /* Botões da página inicial ocupam a largura toda, fáceis de tocar com o dedo */
+    .botoes a {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Rodapé: uma informação embaixo da outra */
+    .contatos {
+        flex-direction: column;
+    }
+
+    .contatos > div {
+        flex-basis: auto;
+    }
+
+    .passo {
+        flex-basis: 90%;
+    }
+
+    .redes {
+        padding: 24px 16px;
+    }
+}

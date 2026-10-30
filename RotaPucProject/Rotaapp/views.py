@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import (
     Pais, Universidade, Pergunta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
+    ContatoCoordenacao,
 )
 from .forms import PerguntaForm
 
@@ -26,8 +27,33 @@ def paises(request):
     return render(request, 'Manu/html-paginas-manu/paises.html', {'paises': paises})
 
 
+def separar_linhas(texto):
+    # Os campos do contato guardam um item por linha: "linha 1\nlinha 2" vira ["linha 1", "linha 2"]
+    return [linha.strip() for linha in texto.splitlines() if linha.strip()]
+
+
 def contatos(request):
-    return render(request, 'Daniel/html-paginas-daniel/contatos.html')
+    # Só existe um registro de contato (cadastrado no /admin). .first() devolve None se ele não existir.
+    contato = ContatoCoordenacao.objects.first()
+    contexto = {'contato': contato}
+
+    if contato:
+        telefones = []
+        for telefone in separar_linhas(contato.telefones):
+            # Para o link "tel:" só servem os números: "+55 21 3527-1578" vira "+552135271578"
+            numeros = "".join(caractere for caractere in telefone if caractere.isdigit())
+            telefones.append({'texto': telefone, 'link': "+" + numeros})
+
+        contexto.update({
+            'enderecos': separar_linhas(contato.endereco),
+            'emails': separar_linhas(contato.emails),
+            'telefones': telefones,
+            'horarios': separar_linhas(contato.horario),
+            # "@ccci.pucrio" vira o endereço do perfil no Instagram
+            'instagram_link': "https://www.instagram.com/" + contato.instagram.lstrip("@") + "/",
+        })
+
+    return render(request, 'Daniel/html-paginas-daniel/contatos.html', contexto)
 
 
 def nova_pergunta(request):
