@@ -58,3 +58,11 @@ def forum(request):
 
 def universidade(request):
     return render(request, 'Manu/html-paginas-manu/universidade.html')
+
+def pais(request, id):
+    pais = get_object_or_404(Pais, id=id)
+    return render(request, 'Manu/html-paginas-manu/pais.html', {
+        'pais': pais,
+        'universidades': pais.universidades.all(),
+        'requisitos': separar_linhas(pais.requisitos_para_entrar),
+    })

@@ -29,4 +29,5 @@ urlpatterns = [
     path('processo-seletivo/', processo_seletivo, name='processo_seletivo'),
     path('forum/', forum, name='forum'),
     path('universidade/', universidade, name='universidade'),
+    path('pais/<int:id>/', pais, name='pais'),
 ]

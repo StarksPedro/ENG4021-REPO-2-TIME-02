@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pais.nome }} | RotaPUC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/Manu/pais.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
+            Rota<span>PUC</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'universidades' %}">Universidades</a></li>
+                <li><a href="{% url 'paises' %}">Países</a></li>
+                <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
+                <li><a href="{% url 'forum' %}">Fórum</a></li>
+                <li><a href="{% url 'contatos' %}">Contatos</a></li>
+                <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <div class="caminho">
+        <a href="{% url 'paises' %}">Países</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        <span>{{ pais.nome }}</span>
+    </div>
+
+    <h1 class="selo">{{ pais.nome }}</h1>
+
+    <img class="foto-universidade" src="{% static pais.imagem %}" alt="Paisagem representativa: {{ pais.nome }}">
+
+    <div class="duas-colunas">
+        <div class="pilha">
+            <div class="card-info">
+                <h3>Idiomas</h3>
+                <p>{{ pais.idioma_oficial }}</p>
+            </div>
+            <div class="card-info">
+                <h3>Moeda</h3>
+                <p>{{ pais.moeda }}</p>
+            </div>
+        </div>
+        <div class="pilha">
+            <div class="card-info">
+                <h3>Requisitos de entrada</h3>
+                <ul class="lista-info">
+                    {% for requisito in requisitos %}
+                    <li>{{ requisito }}</li>
+                    {% empty %}
+                    <li>Nenhum requisito cadastrado.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="titulo-secao">Universidades conveniadas</h2>
+    <div class="duas-colunas">
+        {% for universidade in universidades %}
+        <article class="card-universidade">
+            {% if universidade.foto %}
+            <img src="{{ universidade.foto }}" alt="{{ universidade.nome }}">
+            {% else %}
+            <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
+            {% endif %}
+            <div class="corpo-card">
+                <h3>{{ universidade.nome }}</h3>
+                <p>{{ universidade.endereco }}</p>
+                <a class="link-site" href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a>
+                <a class="botao" href="{% url 'universidade' universidade.id %}">Saiba mais</a>
+            </div>
+        </article>
+        {% empty %}
+        <p>Nenhuma universidade cadastrada para este país.</p>
+        {% endfor %}
+    </div>
+
+    <footer class="rodape">
+        <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
+
+        <div class="contatos">
+            <div>
+                <h3>Endereço</h3>
+                <p>Rua Marquês de São Vicente, 225</p>
+                <p>Gávea, Rio de Janeiro - RJ</p>
+                <p>Edificio Cardeal Leme, Sala 130</p>
+            </div>
+
+            <div>
+                <h3>Email</h3>
+                <p>ccci-puc@puc-rio.br</p>
+                <p>info.ccci@puc-rio.br</p>
+                <p>intercambio@puc-rio.br</p>
+            </div>
+
+            <div>
+                <h3>Telefone</h3>
+                <p>+55 (21) 3527-1577</p>
+                <p>+55 (21) 3527-1578</p>
+                <p>Fax: ramal 1579</p>
+            </div>
+
+            <div>
+                <h3>Instagram</h3>
+                <p>@ccci_pucrio</p>
+                <p>#PUCRioIntercambio</p>
+            </div>
+
+            <div>
+                <h3>Horário de funcionamento</h3>
+                <p>9h00 às 12h00</p>
+                <p>14h00 às 17h00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

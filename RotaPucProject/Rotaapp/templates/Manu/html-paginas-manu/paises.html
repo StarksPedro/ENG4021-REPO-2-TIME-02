@@ -43,11 +43,11 @@
     <div class="continentes">
         {% for pais in grupo.list %}
         {% with total=pais.universidades.count %}
-        <div class="card-pais">
+        <a class="card-pais" href="{% url 'pais' pais.id %}">
             <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
             <h4 class="titulos-paises">{{ pais.nome }}</h4>
             <p class="card-texto">{{ total }} universidade{{ total|pluralize }} conveniada{{ total|pluralize }}</p>
-        </div>
+        </a>
         {% endwith %}
         {% endfor %}
     </div>

@@ -1,0 +1,189 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+nav a{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #165dad;
+    border-radius:999px;
+    color:#165dad;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color:#103b66;
+    text-decoration:none;
+    display: flex;
+    align-items: center;
+}
+
+.logo span{
+    color :#f4b942;
+}
+
+.caminho{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #667684;
+}
+.caminho a{
+    color: #165dad;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.selo{
+    display: inline-block;
+    margin: 0;
+    background-color: #165dad;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.foto-universidade{
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 24px;
+    margin-top: 24px;
+}
+
+.duas-colunas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+}
+.pilha{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.card-info{
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(16, 59, 102, 0.08);
+}
+.card-info h3{
+    color: #103b66;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+.card-info p{
+    color: #667684;
+    font-size: 14px;
+    margin: 0;
+}
+.lista-info{
+    list-style: disc;
+    display: block;
+    padding-left: 20px;
+    margin: 0;
+    color: #667684;
+    font-size: 14px;
+}
+.lista-info li{
+    margin-bottom: 4px;
+}
+
+.titulo-secao{
+    color: #103b66;
+    font-size: 28px;
+    margin-top: 56px;
+    margin-bottom: 0;
+}
+.card-universidade{
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(16, 59, 102, 0.08);
+}
+.card-universidade img{
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.corpo-card{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px;
+}
+.corpo-card h3{
+    color: #103b66;
+    font-size: 18px;
+    margin: 0;
+}
+.corpo-card p{
+    color: #667684;
+    font-size: 14px;
+    margin: 0;
+}
+.link-site{
+    color: #165dad;
+    font-size: 14px;
+    text-decoration: none;
+}
+.botao{
+    background-color: #165dad;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.botao:hover{
+    background-color: #103b66;
+}
+
+.rodape{
+    margin-top: 50px;
+    background-color: #eaf3fc;
+    padding: 56px 48px;
+}
+.contatos{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.contatos h3{
+    color:#103b66;
+    font-size: 16px;
+}
+.contatos p{
+    color: #667684;
+    font-size: 14px;
+}
