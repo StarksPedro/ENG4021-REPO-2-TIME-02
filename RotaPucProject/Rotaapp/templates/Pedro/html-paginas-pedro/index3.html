@@ -30,14 +30,16 @@
     </header>
 
     <section class="conteudo">
+        {% if pagina %}
+        <span class="selo">{{ pagina.selo }}</span>
+        <h1>{{ pagina.titulo }}</h1>
+        {# linebreaks transforma cada parágrafo do texto em um <p> #}
+        {{ pagina.texto|linebreaks }}
+        {% else %}
         <span class="selo">Quem somos</span>
-        <h1>Conteúdo institucional pendente</h1>
-        <p>
-            Esta página faz parte da navegação do RotaPUC, mas o conteúdo
-            institucional ainda não foi definido. O texto será fornecido
-            pela coordenação e publicado aqui, mantendo o mesmo padrão
-            visual das demais páginas.
-        </p>
+        <h1>Sobre o RotaPUC</h1>
+        <p>O texto desta página ainda não foi cadastrado no banco de dados.</p>
+        {% endif %}
     </section>
 
     <footer class="rodape">

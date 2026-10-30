@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Pais, Universidade, Pergunta
+from .models import (
+    Pais, Universidade, Pergunta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
+)
 from .forms import PerguntaForm
 
 
@@ -47,11 +49,25 @@ def nova_pergunta(request):
     })
 
 def quem_somos(request):
-    return render(request, 'Pedro/html-paginas-pedro/index3.html')
+    # .first() devolve None se o texto ainda não foi cadastrado (o template mostra um aviso)
+    pagina = PaginaInstitucional.objects.filter(slug="quem-somos").first()
+    return render(request, 'Pedro/html-paginas-pedro/index3.html', {'pagina': pagina})
 
 
 def processo_seletivo(request):
-    return render(request, 'Pedro/html-paginas-pedro/index4.html')
+    # Mostra só a lista de CR do semestre mais recente cadastrado
+    semestre = NotaDeCorte.objects.order_by("-semestre").values_list("semestre", flat=True).first()
+    notas = list(NotaDeCorte.objects.filter(semestre=semestre))
+    # A tabela da página é dividida em colunas de 4 departamentos cada
+    colunas_cr = [notas[i:i + 4] for i in range(0, len(notas), 4)]
+
+    return render(request, 'Pedro/html-paginas-pedro/index4.html', {
+        'semestre': semestre,
+        'colunas_cr': colunas_cr,
+        'pre_requisitos': PreRequisito.objects.all(),
+        # prefetch_related busca os blocos de todos os passos de uma vez só
+        'etapas': EtapaProcesso.objects.prefetch_related("blocos"),
+    })
     
 def forum(request):
     return render(request, 'Manu/html-paginas-manu/forum.html')

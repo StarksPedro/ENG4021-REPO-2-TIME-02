@@ -1,0 +1,123 @@
+[
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 3,
+    "fields": {
+      "titulo": "Como é o processo de matrícula na TUM?",
+      "descricao": "Fui nomeada para a Technical University of Munich e estou com dúvidas sobre o prazo de escolha das disciplinas e o registro no sistema deles. Alguém já passou por isso?",
+      "data_criacao": "2026-08-12T12:00:00Z",
+      "autor": "Mariana Costa",
+      "curtidas": 24
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 4,
+    "fields": {
+      "titulo": "Alguém já fez intercâmbio na UBA?",
+      "descricao": "Queria saber como funciona a vida acadêmica na Universidad de Buenos Aires, principalmente carga horária e moradia perto da faculdade.",
+      "data_criacao": "2026-08-05T12:00:00Z",
+      "autor": "Rafael Lima",
+      "curtidas": 17
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 5,
+    "fields": {
+      "titulo": "Qual nível de proficiência em espanhol exigido na Universidad de Salamanca?",
+      "descricao": "Tenho DELE B1 e estou em dúvida se é suficiente para as disciplinas regulares ou se preciso subir para B2 antes da inscrição.",
+      "data_criacao": "2026-07-28T12:00:00Z",
+      "autor": "Beatriz Nunes",
+      "curtidas": 11
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 6,
+    "fields": {
+      "titulo": "Visto de estudante para a Alemanha: quanto tempo demora?",
+      "descricao": "Estou organizando a documentação e a comprovação financeira. Quanto tempo levou entre o agendamento no consulado e a emissão do visto?",
+      "data_criacao": "2026-07-20T12:00:00Z",
+      "autor": "Lucas Andrade",
+      "curtidas": 9
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 7,
+    "fields": {
+      "titulo": "Vale a pena escolher duplo diploma?",
+      "descricao": "Estou entre um semestre de convênio e um programa de duplo diploma de dois semestres. Como foi a experiência de quem escolheu o duplo diploma?",
+      "data_criacao": "2026-07-14T12:00:00Z",
+      "autor": "Camila Ferreira",
+      "curtidas": 15
+    }
+  },
+  {
+    "model": "Rotaapp.pergunta",
+    "pk": 8,
+    "fields": {
+      "titulo": "Moradia estudantil em Santiago: como conseguir?",
+      "descricao": "Fui aceito na UC Chile e queria dicas de bairros e de como funciona a residência universitária por lá.",
+      "data_criacao": "2026-07-02T12:00:00Z",
+      "autor": "Pedro Henrique",
+      "curtidas": 7
+    }
+  },
+  {
+    "model": "Rotaapp.resposta",
+    "pk": 1,
+    "fields": {
+      "pergunta": 3,
+      "autor": "João Vitor",
+      "texto": "A matrícula é feita no TUMonline. Você recebe o login junto com a carta de aceite e escolhe as disciplinas nas primeiras duas semanas do semestre.",
+      "data_criacao": "2026-08-13T10:00:00Z",
+      "curtidas": 12
+    }
+  },
+  {
+    "model": "Rotaapp.resposta",
+    "pk": 2,
+    "fields": {
+      "pergunta": 3,
+      "autor": "Mariana Costa",
+      "texto": "Perfeito, obrigada! E o prazo de troca de disciplinas é o mesmo?",
+      "data_criacao": "2026-08-13T15:00:00Z",
+      "curtidas": 3
+    }
+  },
+  {
+    "model": "Rotaapp.resposta",
+    "pk": 3,
+    "fields": {
+      "pergunta": 3,
+      "autor": "Ana Paula",
+      "texto": "Vale conferir também o Welcome Week: eles explicam o sistema de créditos e o seguro saúde obrigatório.",
+      "data_criacao": "2026-08-14T12:00:00Z",
+      "curtidas": 6
+    }
+  },
+  {
+    "model": "Rotaapp.resposta",
+    "pk": 4,
+    "fields": {
+      "pergunta": 4,
+      "autor": "Gabriel Rocha",
+      "texto": "Fiz um semestre na UBA. A carga horária é puxada, mas o custo de vida ajuda bastante. Recomendo morar em Recoleta ou Palermo.",
+      "data_criacao": "2026-08-06T12:00:00Z",
+      "curtidas": 8
+    }
+  },
+  {
+    "model": "Rotaapp.resposta",
+    "pk": 5,
+    "fields": {
+      "pergunta": 5,
+      "autor": "Coordenação CCCI",
+      "texto": "O convênio com Salamanca aceita B1 para disciplinas regulares, mas algumas cadeiras específicas pedem B2. Confira a lista no site da instituição.",
+      "data_criacao": "2026-07-29T12:00:00Z",
+      "curtidas": 14
+    }
+  }
+]
