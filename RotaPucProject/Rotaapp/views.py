@@ -98,6 +98,15 @@ def processo_seletivo(request):
 def forum(request):
     return render(request, 'Manu/html-paginas-manu/forum.html')
 
+
+def pais(request, id):
+    pais = get_object_or_404(Pais, id=id)
+    return render(request, 'Manu/html-paginas-manu/pais.html', {
+        'pais': pais,
+        'universidades': pais.universidades.all(),
+        'requisitos': separar_linhas(pais.requisitos_para_entrar),
+    })
+
 def universidade(request, id):
     universidade = get_object_or_404(Universidade, id=id)
     programas = universidade.programas.all()
