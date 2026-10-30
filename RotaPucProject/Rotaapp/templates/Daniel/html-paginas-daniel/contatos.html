@@ -6,138 +6,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatos - RotaPUC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/Daniel/contatos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 
 <body>
 
+    <!-- Mesmo cabeçalho das outras páginas do RotaPUC -->
     <header>
-        <div class="cabecalho">
-
-            <div class="logo">
-                <span class="logo-caixa">Logo</span>
-                <strong>PUC GLOBAL</strong>
-            </div>
-
-            <nav class="menu">
-                <a href="{% url 'home' %}">Início</a>
-                <a href="{% url 'universidades' %}">Universidades</a>
-                <a href="{% url 'paises' %}">Países</a>
-                <a href="{% url 'processo_seletivo' %}">Processo seletivo</a>
-                <a href="{% url 'forum' %}">Fórum</a>
-                <a href="{% url 'contatos' %}" class="selecionado">Contatos</a>
-                <a href="{% url 'quem_somos' %}">Quem somos</a>
-            </nav>
-
-        </div>
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
+            Rota<span>PUC</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'universidades' %}">Universidades</a></li>
+                <li><a href="{% url 'paises' %}">Países</a></li>
+                <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
+                <li><a href="{% url 'forum' %}">Fórum</a></li>
+                <li><a href="{% url 'contatos' %}" class="ativo">Contatos</a></li>
+                <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
 
-        <div class="titulo-pagina">
-            CONTATO COM A COORDENAÇÃO DE GRADUAÇÃO
-        </div>
+        <section class="topo-contatos">
+            <span class="selo">Fale com a gente</span>
+            <h1>Contato com a coordenação</h1>
+            <p>
+                Ficou com alguma dúvida sobre o intercâmbio? A Coordenação Central de
+                Cooperação Internacional (CCCI) atende os alunos da graduação pelos canais abaixo.
+            </p>
+        </section>
 
-        <div class="caixa-principal">
+        {% if contato %}
+        <!-- Todas as informações abaixo vêm do banco (modelo ContatoCoordenacao) -->
+        <section class="cards-contato">
 
-            <div class="faixa-titulos">
+            <article class="card-contato">
+                <span class="icone" aria-hidden="true">📍</span>
+                <h2>Endereço</h2>
+                {% for linha in enderecos %}
+                <p>{{ linha }}</p>
+                {% endfor %}
+            </article>
 
-                <div class="titulo-contato">
-                    Endereço
-                </div>
+            <article class="card-contato">
+                <span class="icone" aria-hidden="true">✉️</span>
+                <h2>E-mail</h2>
+                {% for email in emails %}
+                <p><a href="mailto:{{ email }}">{{ email }}</a></p>
+                {% endfor %}
+            </article>
 
-                <div class="titulo-contato">
-                    Email
-                </div>
+            <article class="card-contato">
+                <span class="icone" aria-hidden="true">📞</span>
+                <h2>Telefone</h2>
+                {% for telefone in telefones %}
+                <p><a href="tel:{{ telefone.link }}">{{ telefone.texto }}</a></p>
+                {% endfor %}
+            </article>
 
-                <div class="titulo-contato">
-                    Telefone
-                </div>
+            <article class="card-contato">
+                <span class="icone" aria-hidden="true">📷</span>
+                <h2>Instagram</h2>
+                <p><a href="{{ instagram_link }}" target="_blank">{{ contato.instagram }}</a></p>
+            </article>
 
-                <div class="titulo-contato">
-                    Instagram
-                </div>
+            <article class="card-contato">
+                <span class="icone" aria-hidden="true">🕘</span>
+                <h2>Horário de funcionamento</h2>
+                {% for linha in horarios %}
+                <p>{{ linha }}</p>
+                {% endfor %}
+            </article>
 
-                <div class="titulo-contato">
-                    Horário de funcionamento
-                </div>
+        </section>
+        {% else %}
+        <p class="aviso">Os contatos da coordenação ainda não foram cadastrados.</p>
+        {% endif %}
 
+        <section class="redes">
+            <h2>Siga a PUC-Rio nas redes</h2>
+            <div class="lista-redes">
+                <a href="https://www.instagram.com/ccci.pucrio/" target="_blank" class="botao-rede">Instagram</a>
+                <a href="https://www.facebook.com/PUCRio/" target="_blank" class="botao-rede">Facebook</a>
+                <a href="https://www.youtube.com/@pucrio" target="_blank" class="botao-rede">YouTube</a>
+                <a href="https://www.puc-rio.br/" target="_blank" class="botao-rede">Site da PUC-Rio</a>
             </div>
-
-            <div class="faixa-informacoes">
-
-                <div class="informacao">
-                    <p>R. Marquês de São Vicente, 225</p>
-                    <p>Gávea, Rio de Janeiro - RJ</p>
-                    <p>Edifício Padre Leonel Franca</p>
-                </div>
-
-                <div class="informacao">
-                    <p>
-                        <a href="mailto:atende-ccci@puc-rio.br">
-                            atende-ccci@puc-rio.br
-                        </a>
-                    </p>
-                </div>
-
-                <div class="informacao">
-                    <p>
-                        <a href="tel:+552135271578">
-                            +55 21 3527-1578
-                        </a>
-                    </p>
-                    <p>
-                        <a href="tel:+552135271094">
-                            +55 21 3527-1094
-                        </a>
-                    </p>
-                </div>
-
-                <div class="informacao">
-                    <p>
-                        <a href="https://www.instagram.com/ccci.pucrio/">
-                            @ccci.pucrio
-                        </a>
-                    </p>
-                </div>
-
-                <div class="informacao">
-                    <p>Segunda a Sexta-feira</p>
-                    <p>Das 09:00 às 12:00</p>
-                    <p>Das 14:00 às 17:00</p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="redes-sociais">
-
-            <a href="https://www.instagram.com/ccci.pucrio/"
-               class="rede"
-               aria-label="Instagram">
-                ◎
-            </a>
-
-            <a href="https://www.facebook.com/PUCRio/"
-               class="rede"
-               aria-label="Facebook">
-                f
-            </a>
-
-            <a href="https://www.youtube.com/@pucrio"
-               class="rede"
-               aria-label="YouTube">
-                ▶
-            </a>
-
-            <a href="https://www.puc-rio.br/"
-               class="rede"
-               aria-label="Site da PUC-Rio">
-                ⊕
-            </a>
-
-        </div>
+        </section>
 
     </main>
 

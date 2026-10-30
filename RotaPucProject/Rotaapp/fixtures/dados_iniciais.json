@@ -102,7 +102,11 @@
         5,
         6,
         4
-      ]
+      ],
+      "cidade": "Munique",
+      "sobre": "Universidade técnica de referência na Alemanha, com forte atuação em engenharia, tecnologia e ciências naturais.",
+      "perfil_academico": "Perfil orientado à pesquisa aplicada, com laboratórios integrados à indústria e disciplinas em alemão e inglês.",
+      "email_contato": "international@tum.de"
     }
   },
   {
@@ -121,7 +125,11 @@
         3,
         4,
         5
-      ]
+      ],
+      "cidade": "Heidelberg",
+      "sobre": "A universidade mais antiga da Alemanha, reconhecida pela tradição em humanidades, direito e ciências da vida.",
+      "perfil_academico": "Ambiente acadêmico clássico, com seminários de leitura intensiva e forte produção científica.",
+      "email_contato": "exchange@uni-heidelberg.de"
     }
   },
   {
@@ -139,7 +147,11 @@
       "cursos": [
         3,
         4
-      ]
+      ],
+      "cidade": "Salamanca",
+      "sobre": "Universidade mais antiga da Espanha, referência no ensino de língua espanhola e humanidades.",
+      "perfil_academico": "Cidade universitária com ambiente acolhedor e ampla oferta de cursos de língua.",
+      "email_contato": "relint@usal.es"
     }
   },
   {
@@ -159,7 +171,11 @@
         6,
         5,
         2
-      ]
+      ],
+      "cidade": "Madri",
+      "sobre": "Instituição técnica com forte atuação em engenharia, arquitetura e tecnologia.",
+      "perfil_academico": "Currículo técnico com laboratórios e projetos aplicados.",
+      "email_contato": "movilidad@upm.es"
     }
   },
   {
@@ -180,7 +196,11 @@
         6,
         2,
         1
-      ]
+      ],
+      "cidade": "Buenos Aires",
+      "sobre": "Maior universidade pública da Argentina, com ampla oferta de cursos e forte vida acadêmica.",
+      "perfil_academico": "Perfil público e plural, com disciplinas em espanhol e grande diversidade de áreas.",
+      "email_contato": "internacionales@uba.ar"
     }
   },
   {
@@ -199,7 +219,11 @@
         3,
         4,
         1
-      ]
+      ],
+      "cidade": "Buenos Aires",
+      "sobre": "Universidade católica com forte tradição em ciências sociais, economia e direito.",
+      "perfil_academico": "Turmas menores e acompanhamento próximo, com identidade acadêmica semelhante à da PUC-Rio.",
+      "email_contato": "intercambio@uca.edu.ar"
     }
   },
   {
@@ -221,7 +245,11 @@
         3,
         4,
         5
-      ]
+      ],
+      "cidade": "Santiago",
+      "sobre": "Uma das universidades mais bem avaliadas da América Latina, parceira histórica da PUC-Rio.",
+      "perfil_academico": "Forte em engenharia, economia e ciências sociais, com campus integrado à cidade.",
+      "email_contato": "intercambio@uc.cl"
     }
   },
   {
@@ -241,7 +269,11 @@
         3,
         4,
         6
-      ]
+      ],
+      "cidade": "Santiago",
+      "sobre": "Principal universidade pública chilena, com produção científica reconhecida.",
+      "perfil_academico": "Ambiente plural com foco em pesquisa e extensão.",
+      "email_contato": "movilidad@uchile.cl"
     }
   },
   {

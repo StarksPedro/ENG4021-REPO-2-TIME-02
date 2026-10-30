@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/Pedro/quemsomos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 <body>
     <header>
@@ -22,7 +23,7 @@
                 <li><a href="{% url 'universidades' %}">Universidades</a></li>
                 <li><a href="{% url 'paises' %}">Países</a></li>
                 <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
-                <li><a href="{% url 'nova_pergunta' %}">Fórum</a></li>
+                <li><a href="{% url 'forum' %}">Fórum</a></li>
                 <li><a href="{% url 'contatos' %}">Contatos</a></li>
                 <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
             </ul>
@@ -30,14 +31,16 @@
     </header>
 
     <section class="conteudo">
+        {% if pagina %}
+        <span class="selo">{{ pagina.selo }}</span>
+        <h1>{{ pagina.titulo }}</h1>
+        {# linebreaks transforma cada parágrafo do texto em um <p> #}
+        {{ pagina.texto|linebreaks }}
+        {% else %}
         <span class="selo">Quem somos</span>
-        <h1>Conteúdo institucional pendente</h1>
-        <p>
-            Esta página faz parte da navegação do RotaPUC, mas o conteúdo
-            institucional ainda não foi definido. O texto será fornecido
-            pela coordenação e publicado aqui, mantendo o mesmo padrão
-            visual das demais páginas.
-        </p>
+        <h1>Sobre o RotaPUC</h1>
+        <p>O texto desta página ainda não foi cadastrado no banco de dados.</p>
+        {% endif %}
     </section>
 
     <footer class="rodape">

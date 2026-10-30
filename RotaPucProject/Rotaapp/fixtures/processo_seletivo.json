@@ -1,0 +1,751 @@
+[
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 1,
+    "fields": {
+      "departamento": "Administração",
+      "nota": "7.2",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 2,
+    "fields": {
+      "departamento": "Arquitetura e Urbanismo",
+      "nota": "7.8",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 3,
+    "fields": {
+      "departamento": "Artes e Design",
+      "nota": "8.73",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 4,
+    "fields": {
+      "departamento": "Biologia",
+      "nota": "7.54",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 5,
+    "fields": {
+      "departamento": "Ciência da Computação",
+      "nota": "6.9",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 6,
+    "fields": {
+      "departamento": "Ciências Sociais",
+      "nota": "8.34",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 7,
+    "fields": {
+      "departamento": "Comunicação Social",
+      "nota": "8.91",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 8,
+    "fields": {
+      "departamento": "Direito",
+      "nota": "8.35",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 9,
+    "fields": {
+      "departamento": "Economia",
+      "nota": "6.85",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 10,
+    "fields": {
+      "departamento": "Educação",
+      "nota": "8.79",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 11,
+    "fields": {
+      "departamento": "Engenharia Ciclo Básico",
+      "nota": "6.37",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 12,
+    "fields": {
+      "departamento": "Engenharia Ciclo Profissional",
+      "nota": "7.37",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 13,
+    "fields": {
+      "departamento": "Filosofia",
+      "nota": "8.2",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 14,
+    "fields": {
+      "departamento": "Física",
+      "nota": "8.2",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 15,
+    "fields": {
+      "departamento": "Geografia e Meio Ambiente",
+      "nota": "8.84",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 16,
+    "fields": {
+      "departamento": "História",
+      "nota": "8.18",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 17,
+    "fields": {
+      "departamento": "Inteligência Artificial",
+      "nota": "7.8",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 18,
+    "fields": {
+      "departamento": "Letras",
+      "nota": "8.6",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 19,
+    "fields": {
+      "departamento": "Matemática",
+      "nota": "7.31",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 20,
+    "fields": {
+      "departamento": "Nutrição",
+      "nota": "8.09",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 21,
+    "fields": {
+      "departamento": "Psicologia/Neurociência",
+      "nota": "8.58",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 22,
+    "fields": {
+      "departamento": "Química",
+      "nota": "7.68",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 23,
+    "fields": {
+      "departamento": "Relações Internacionais",
+      "nota": "8.37",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 24,
+    "fields": {
+      "departamento": "Serviço Social",
+      "nota": "9.13",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.notadecorte",
+    "pk": 25,
+    "fields": {
+      "departamento": "Teologia",
+      "nota": "9.03",
+      "semestre": "2026.2"
+    }
+  },
+  {
+    "model": "Rotaapp.prerequisito",
+    "pk": 1,
+    "fields": {
+      "texto": "Estar regularmente matriculado em um curso de Graduação, Mestrado ou Doutorado da PUC-Rio;",
+      "ordem": 1
+    }
+  },
+  {
+    "model": "Rotaapp.prerequisito",
+    "pk": 2,
+    "fields": {
+      "texto": "Ter cursado no mínimo 40 créditos na PUC-Rio;",
+      "ordem": 2
+    }
+  },
+  {
+    "model": "Rotaapp.prerequisito",
+    "pk": 3,
+    "fields": {
+      "texto": "Não completar os estudos durante o intercâmbio;",
+      "ordem": 3
+    }
+  },
+  {
+    "model": "Rotaapp.prerequisito",
+    "pk": 4,
+    "fields": {
+      "texto": "Ter CR igual ou maior que 7,0*;",
+      "ordem": 4
+    }
+  },
+  {
+    "model": "Rotaapp.prerequisito",
+    "pk": 5,
+    "fields": {
+      "texto": "Ser classificado entre os 50% melhores alunos do seu Departamento*;",
+      "ordem": 5
+    }
+  },
+  {
+    "model": "Rotaapp.prerequisito",
+    "pk": 6,
+    "fields": {
+      "texto": "Não possuir mais do que TRÊS reprovações*",
+      "ordem": 6
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 1,
+    "fields": {
+      "numero": 1,
+      "titulo": "Requisitos"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 1,
+    "fields": {
+      "etapa": 1,
+      "ordem": 1,
+      "tipo": "lista_numerada",
+      "titulo": "",
+      "texto": "Verificar a regularidade acadêmica e financeira junto à PUC-Rio;\nConsultar as vagas e requisitos específicos para cada convênio de interesse;\nComprovar o domínio do idioma do país de destino nos níveis mínimos exigidos pelas parceiras;\nEstar em conformidade com as orientações do coordenador do respectivo curso de graduação;\nApresentar plano de estudos preliminar validado internamente;\nObter recomendação formal de ao menos um docente permanente de sua faculdade;\nEfetuar o pagamento da taxa administrativa CCCI dentro do prazo estabelecido."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 2,
+    "fields": {
+      "etapa": 1,
+      "ordem": 2,
+      "tipo": "nota",
+      "titulo": "",
+      "texto": "* Algumas instituições parceiras podem aplicar testes adicionais ou exigir comprovação curricular diferenciada que exceda as regras gerais da PUC-Rio. Atente-se às páginas de descrição de cada universidade no portal."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 2,
+    "fields": {
+      "numero": 2,
+      "titulo": "Custos"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 3,
+    "fields": {
+      "etapa": 2,
+      "ordem": 1,
+      "tipo": "paragrafo",
+      "titulo": "",
+      "texto": "O aluno em intercâmbio acadêmico internacional promovido pela CCCI PUC-Rio continua isento de mensalidades na instituição estrangeira de acolhimento, devendo obrigatoriamente manter o pagamento de sua respectiva mensalidade/matrícula acadêmica regular na PUC-Rio durante o período de estudos fora."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 4,
+    "fields": {
+      "etapa": 2,
+      "ordem": 2,
+      "tipo": "paragrafo",
+      "titulo": "",
+      "texto": "Os custos relativos a passagens aéreas, alojamento, plano de saúde internacional obrigatório, alimentação e transporte são de responsabilidade integral do estudante."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 5,
+    "fields": {
+      "etapa": 2,
+      "ordem": 3,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Países que exigem comprovação financeira rigorosa para emissão de visto:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 6,
+    "fields": {
+      "etapa": 2,
+      "ordem": 4,
+      "tipo": "chips",
+      "titulo": "",
+      "texto": "Alemanha\nBélgica\nCoréia\nDinamarca\nEstados Unidos\nHolanda\nNoruega\nNova Zelândia\nSuécia"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 7,
+    "fields": {
+      "etapa": 2,
+      "ordem": 5,
+      "tipo": "nota",
+      "titulo": "",
+      "texto": "Nota: Verifique oportunidades de bolsas de mobilidade internacional (Santander, Erasmus+, etc.) disponíveis nos editais vigentes da secretaria."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 3,
+    "fields": {
+      "numero": 3,
+      "titulo": "Antes de se inscrever"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 8,
+    "fields": {
+      "etapa": 3,
+      "ordem": 1,
+      "tipo": "lista_numerada",
+      "titulo": "",
+      "texto": "Participar das reuniões informativas gerais organizadas pela equipe CCCI;\nVerificar seu CR e comparar com a lista de corte histórica dos semestres anteriores;\nFazer o levantamento das grades curriculares das universidades conveniadas desejadas;\nAnalisar as opções de hospedagem oferecidas (on-campus ou off-campus) e seus respectivos custos estimativos;\nVerificar a validade de seu passaporte, que deve ser de no mínimo 6 meses pós-data de retorno prevista;\nPesquisar sobre as exigências de seguro-saúde e vacinas no país de destino;\nAlinhar a expectativa de equivalência de créditos com o coordenador pedagógico do seu curso;\nIniciar a elaboração de sua carta de motivação em português e no idioma das aulas internacionais."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 4,
+    "fields": {
+      "numero": 4,
+      "titulo": "Comprovante de proficiência"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 9,
+    "fields": {
+      "etapa": 4,
+      "ordem": 1,
+      "tipo": "caixa",
+      "titulo": "",
+      "texto": "Para participar do intercâmbio em países que não possuem a língua portuguesa como oficial, o candidato deve comprovar o nível adequado do idioma de instrução exigido pela parceira de acolhimento.\nOs comprovantes aceitos e as notas mínimas variam de acordo com as especificidades acadêmicas de cada departamento internacional e país-membro.\nInformações sobre comprovantes aceitos estão presentes no site na aba especifica de cada universidade\nCaso o aluno pretenda cursar matérias em múltiplos idiomas, deverá anexar as respectivas certificações para cada uma das línguas correspondentes."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 10,
+    "fields": {
+      "etapa": 4,
+      "ordem": 2,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Requisitos de Validade dos Exames:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 11,
+    "fields": {
+      "etapa": 4,
+      "ordem": 3,
+      "tipo": "lista_numerada",
+      "titulo": "",
+      "texto": "O certificado deve possuir data de emissão de no máximo 2 anos na data de inscrição interna;\nNão serão aceitos prints de telas de resultados preliminares sem assinatura ou código verificador eletrônico;\nCertificados fora do prazo de validade oficial da certificadora não serão processados pela banca de seleção;\nO envio do PDF oficial deve ser feito exclusivamente via upload na área do candidato."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 12,
+    "fields": {
+      "etapa": 4,
+      "ordem": 4,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Certificados de inglês aceitos:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 13,
+    "fields": {
+      "etapa": 4,
+      "ordem": 5,
+      "tipo": "lista",
+      "titulo": "",
+      "texto": "TOEFL-IBT, IELTS, CIP, Duolingo, Pearson, Cambridge, IB."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 14,
+    "fields": {
+      "etapa": 4,
+      "ordem": 6,
+      "tipo": "tabela",
+      "titulo": "Certificado | Pontuação Mínima",
+      "texto": "TOEFL IBT | 80\nIELTS | 6.5\nCIP | B2\nDuolingo | 110\nPearson | 58\nCambridge | FCE\nIB | 35"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 15,
+    "fields": {
+      "etapa": 4,
+      "ordem": 7,
+      "tipo": "nota",
+      "titulo": "",
+      "texto": "* Atenção: Algumas universidades exigem pontuações mínimas específicas (subscores) por seção do exame (reading, writing, speaking, listening)."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 16,
+    "fields": {
+      "etapa": 4,
+      "ordem": 8,
+      "tipo": "cards",
+      "titulo": "",
+      "texto": "Inglês | TOEFL, IELTS ou Duolingo. Exigido pela maioria das universidades norte-americanas, europeias e asiáticas.\nEspanhol | DELE ou teste de proficiência próprio aceito por instituições da Espanha e América Latina.\nFrancês | DELF/DALF mínimo B2 para acompanhar aulas regulares em universidades francesas conveniadas.\nAlemão | Goethe-Zertifikat ou TestDaF. Muitas instituições alemãs oferecem cursos também em inglês.\nChinês | HSK nível 4 ou superior para cursos em mandarim, ou comprovação de inglês para cursos internacionais.\nJaponês | JLPT N2 para cursos gerais, ou comprovação de proficiência em inglês para programas especiais de intercâmbio."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 5,
+    "fields": {
+      "numero": 5,
+      "titulo": "Como se inscrever"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 17,
+    "fields": {
+      "etapa": 5,
+      "ordem": 1,
+      "tipo": "lista_numerada",
+      "titulo": "",
+      "texto": "Acessar o portal eletrônico de inscrições CCCI da PUC-Rio dentro do prazo de chamada ativa;\nPreencher o cadastro inicial com dados acadêmicos e contatos atualizados;\nSelecionar até 3 opções de universidades de destino por ordem de preferência pessoal;\nFazer upload de toda a documentação comprobatória exigida em formato PDF unificado;\nAnexar os comprovantes válidos de proficiência linguística exigidos por cada opção selecionada;\nConcluir o processo de envio e guardar o comprovante eletrônico de submissão do protocolo."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 18,
+    "fields": {
+      "etapa": 5,
+      "ordem": 2,
+      "tipo": "destaque",
+      "titulo": "",
+      "texto": "Prazo impreterível: Não serão admitidas alterações após o encerramento do sistema na data-limite oficial do edital."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 6,
+    "fields": {
+      "numero": 6,
+      "titulo": "Banca de seleção"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 19,
+    "fields": {
+      "etapa": 6,
+      "ordem": 1,
+      "tipo": "paragrafo",
+      "titulo": "",
+      "texto": "A banca examinadora, composta por docentes indicados pelos departamentos acadêmicos correspondentes e assessores internacionais da CCCI, avaliará de forma integrada o perfil global do estudante com base nos critérios regimentais de mérito."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 20,
+    "fields": {
+      "etapa": 6,
+      "ordem": 2,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Critérios e expectativas avaliados na entrevista:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 21,
+    "fields": {
+      "etapa": 6,
+      "ordem": 3,
+      "tipo": "lista",
+      "titulo": "",
+      "texto": "Demonstração clara de maturidade psicossocial para vivência em ambiente multicultural;\nConsistência acadêmica na argumentação de escolha das disciplinas do plano de estudos;\nHabilidade de comunicação oral e fluidez de raciocínio no idioma oficial de destino;\nAlinhamento dos objetivos pessoais e de carreira com o plano de mobilidade apresentado;\nPostura embaixadora ética para representação institucional da PUC-Rio no exterior."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 7,
+    "fields": {
+      "numero": 7,
+      "titulo": "Resultado da seleção"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 22,
+    "fields": {
+      "etapa": 7,
+      "ordem": 1,
+      "tipo": "paragrafo",
+      "titulo": "",
+      "texto": "O resultado oficial da primeira fase de alocação de vagas será publicado no site oficial da CCCI e disponibilizado de forma individual no portal de acompanhamento do candidato."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 23,
+    "fields": {
+      "etapa": 7,
+      "ordem": 2,
+      "tipo": "paragrafo",
+      "titulo": "",
+      "texto": "Os candidatos classificados receberão as orientações iniciais por e-mail para confirmação de interesse na vaga concedida."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 24,
+    "fields": {
+      "etapa": 7,
+      "ordem": 3,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Regras em caso de Desistência:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 25,
+    "fields": {
+      "etapa": 7,
+      "ordem": 4,
+      "tipo": "lista",
+      "titulo": "",
+      "texto": "A desistência formal deve ser formalizada imediatamente via protocolo digital no portal da CCCI;\nO não preenchimento do termo de aceite de alocação no prazo de 48h implicará em desistência automática;\nO abandono da vaga sem justificativa formal homologada pela coordenação poderá acarretar sanções acadêmicas."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 8,
+    "fields": {
+      "numero": 8,
+      "titulo": "Segunda fase"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 26,
+    "fields": {
+      "etapa": 8,
+      "ordem": 1,
+      "tipo": "paragrafo",
+      "titulo": "",
+      "texto": "Parabéns! Na segunda fase do processo seletivo, o aluno inicia a preparação da candidatura direta junto à instituição de destino."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 27,
+    "fields": {
+      "etapa": 8,
+      "ordem": 2,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Documentos Obrigatórios da Segunda Fase:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 28,
+    "fields": {
+      "etapa": 8,
+      "ordem": 3,
+      "tipo": "lista_numerada",
+      "titulo": "",
+      "texto": "Formulário oficial de aplicação da instituição internacional de acolhimento;\nHistórico escolar oficial em inglês ou idioma de destino emitido pela DAR PUC-Rio;\nCarta de indicação oficial assinada pela assessoria acadêmica da CCCI;\nDeclaração de suporte financeiro ou comprovação de recursos mínimos exigidos para subsistência;\nCópia legível da folha de identificação do passaporte dentro do padrão de validade;\nLaudo médico oficial internacional com histórico vacinal (se exigido pela parceira);\nPlano de estudos final acordado e validado pelo coordenador de departamento."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 9,
+    "fields": {
+      "numero": 9,
+      "titulo": "Aceitação na universidade de destino"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 29,
+    "fields": {
+      "etapa": 9,
+      "ordem": 1,
+      "tipo": "lista_numerada",
+      "titulo": "",
+      "texto": "Aguardar a análise documental realizada pelo comitê de admissões da instituição parceira;\nAcompanhar eventuais pedidos de correções ou documentos adicionais via e-mail acadêmico;\nReceber a Carta de Aceite Oficial (Letter of Acceptance) emitida pela instituição parceira;\nValidar a recepção do documento digital ou a chegada do documento físico na secretaria da CCCI;\nEfetivar o preenchimento da ficha cadastral de pré-embarque exigida pela PUC-Rio;\nIniciar imediatamente os trâmites do processo de obtenção do visto consular correspondente;\nContratar o plano de seguro-saúde internacional com cobertura integral contra acidentes e enfermidades."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 30,
+    "fields": {
+      "etapa": 9,
+      "ordem": 2,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "Casos de recusa ou desistência:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 31,
+    "fields": {
+      "etapa": 9,
+      "ordem": 3,
+      "tipo": "lista",
+      "titulo": "",
+      "texto": "Se a parceira recusar a candidatura por falta de vagas, o aluno poderá solicitar remanejamento de emergência;\nO cancelamento do intercâmbio após a emissão do aceite internacional requer devolução formal da carta oficial;\nTaxas administrativas desembolsadas à CCCI ou taxas externas não são reembolsadas em caso de desistência tardia."
+    }
+  },
+  {
+    "model": "Rotaapp.etapaprocesso",
+    "pk": 10,
+    "fields": {
+      "numero": 10,
+      "titulo": "Após o aceite"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 32,
+    "fields": {
+      "etapa": 10,
+      "ordem": 1,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "1. Trâmites do Visto e Entrada no País de Destino:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 33,
+    "fields": {
+      "etapa": 10,
+      "ordem": 2,
+      "tipo": "lista",
+      "titulo": "",
+      "texto": "Agendar a entrevista no consulado de destino assim que receber a Carta de Aceite;\nApresentar a comprovação financeira em conformidade com as regras oficiais do país;\nAdquirir as passagens aéreas somente após a confirmação final do visto no passaporte;\nAtentar-se para as exigências específicas de vacinação e quarentena das autoridades sanitárias locais."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 34,
+    "fields": {
+      "etapa": 10,
+      "ordem": 3,
+      "tipo": "subtitulo",
+      "titulo": "",
+      "texto": "2. Confirmações Acadêmicas PUC-Rio:"
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 35,
+    "fields": {
+      "etapa": 10,
+      "ordem": 4,
+      "tipo": "lista",
+      "titulo": "",
+      "texto": "Assinar o Termo de Compromisso e Responsabilidade de Mobilidade Internacional junto à CCCI;\nEfetuar a matrícula em regime especial de intercâmbio no sistema acadêmico da PUC-Rio;\nEntregar cópia do seguro de saúde internacional contratado com cobertura de repatriação;\nFornecer detalhes atualizados de contato e endereço de moradia no exterior à coordenação."
+    }
+  },
+  {
+    "model": "Rotaapp.blocoetapa",
+    "pk": 36,
+    "fields": {
+      "etapa": 10,
+      "ordem": 5,
+      "tipo": "caixa",
+      "titulo": "Observações Importantes sobre Desistência Pré-embarque:",
+      "texto": "A desistência após o recebimento do visto internacional ou próximo à data prevista do embarque deve ser imediatamente informada à CCCI por escrito, anexando justificativa formal fundamentada. Casos de omissão serão encaminhados para a respectiva vice-reitoria acadêmica para avaliação e aplicação de eventuais advertências."
+    }
+  }
+]

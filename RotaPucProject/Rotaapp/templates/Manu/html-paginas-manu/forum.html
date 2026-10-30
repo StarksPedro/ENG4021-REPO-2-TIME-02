@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/Manu/forum.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 <body>
     <header>
@@ -21,10 +22,10 @@
                  <li><a href="{% url 'home' %}">Inicio</a></li>
                  <li><a href="{% url 'universidades' %}">Universidades</a></li>
                  <li><a href="{% url 'paises' %}">Países</a></li>
-                 <li><a href="#">Processo Seletivo</a></li>
-                 <li><a href="#">Fórum</a></li>
+                 <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
+                 <li><a href="{% url 'forum' %}">Fórum</a></li>
                  <li><a href="{% url 'contatos' %}">Contatos</a></li>
-                 <li><a href="#">Quem somos</a></li>
+                 <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
             </ul>
         </nav>
     </header>

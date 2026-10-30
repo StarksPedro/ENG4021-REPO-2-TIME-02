@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/Pedro/processoseletivo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 <body>
     <header>
@@ -22,7 +23,7 @@
                 <li><a href="{% url 'universidades' %}">Universidades</a></li>
                 <li><a href="{% url 'paises' %}">Países</a></li>
                 <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
-                <li><a href="#">Fórum</a></li>
+                <li><a href="{% url 'forum' %}">Fórum</a></li>
                 <li><a href="{% url 'contatos' %}">Contatos</a></li>
                 <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
             </ul>
@@ -38,6 +39,7 @@
     <section class="lista-cr">
         <h2>Lista de CR</h2>
         <div class="bloco-cr">
+            {% for coluna in colunas_cr %}
             <table class="coluna-cr">
                 <thead>
                     <tr>
@@ -46,333 +48,104 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Administração</td><td class="nota-cr">7,2</td></tr>
-                    <tr><td>Arquitetura e Urbanismo</td><td class="nota-cr">7,8</td></tr>
-                    <tr><td>Artes e Design</td><td class="nota-cr">8,73</td></tr>
-                    <tr><td>Biologia</td><td class="nota-cr">7,54</td></tr>
+                    {% for nota in coluna %}
+                    <tr><td>{{ nota.departamento }}</td><td class="nota-cr">{{ nota.nota_formatada }}</td></tr>
+                    {% endfor %}
                 </tbody>
             </table>
-
-            <table class="coluna-cr">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Nota de corte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Ciência da Computação</td><td class="nota-cr">6,9</td></tr>
-                    <tr><td>Ciências Sociais</td><td class="nota-cr">8,34</td></tr>
-                    <tr><td>Comunicação Social</td><td class="nota-cr">8,91</td></tr>
-                    <tr><td>Direito</td><td class="nota-cr">8,35</td></tr>
-                </tbody>
-            </table>
-
-            <table class="coluna-cr">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Nota de corte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Economia</td><td class="nota-cr">6,85</td></tr>
-                    <tr><td>Educação</td><td class="nota-cr">8,79</td></tr>
-                    <tr><td>Engenharia Ciclo Básico</td><td class="nota-cr">6,37</td></tr>
-                    <tr><td>Engenharia Ciclo Profissional</td><td class="nota-cr">7,37</td></tr>
-                </tbody>
-            </table>
-
-            <table class="coluna-cr">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Nota de corte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Filosofia</td><td class="nota-cr">8,2</td></tr>
-                    <tr><td>Física</td><td class="nota-cr">8,2</td></tr>
-                    <tr><td>Geografia e Meio Ambiente</td><td class="nota-cr">8,84</td></tr>
-                    <tr><td>História</td><td class="nota-cr">8,18</td></tr>
-                </tbody>
-            </table>
-
-            <table class="coluna-cr">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Nota de corte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Inteligência Artificial</td><td class="nota-cr">7,8</td></tr>
-                    <tr><td>Letras</td><td class="nota-cr">8,6</td></tr>
-                    <tr><td>Matemática</td><td class="nota-cr">7,31</td></tr>
-                    <tr><td>Nutrição</td><td class="nota-cr">8,09</td></tr>
-                </tbody>
-            </table>
-
-            <table class="coluna-cr">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Nota de corte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Psicologia/Neurociência</td><td class="nota-cr">8,58</td></tr>
-                    <tr><td>Química</td><td class="nota-cr">7,68</td></tr>
-                    <tr><td>Relações Internacionais</td><td class="nota-cr">8,37</td></tr>
-                    <tr><td>Serviço Social</td><td class="nota-cr">9,13</td></tr>
-                </tbody>
-            </table>
-
-            <table class="coluna-cr">
-                <thead>
-                    <tr>
-                        <th>Departamento</th>
-                        <th>Nota de corte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Teologia</td><td class="nota-cr">9,03</td></tr>
-                </tbody>
-            </table>
+            {% empty %}
+            <p class="nota">Nenhuma nota de corte cadastrada ainda.</p>
+            {% endfor %}
         </div>
-        <p class="nota">Base de dados sujeita a variações. Lista de CR / Corte 50% - 2026.2</p>
+        {% if semestre %}
+        <p class="nota">Base de dados sujeita a variações. Lista de CR / Corte 50% - {{ semestre }}</p>
+        {% endif %}
     </section>
 
     <section class="prerequisitos">
         <h2>Pré-requisitos</h2>
         <ul class="lista-simples">
-            <li>Estar regularmente matriculado em um curso de Graduação, Mestrado ou Doutorado da PUC-Rio;</li>
-            <li>Ter cursado no mínimo 40 créditos na PUC-Rio;</li>
-            <li>Não completar os estudos durante o intercâmbio;</li>
-            <li>Ter CR igual ou maior que 7,0*;</li>
-            <li>Ser classificado entre os 50% melhores alunos do seu Departamento*;</li>
-            <li>Não possuir mais do que TRÊS reprovações*</li>
+            {% for requisito in pre_requisitos %}
+            <li>{{ requisito.texto }}</li>
+            {% endfor %}
         </ul>
         <p class="nota">* Caso o candidato não se enquadre nas exigências estipuladas, sua solicitação de inscrição deverá passar por avaliação especial junto à coordenação acadêmica de intercâmbio da CCCI, que julgará o mérito de forma excepcional.</p>
     </section>
 
     <section class="passos">
 
+        {% for etapa in etapas %}
         <article class="passo">
-            <span class="selo">Passo 1</span>
-            <h3>Requisitos</h3>
-            <ol>
-                <li>Verificar a regularidade acadêmica e financeira junto à PUC-Rio;</li>
-                <li>Consultar as vagas e requisitos específicos para cada convênio de interesse;</li>
-                <li>Comprovar o domínio do idioma do país de destino nos níveis mínimos exigidos pelas parceiras;</li>
-                <li>Estar em conformidade com as orientações do coordenador do respectivo curso de graduação;</li>
-                <li>Apresentar plano de estudos preliminar validado internamente;</li>
-                <li>Obter recomendação formal de ao menos um docente permanente de sua faculdade;</li>
-                <li>Efetuar o pagamento da taxa administrativa CCCI dentro do prazo estabelecido.</li>
-            </ol>
-            <p class="nota">* Algumas instituições parceiras podem aplicar testes adicionais ou exigir comprovação curricular diferenciada que exceda as regras gerais da PUC-Rio. Atente-se às páginas de descrição de cada universidade no portal.</p>
-        </article>
+            <span class="selo">Passo {{ etapa.numero }}</span>
+            <h3>{{ etapa.titulo }}</h3>
 
-        <article class="passo">
-            <span class="selo">Passo 2</span>
-            <h3>Custos</h3>
-            <p>O aluno em intercâmbio acadêmico internacional promovido pela CCCI PUC-Rio continua isento de mensalidades na instituição estrangeira de acolhimento, devendo obrigatoriamente manter o pagamento de sua respectiva mensalidade/matrícula acadêmica regular na PUC-Rio durante o período de estudos fora.</p>
-            <p>Os custos relativos a passagens aéreas, alojamento, plano de saúde internacional obrigatório, alimentação e transporte são de responsabilidade integral do estudante.</p>
-            <h4>Países que exigem comprovação financeira rigorosa para emissão de visto:</h4>
-            <ul class="chips">
-                <li>Alemanha</li>
-                <li>Bélgica</li>
-                <li>Coréia</li>
-                <li>Dinamarca</li>
-                <li>Estados Unidos</li>
-                <li>Holanda</li>
-                <li>Noruega</li>
-                <li>Nova Zelândia</li>
-                <li>Suécia</li>
-            </ul>
-            <p class="nota">Nota: Verifique oportunidades de bolsas de mobilidade internacional (Santander, Erasmus+, etc.) disponíveis nos editais vigentes da secretaria.</p>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 3</span>
-            <h3>Antes de se inscrever</h3>
+            {# Cada bloco do passo é mostrado de acordo com o seu tipo #}
+            {% for bloco in etapa.blocos.all %}
+            {% if bloco.tipo == "paragrafo" %}
+            <p>{{ bloco.texto }}</p>
+            {% elif bloco.tipo == "subtitulo" %}
+            <h4>{{ bloco.texto }}</h4>
+            {% elif bloco.tipo == "lista_numerada" %}
             <ol>
-                <li>Participar das reuniões informativas gerais organizadas pela equipe CCCI;</li>
-                <li>Verificar seu CR e comparar com a lista de corte histórica dos semestres anteriores;</li>
-                <li>Fazer o levantamento das grades curriculares das universidades conveniadas desejadas;</li>
-                <li>Analisar as opções de hospedagem oferecidas (on-campus ou off-campus) e seus respectivos custos estimativos;</li>
-                <li>Verificar a validade de seu passaporte, que deve ser de no mínimo 6 meses pós-data de retorno prevista;</li>
-                <li>Pesquisar sobre as exigências de seguro-saúde e vacinas no país de destino;</li>
-                <li>Alinhar a expectativa de equivalência de créditos com o coordenador pedagógico do seu curso;</li>
-                <li>Iniciar a elaboração de sua carta de motivação em português e no idioma das aulas internacionais.</li>
+                {% for item in bloco.itens %}
+                <li>{{ item }}</li>
+                {% endfor %}
             </ol>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 4</span>
-            <h3>Comprovante de proficiência</h3>
-            <div class="caixa">
-                <p>Para participar do intercâmbio em países que não possuem a língua portuguesa como oficial, o candidato deve comprovar o nível adequado do idioma de instrução exigido pela parceira de acolhimento.</p>
-                <p>Os comprovantes aceitos e as notas mínimas variam de acordo com as especificidades acadêmicas de cada departamento internacional e país-membro.</p>
-                <p>Informações sobre comprovantes aceitos estão presentes no site na aba especifica de cada universidade</p>
-                <p>Caso o aluno pretenda cursar matérias em múltiplos idiomas, deverá anexar as respectivas certificações para cada uma das línguas correspondentes.</p>
-            </div>
-            <h4>Requisitos de Validade dos Exames:</h4>
-            <ol>
-                <li>O certificado deve possuir data de emissão de no máximo 2 anos na data de inscrição interna;</li>
-                <li>Não serão aceitos prints de telas de resultados preliminares sem assinatura ou código verificador eletrônico;</li>
-                <li>Certificados fora do prazo de validade oficial da certificadora não serão processados pela banca de seleção;</li>
-                <li>O envio do PDF oficial deve ser feito exclusivamente via upload na área do candidato.</li>
-            </ol>
-            <h4>Certificados de inglês aceitos:</h4>
+            {% elif bloco.tipo == "lista" %}
             <ul>
-                <li>TOEFL-IBT, IELTS, CIP, Duolingo, Pearson, Cambridge, IB.</li>
+                {% for item in bloco.itens %}
+                <li>{{ item }}</li>
+                {% endfor %}
             </ul>
+            {% elif bloco.tipo == "chips" %}
+            <ul class="chips">
+                {% for item in bloco.itens %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            {% elif bloco.tipo == "nota" %}
+            <p class="nota">{{ bloco.texto }}</p>
+            {% elif bloco.tipo == "destaque" %}
+            <p class="destaque">{{ bloco.texto }}</p>
+            {% elif bloco.tipo == "caixa" %}
+            <div class="caixa">
+                {% if bloco.titulo %}
+                <p><b>{{ bloco.titulo }}</b></p>
+                {% endif %}
+                {% for item in bloco.itens %}
+                <p>{{ item }}</p>
+                {% endfor %}
+            </div>
+            {% elif bloco.tipo == "tabela" %}
             <table class="tabela-pontos">
                 <thead>
                     <tr>
-                        <th>Certificado</th>
-                        <th>Pontuação Mínima</th>
+                        {% for coluna in bloco.cabecalho %}
+                        <th>{{ coluna }}</th>
+                        {% endfor %}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>TOEFL IBT</td><td>80</td></tr>
-                    <tr><td>IELTS</td><td>6.5</td></tr>
-                    <tr><td>CIP</td><td>B2</td></tr>
-                    <tr><td>Duolingo</td><td>110</td></tr>
-                    <tr><td>Pearson</td><td>58</td></tr>
-                    <tr><td>Cambridge</td><td>FCE</td></tr>
-                    <tr><td>IB</td><td>35</td></tr>
+                    {% for linha in bloco.colunas %}
+                    <tr>{% for valor in linha %}<td>{{ valor }}</td>{% endfor %}</tr>
+                    {% endfor %}
                 </tbody>
             </table>
-            <p class="nota">* Atenção: Algumas universidades exigem pontuações mínimas específicas (subscores) por seção do exame (reading, writing, speaking, listening).</p>
+            {% elif bloco.tipo == "cards" %}
             <div class="cards-idiomas">
+                {% for card in bloco.colunas %}
                 <div class="card-idioma">
-                    <h4>Inglês</h4>
-                    <p>TOEFL, IELTS ou Duolingo. Exigido pela maioria das universidades norte-americanas, europeias e asiáticas.</p>
+                    <h4>{{ card.0 }}</h4>
+                    <p>{{ card.1 }}</p>
                 </div>
-                <div class="card-idioma">
-                    <h4>Espanhol</h4>
-                    <p>DELE ou teste de proficiência próprio aceito por instituições da Espanha e América Latina.</p>
-                </div>
-                <div class="card-idioma">
-                    <h4>Francês</h4>
-                    <p>DELF/DALF mínimo B2 para acompanhar aulas regulares em universidades francesas conveniadas.</p>
-                </div>
-                <div class="card-idioma">
-                    <h4>Alemão</h4>
-                    <p>Goethe-Zertifikat ou TestDaF. Muitas instituições alemãs oferecem cursos também em inglês.</p>
-                </div>
-                <div class="card-idioma">
-                    <h4>Chinês</h4>
-                    <p>HSK nível 4 ou superior para cursos em mandarim, ou comprovação de inglês para cursos internacionais.</p>
-                </div>
-                <div class="card-idioma">
-                    <h4>Japonês</h4>
-                    <p>JLPT N2 para cursos gerais, ou comprovação de proficiência em inglês para programas especiais de intercâmbio.</p>
-                </div>
+                {% endfor %}
             </div>
+            {% endif %}
+            {% endfor %}
         </article>
-
-        <article class="passo">
-            <span class="selo">Passo 5</span>
-            <h3>Como se inscrever</h3>
-            <ol>
-                <li>Acessar o portal eletrônico de inscrições CCCI da PUC-Rio dentro do prazo de chamada ativa;</li>
-                <li>Preencher o cadastro inicial com dados acadêmicos e contatos atualizados;</li>
-                <li>Selecionar até 3 opções de universidades de destino por ordem de preferência pessoal;</li>
-                <li>Fazer upload de toda a documentação comprobatória exigida em formato PDF unificado;</li>
-                <li>Anexar os comprovantes válidos de proficiência linguística exigidos por cada opção selecionada;</li>
-                <li>Concluir o processo de envio e guardar o comprovante eletrônico de submissão do protocolo.</li>
-            </ol>
-            <p class="destaque">Prazo impreterível: Não serão admitidas alterações após o encerramento do sistema na data-limite oficial do edital.</p>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 6</span>
-            <h3>Banca de seleção</h3>
-            <p>A banca examinadora, composta por docentes indicados pelos departamentos acadêmicos correspondentes e assessores internacionais da CCCI, avaliará de forma integrada o perfil global do estudante com base nos critérios regimentais de mérito.</p>
-            <h4>Critérios e expectativas avaliados na entrevista:</h4>
-            <ul>
-                <li>Demonstração clara de maturidade psicossocial para vivência em ambiente multicultural;</li>
-                <li>Consistência acadêmica na argumentação de escolha das disciplinas do plano de estudos;</li>
-                <li>Habilidade de comunicação oral e fluidez de raciocínio no idioma oficial de destino;</li>
-                <li>Alinhamento dos objetivos pessoais e de carreira com o plano de mobilidade apresentado;</li>
-                <li>Postura embaixadora ética para representação institucional da PUC-Rio no exterior.</li>
-            </ul>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 7</span>
-            <h3>Resultado da seleção</h3>
-            <p>O resultado oficial da primeira fase de alocação de vagas será publicado no site oficial da CCCI e disponibilizado de forma individual no portal de acompanhamento do candidato.</p>
-            <p>Os candidatos classificados receberão as orientações iniciais por e-mail para confirmação de interesse na vaga concedida.</p>
-            <h4>Regras em caso de Desistência:</h4>
-            <ul>
-                <li>A desistência formal deve ser formalizada imediatamente via protocolo digital no portal da CCCI;</li>
-                <li>O não preenchimento do termo de aceite de alocação no prazo de 48h implicará em desistência automática;</li>
-                <li>O abandono da vaga sem justificativa formal homologada pela coordenação poderá acarretar sanções acadêmicas.</li>
-            </ul>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 8</span>
-            <h3>Segunda fase</h3>
-            <p>Parabéns! Na segunda fase do processo seletivo, o aluno inicia a preparação da candidatura direta junto à instituição de destino.</p>
-            <h4>Documentos Obrigatórios da Segunda Fase:</h4>
-            <ol>
-                <li>Formulário oficial de aplicação da instituição internacional de acolhimento;</li>
-                <li>Histórico escolar oficial em inglês ou idioma de destino emitido pela DAR PUC-Rio;</li>
-                <li>Carta de indicação oficial assinada pela assessoria acadêmica da CCCI;</li>
-                <li>Declaração de suporte financeiro ou comprovação de recursos mínimos exigidos para subsistência;</li>
-                <li>Cópia legível da folha de identificação do passaporte dentro do padrão de validade;</li>
-                <li>Laudo médico oficial internacional com histórico vacinal (se exigido pela parceira);</li>
-                <li>Plano de estudos final acordado e validado pelo coordenador de departamento.</li>
-            </ol>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 9</span>
-            <h3>Aceitação na universidade de destino</h3>
-            <ol>
-                <li>Aguardar a análise documental realizada pelo comitê de admissões da instituição parceira;</li>
-                <li>Acompanhar eventuais pedidos de correções ou documentos adicionais via e-mail acadêmico;</li>
-                <li>Receber a Carta de Aceite Oficial (Letter of Acceptance) emitida pela instituição parceira;</li>
-                <li>Validar a recepção do documento digital ou a chegada do documento físico na secretaria da CCCI;</li>
-                <li>Efetivar o preenchimento da ficha cadastral de pré-embarque exigida pela PUC-Rio;</li>
-                <li>Iniciar imediatamente os trâmites do processo de obtenção do visto consular correspondente;</li>
-                <li>Contratar o plano de seguro-saúde internacional com cobertura integral contra acidentes e enfermidades.</li>
-            </ol>
-            <h4>Casos de recusa ou desistência:</h4>
-            <ul>
-                <li>Se a parceira recusar a candidatura por falta de vagas, o aluno poderá solicitar remanejamento de emergência;</li>
-                <li>O cancelamento do intercâmbio após a emissão do aceite internacional requer devolução formal da carta oficial;</li>
-                <li>Taxas administrativas desembolsadas à CCCI ou taxas externas não são reembolsadas em caso de desistência tardia.</li>
-            </ul>
-        </article>
-
-        <article class="passo">
-            <span class="selo">Passo 10</span>
-            <h3>Após o aceite</h3>
-            <h4>1. Trâmites do Visto e Entrada no País de Destino:</h4>
-            <ul>
-                <li>Agendar a entrevista no consulado de destino assim que receber a Carta de Aceite;</li>
-                <li>Apresentar a comprovação financeira em conformidade com as regras oficiais do país;</li>
-                <li>Adquirir as passagens aéreas somente após a confirmação final do visto no passaporte;</li>
-                <li>Atentar-se para as exigências específicas de vacinação e quarentena das autoridades sanitárias locais.</li>
-            </ul>
-            <h4>2. Confirmações Acadêmicas PUC-Rio:</h4>
-            <ul>
-                <li>Assinar o Termo de Compromisso e Responsabilidade de Mobilidade Internacional junto à CCCI;</li>
-                <li>Efetuar a matrícula em regime especial de intercâmbio no sistema acadêmico da PUC-Rio;</li>
-                <li>Entregar cópia do seguro de saúde internacional contratado com cobertura de repatriação;</li>
-                <li>Fornecer detalhes atualizados de contato e endereço de moradia no exterior à coordenação.</li>
-            </ul>
-            <div class="caixa">
-                <p><b>Observações Importantes sobre Desistência Pré-embarque:</b></p>
-                <p>A desistência após o recebimento do visto internacional ou próximo à data prevista do embarque deve ser imediatamente informada à CCCI por escrito, anexando justificativa formal fundamentada. Casos de omissão serão encaminhados para a respectiva vice-reitoria acadêmica para avaliação e aplicação de eventuais advertências.</p>
-            </div>
-        </article>
+        {% empty %}
+        <p class="nota">Nenhum passo do processo seletivo cadastrado ainda.</p>
+        {% endfor %}
 
     </section>
 

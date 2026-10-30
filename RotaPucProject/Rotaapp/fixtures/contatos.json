@@ -1,0 +1,13 @@
+[
+  {
+    "model": "Rotaapp.contatocoordenacao",
+    "pk": 1,
+    "fields": {
+      "endereco": "R. Marquês de São Vicente, 225\nGávea, Rio de Janeiro - RJ\nEdifício Padre Leonel Franca",
+      "emails": "atende-ccci@puc-rio.br",
+      "telefones": "+55 21 3527-1578\n+55 21 3527-1094",
+      "instagram": "@ccci.pucrio",
+      "horario": "Segunda a Sexta-feira\nDas 09:00 às 12:00\nDas 14:00 às 17:00"
+    }
+  }
+]
