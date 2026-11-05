@@ -269,3 +269,32 @@ class PaginaInstitucional(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class FonteNotasDeCorte(models.Model):
+    # Guarda de onde vem o PDF da lista de CR e o controle da checagem automática.
+    # Existe um registro só: ele é criado sozinho na primeira vez que for preciso.
+    url = models.URLField(
+        max_length=300,
+        default="https://www.puc-rio.br/ensinopesq/ccci/download/Tabela_de_CRs_2026.2.pdf",
+        help_text="Endereço do PDF da lista de CR. Se a PUC mudar o padrão do link, cole o novo aqui.",
+    )
+    intervalo_dias = models.PositiveIntegerField(
+        default=30, help_text="De quantos em quantos dias o site confere se há PDF novo."
+    )
+    hash_pdf = models.CharField(max_length=64, blank=True, editable=False)
+    ultima_tentativa = models.DateTimeField(null=True, blank=True, editable=False)
+    ultima_checagem_ok = models.DateTimeField(null=True, blank=True, editable=False)
+    ultima_atualizacao = models.DateTimeField(null=True, blank=True, editable=False)
+    ultimo_resultado = models.CharField(max_length=250, blank=True, editable=False)
+
+    class Meta:
+        verbose_name = "Fonte das notas de corte"
+        verbose_name_plural = "Fonte das notas de corte"
+
+    def __str__(self):
+        return f"Lista de CR - {self.url}"
+
+    @classmethod
+    def obter(cls):
+        fonte = cls.objects.first()
+        return fonte or cls.objects.create()

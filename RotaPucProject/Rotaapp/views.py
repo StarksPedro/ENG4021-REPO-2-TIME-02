@@ -5,6 +5,7 @@ from .models import (
     ContatoCoordenacao,
 )
 from .forms import PerguntaForm
+from .notas_corte import checar_se_necessario
 
 
 def home(request):
@@ -81,6 +82,8 @@ def quem_somos(request):
 
 
 def processo_seletivo(request):
+    # A cada visita só confere uma data; se já passou o intervalo, atualiza em segundo plano
+    checar_se_necessario()
     # Mostra só a lista de CR do semestre mais recente cadastrado
     semestre = NotaDeCorte.objects.order_by("-semestre").values_list("semestre", flat=True).first()
     notas = list(NotaDeCorte.objects.filter(semestre=semestre))
