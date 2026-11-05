@@ -1,34 +1,13 @@
+{% extends 'Pedro/index5.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-Br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RotaPuc-Universidades</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/Pedro/universidades.css' %}">
-    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
-</head>
-<body>
-    <header>
-        <a href="{% url 'home' %}" class= 'logo'>
-          <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
-            Rota<span>PUC</span>
-        </a>
-        <nav>
-            <ul>
-                 <li><a href="{% url 'home' %}">Inicio</a></li>
-                 <li><a href="{% url 'universidades' %}">Universidades</a></li>
-                 <li><a href="{% url 'paises' %}">Países</a></li>
-                 <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
-                 <li><a href="{% url 'forum' %}">Fórum</a></li>
-                 <li><a href="{% url 'contatos' %}">Contatos</a></li>
-                 <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
-            </ul>
-        </nav>
-    </header>
+
+{% block titulo %}RotaPuc-Universidades{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/Pedro/universidades.css' %}">
+{% endblock %}
+
+{% block conteudo %}
 <section class="filtros">
     <span class="selo">Universidades conveniadas</span>
     <h2>Encontre sua universidade</h2>
@@ -116,44 +95,4 @@
         <p>Nenhuma universidade cadastrada ainda.</p>
     {% endfor %}
 </section>
-<footer class="rodape">
-
-    <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
-
-    <div class="contatos">
-        <div>
-            <h3>Endereço</h3>
-            <p>Rua Marquês de São VIcente, 225</p>
-            <p>Gáveia, RIo de Janeiro - RJ</p>
-            <p>Edificio Cardeal Leme, Sala 130</p>
-        </div>
-
-        <div>
-            <h3>Email</h3>
-            <p>ccci-puc@puc-rio.br</p>
-            <p>info.ccci@puc-rio.br</p>
-            <p>intercambio@puc-rio.br</p>
-        </div>
-
-        <div>
-            <h3>Telefone</h3>
-            <p>+55 (21) 3527-1577</p>
-            <p>+55 (21) 3527-1578</p>
-            <p>Fax: ramal 1579</p>
-        </div>
-
-        <div>
-            <h3>Instragram</h3>
-            <p>@ccci_pucrio</p>
-            <p>#PUCRioIntercambio</p>
-        </div>
-
-        <div>
-            <h3>Horário de funcionamento</h3>
-            <p>9h00 às 12h00</p>
-            <p>14h00 às 17h00</p>
-        </div>
-    </div>
-</footer>
-</body>
-</html> 
+{% endblock %}

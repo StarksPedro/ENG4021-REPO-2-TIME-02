@@ -1,0 +1,123 @@
+
+body {
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+/**/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #165dad;
+    border-radius: 999px;
+    color: #165dad;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Destaca no menu a página em que a pessoa está */
+nav a.ativo {
+    background-color: #165dad;
+    color: #ffffff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #103b66;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo span {
+    color: #f4b942;
+}
+
+/* Selo azul: usado nos títulos das páginas */
+.selo {
+    background-color: #165dad;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* RODAPÉ */
+
+.rodape {
+    font-family: 'Inter', sans-serif;
+    padding: 56px 48px;
+}
+
+/* O grid encaixa quantos cards couberem na largura da tela */
+.rodape-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.rodape-card {
+    background-color: #ffffff;
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(16, 59, 102, 0.08);
+}
+
+.rodape-card:hover {
+    box-shadow: 0 8px 24px rgba(16, 59, 102, 0.14);
+}
+
+.rodape-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: #eaf3fc;
+    color: #165dad;
+}
+
+.rodape-card h3 {
+    color: #103b66;
+    font-size: 17px;
+    margin: 16px 0 10px;
+}
+
+.rodape-card p {
+    color: #667684;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 4px 0;
+}
+
+.rodape-card a {
+    color: #165dad;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere; /* quebra e-mails longos em vez de estourar o card */
+}
+
+.rodape-card a:hover {
+    text-decoration: underline;
+}
