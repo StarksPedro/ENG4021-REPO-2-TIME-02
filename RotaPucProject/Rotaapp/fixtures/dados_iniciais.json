@@ -7,6 +7,7 @@
       "continente": "Europa",
       "idioma_oficial": "Alemão",
       "moeda": "Euro",
+      "codigo_moeda": "EUR",
       "requisitos_para_entrar": "Passaporte válido. Para estudar por mais de 90 dias, brasileiros precisam de visto nacional de estudante (tipo D), pedido no consulado alemão antes da viagem, e de registro de residência após a chegada."
     }
   },
@@ -18,6 +19,7 @@
       "continente": "Europa",
       "idioma_oficial": "Espanhol",
       "moeda": "Euro",
+      "codigo_moeda": "EUR",
       "requisitos_para_entrar": "Passaporte válido. Para estudar por mais de 90 dias, é preciso visto de estudante pedido no consulado espanhol antes da viagem e, após a chegada, solicitar a TIE (cartão de identidade de estrangeiro)."
     }
   },
@@ -29,6 +31,7 @@
       "continente": "América do Sul",
       "idioma_oficial": "Espanhol",
       "moeda": "Peso argentino",
+      "codigo_moeda": "ARS",
       "requisitos_para_entrar": "Brasileiros entram com RG ou passaporte (acordo do Mercosul). Para estudar por mais de 90 dias, é preciso pedir residência temporária na Dirección Nacional de Migraciones."
     }
   },
@@ -40,6 +43,7 @@
       "continente": "América do Sul",
       "idioma_oficial": "Espanhol",
       "moeda": "Peso chileno",
+      "codigo_moeda": "CLP",
       "requisitos_para_entrar": "Brasileiros entram com RG ou passaporte (acordo do Mercosul). Para estudar por mais de 90 dias, é preciso pedir residência temporária de estudante no Servicio Nacional de Migraciones."
     }
   },

@@ -1,0 +1,116 @@
+/* Telas de Entrar e Criar conta. Cabeçalho, rodapé e .selo ficam no base.css */
+
+.pagina-conta {
+    display: flex;
+    justify-content: center;
+    padding: 48px 16px 64px;
+}
+
+.caixa-conta {
+    width: 100%;
+    max-width: 440px;
+    box-sizing: border-box;
+    border: 1px solid #dbe4ec;
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 2px 12px rgba(16, 59, 102, 0.08);
+    text-align: center;
+}
+
+.caixa-conta h1 {
+    color: #103b66;
+    font-size: 30px;
+    margin: 16px 0 8px;
+}
+
+.subtitulo {
+    color: #667684;
+    font-size: 14px;
+    margin: 0 0 24px;
+}
+
+.aviso-conta {
+    background-color: #fff6e0;
+    color: #8a5a00;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin: 0 0 16px;
+}
+
+/* FORMULÁRIO */
+
+.form-conta {
+    text-align: left;
+}
+
+.campo-conta {
+    margin-bottom: 16px;
+}
+
+.campo-conta label {
+    display: block;
+    color: #103b66;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* Os inputs são gerados pelo Django ({{ campo }}), por isso o estilo é pelo tipo da tag */
+.campo-conta input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #c5d6e6;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.campo-conta input:focus {
+    outline: none;
+    border-color: #165dad;
+    box-shadow: 0 0 0 3px rgba(22, 93, 173, 0.15);
+}
+
+.dica {
+    color: #7183a0;
+    font-size: 12px;
+    margin: 6px 0 0;
+}
+
+.erro {
+    color: #c62828;
+    font-size: 13px;
+    margin: 6px 0 0;
+}
+
+.botao-conta {
+    width: 100%;
+    margin-top: 8px;
+    padding: 13px;
+    border: none;
+    border-radius: 999px;
+    background-color: #165dad;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-conta:hover {
+    background-color: #103b66;
+}
+
+.troca-conta {
+    margin: 24px 0 0;
+    color: #667684;
+    font-size: 14px;
+}
+
+.troca-conta a {
+    color: #165dad;
+    font-weight: 600;
+    text-decoration: none;
+}

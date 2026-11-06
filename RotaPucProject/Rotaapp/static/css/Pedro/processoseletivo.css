@@ -43,28 +43,61 @@
     max-width: 800px;
 }
 
+/* PASSOS: um embaixo do outro, em ordem, sem scroll lateral.
+   Antes eles ficavam lado a lado numa faixa que precisava ser arrastada para o lado. */
+
 .passos {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     gap: 24px;
+    max-width: 960px;
     padding: 48px 48px 16px 48px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    transform: rotateX(180deg);
+}
+
+.passos > h2 {
+    color: #103b66;
+    font-size: 24px;
 }
 
 .passo {
-    flex: 0 0 560px;
     box-sizing: border-box;
-    scroll-snap-align: start;
     border: 1px solid #dbe4ec;
+    border-left: 6px solid #165dad; /* faixa azul que liga visualmente os passos */
     border-radius: 16px;
     padding: 28px;
-    transform: rotateX(180deg);
+}
+
+/* Título do passo (<summary>): fica numa linha com o selo e uma setinha que gira ao abrir */
+.passo summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    list-style: none;           /* tira o triângulo padrão do navegador */
+}
+
+.passo summary::-webkit-details-marker {
+    display: none;              /* tira o triângulo padrão no Chrome/Safari */
+}
+
+.passo summary::after {
+    content: "▾";
+    margin-left: auto;          /* empurra a setinha para a direita */
+    color: #165dad;
+    font-size: 20px;
+    transition: transform 0.2s;
+}
+
+.passo details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.passo details[open] summary {
+    margin-bottom: 8px;
 }
 
 .passo h3 {
-    margin-top: 16px;
+    margin: 0;
     color: #103b66;
     font-size: 20px;
 }
@@ -193,21 +226,22 @@
     margin-top: 8px;
 }
 
+/* LISTA DE CR: as tabelas ficam numa grade que quebra de linha conforme a largura da tela
+   (no computador 3 por linha, no celular 1), em vez de uma faixa com scroll lateral. */
+
 .bloco-cr {
-    display: flex;
-    gap: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px 32px;
     margin-top: 16px;
-    padding: 24px 24px 12px 24px;
-    overflow-x: auto;
+    padding: 24px;
     border: 1px solid #dbe4ec;
     border-radius: 16px;
-    transform: rotateX(180deg);
 }
 
 .coluna-cr {
-    flex: 0 0 360px;
+    width: 100%;
     border-collapse: collapse;
-    transform: rotateX(180deg);
 }
 
 .coluna-cr th {

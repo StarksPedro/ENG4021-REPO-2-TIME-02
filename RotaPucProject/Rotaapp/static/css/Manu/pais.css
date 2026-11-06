@@ -136,3 +136,20 @@ body {
 .rodape{
     margin-top: 50px;
 }
+/* Card de cotação (integração com a API de câmbio) */
+.card-cotacao {
+    background-color: #eaf3fc;
+    border-color: #c5defa;
+}
+.card-cotacao .valor-cotacao {
+    color: #165dad;
+    font-size: 24px;
+    font-weight: 700;
+}
+.card-cotacao .fonte-cotacao {
+    font-size: 12px;
+    color: #7183a0;
+}
+.card-cotacao p + p {
+    margin-top: 8px;
+}

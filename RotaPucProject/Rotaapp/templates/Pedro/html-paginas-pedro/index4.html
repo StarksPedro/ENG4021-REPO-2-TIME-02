@@ -11,7 +11,7 @@
     <section class="topo-processo">
         <span class="selo">Processo seletivo</span>
         <h1>Passo a passo do intercâmbio</h1>
-        <p>Veja os pré-requisitos e arraste os passos para o lado para acompanhar cada etapa, até o embarque.</p>
+        <p>Veja a lista de CR, os pré-requisitos e cada etapa do processo, em ordem, até o embarque. Clique em um passo para abrir ou fechar.</p>
     </section>
 
     <section class="lista-cr">
@@ -51,11 +51,17 @@
     </section>
 
     <section class="passos">
+        <h2>Etapas do processo</h2>
 
         {% for etapa in etapas %}
         <article class="passo">
-            <span class="selo">Passo {{ etapa.numero }}</span>
-            <h3>{{ etapa.titulo }}</h3>
+            {# <details> é uma "sanfona" do próprio HTML: clicar no <summary> abre e fecha o passo. #}
+            {# O primeiro passo (forloop.first) já começa aberto. #}
+            <details {% if forloop.first %}open{% endif %}>
+            <summary>
+                <span class="selo">Passo {{ etapa.numero }}</span>
+                <h3>{{ etapa.titulo }}</h3>
+            </summary>
 
             {# Cada bloco do passo é mostrado de acordo com o seu tipo #}
             {% for bloco in etapa.blocos.all %}
@@ -120,6 +126,7 @@
             </div>
             {% endif %}
             {% endfor %}
+            </details>
         </article>
         {% empty %}
         <p class="nota">Nenhum passo do processo seletivo cadastrado ainda.</p>

@@ -121,3 +121,77 @@ nav a.ativo {
 .rodape-card a:hover {
     text-decoration: underline;
 }
+
+/* CONTA DO USUÁRIO NO CABEÇALHO (Entrar / Cadastrar / Olá, nome / Sair) */
+
+.conta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.conta form {
+    margin: 0;
+}
+
+.ola {
+    color: #103b66;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.botao-entrar,
+.botao-cadastrar,
+.botao-sair {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao-entrar,
+.botao-sair {
+    border: 1px solid #f4b942;
+    background-color: #ffffff;
+    color: #103b66;
+}
+
+.botao-entrar.ativo,
+.botao-entrar:hover,
+.botao-sair:hover {
+    background-color: #fff6e0;
+}
+
+.botao-cadastrar {
+    border: 1px solid #f4b942;
+    background-color: #f4b942;
+    color: #103b66;
+}
+
+/* MENSAGENS DO SISTEMA */
+
+.mensagens {
+    max-width: 900px;
+    margin: 16px auto 0;
+    padding: 0 16px;
+}
+
+.mensagem {
+    margin: 0 0 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #eaf3fc;
+    color: #103b66;
+}
+
+.mensagem-success {
+    background-color: #e6f6ec;
+    color: #1d7a44;
+}

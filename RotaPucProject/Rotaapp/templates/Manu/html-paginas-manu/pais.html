@@ -30,6 +30,19 @@
                 <h3>Moeda</h3>
                 <p>{{ pais.moeda }}</p>
             </div>
+            <!-- Cotação em tempo real, vinda da API de câmbio (cotacao.py) -->
+            <div class="card-info card-cotacao">
+                <h3>Cotação hoje</h3>
+                {% if cotacao %}
+                <p class="valor-cotacao">1 {{ cotacao.codigo }} = R$ {{ cotacao.valor|floatformat:cotacao.casas }}</p>
+                <p>Com R$ 100 você compra cerca de {{ cotacao.cem_reais|floatformat:"2g" }} {{ cotacao.codigo }}.</p>
+                <p class="fonte-cotacao">Atualizado em {{ cotacao.atualizado_em|date:"d/m/Y \à\s H:i" }} · Fonte: AwesomeAPI</p>
+                {% elif pais.codigo_moeda %}
+                <p>Cotação indisponível no momento. Tente novamente mais tarde.</p>
+                {% else %}
+                <p>Cadastre o código da moeda deste país no admin para ver a cotação.</p>
+                {% endif %}
+            </div>
         </div>
         <div class="pilha">
             <div class="card-info">

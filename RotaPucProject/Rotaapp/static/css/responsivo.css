@@ -148,7 +148,7 @@ img {
         margin-left: 0;
     }
 
-    /* Processo seletivo: menos espaço nas laterais e passos mais estreitos */
+    /* Processo seletivo: menos espaço nas laterais e tabela de CR em uma coluna */
     .topo-processo,
     .prerequisitos,
     .lista-cr {
@@ -165,7 +165,6 @@ img {
     }
 
     .passo {
-        flex-basis: 85%;
         padding: 20px;
     }
 
@@ -173,8 +172,9 @@ img {
         width: 100%;
     }
 
-    .coluna-cr {
-        flex-basis: 280px;
+    .bloco-cr {
+        grid-template-columns: 1fr;
+        padding: 16px;
     }
 
     /* Rodapé com menos espaço nas laterais */
@@ -226,10 +226,6 @@ img {
 
     .contatos > div {
         flex-basis: auto;
-    }
-
-    .passo {
-        flex-basis: 90%;
     }
 
     .redes {

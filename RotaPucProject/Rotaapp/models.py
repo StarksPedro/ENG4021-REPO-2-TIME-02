@@ -6,6 +6,12 @@ class Pais(models.Model):
     continente = models.CharField(max_length=15)
     idioma_oficial = models.CharField(max_length=25)
     moeda = models.CharField(max_length=45)
+    # Código da moeda no padrão ISO 4217 (EUR, ARS, CLP, USD...). É com ele que a página
+    # do país busca a cotação em reais na API de câmbio (ver cotacao.py).
+    codigo_moeda = models.CharField(
+        "código da moeda", max_length=3, blank=True,
+        help_text="Código de 3 letras da moeda, ex.: EUR, ARS, CLP. Usado para mostrar a cotação.",
+    )
     requisitos_para_entrar = models.TextField()
 
     class Meta:
