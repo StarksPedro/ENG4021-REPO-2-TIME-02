@@ -4,7 +4,7 @@ from django.utils.text import slugify
 class Pais(models.Model):
     nome = models.CharField(max_length=70)
     continente = models.CharField(max_length=15)
-        idioma_oficial = models.CharField(max_length=120)
+    idioma_oficial = models.CharField(max_length=120)
     moeda = models.CharField(max_length=45)
     # Código da moeda no padrão ISO 4217 (EUR, ARS, CLP, USD...). É com ele que a página
     # do país busca a cotação em reais na API de câmbio (ver cotacao.py).
