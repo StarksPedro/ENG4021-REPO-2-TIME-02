@@ -66,6 +66,8 @@ def quem_somos(request):
 
 
 def processo_seletivo(request):
+    # A cada visita só confere uma data; se já passou o intervalo, atualiza em segundo plano
+    checar_se_necessario()
     # Mostra só a lista de CR do semestre mais recente cadastrado
     semestre = NotaDeCorte.objects.order_by("-semestre").values_list("semestre", flat=True).first()
     notas = list(NotaDeCorte.objects.filter(semestre=semestre))
@@ -96,7 +98,11 @@ def pais(request, id):
 
 def universidade(request, id):
     universidade = get_object_or_404(Universidade, id=id)
-    programas = universidade.programas.all()
+
+    def itens(tipo):
+        # Textos de um tipo de item (requisito, certificado, custo, bolsa, documento), na ordem cadastrada
+        return [item.texto for item in universidade.itens.filter(tipo=tipo)]
+
     return render(request, 'Manu/html-paginas-manu/universidade.html', {
         'universidade': universidade,
         'programas': programas,

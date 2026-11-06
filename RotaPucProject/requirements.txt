@@ -1,0 +1,6 @@
+# Para instalar tudo: python -m pip install -r requirements.txt
+
+django
+requests
+pdfplumber
+

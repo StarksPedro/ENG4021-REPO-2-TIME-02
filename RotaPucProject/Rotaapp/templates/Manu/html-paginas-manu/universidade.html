@@ -20,8 +20,7 @@
 
     <span class="selo">{{ universidade.sigla }}</span>
     <h1 class="titulo-universidade">{{ universidade.nome }}</h1>
-    <p class="subtitulo"><a href="{% url 'paises' %}">{{ universidade.pais.nome }}</a></p>
-
+    <p class="subtitulo">{% if universidade.cidade %}{{ universidade.cidade }} · {% endif %}<a href="{% url 'paises' %}">{{ universidade.pais.nome }}</a></p>
     {% if universidade.foto %}
     <img class="foto-universidade" src="{{ universidade.foto }}" alt="{{ universidade.nome }}">
     {% else %}
@@ -31,7 +30,8 @@
     <div class="duas-colunas">
         <div class="card-info">
             <h3>Sobre a universidade</h3>
-            <p>Endereço: {{ universidade.endereco }}</p>
+            {% if universidade.sobre %}<p>{{ universidade.sobre }}</p>{% endif %}
+            <p class="espaco">Endereço: {{ universidade.endereco }}</p>
             <p>Ranking: #{{ universidade.ranking }} no ranking global</p>
             <p>Site oficial: <a href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a></p>
             <p>Vagas disponíveis: {{ universidade.numero_de_vagas_disponiveis }}</p>
@@ -39,8 +39,9 @@
             <p>Moeda: {{ universidade.pais.moeda }}</p>
         </div>
         <div class="card-info">
-            <h3>Cursos oferecidos</h3>
-            <div class="chips">
+            <h3>Perfil acadêmico</h3>
+            {% if universidade.perfil_academico %}<p>{{ universidade.perfil_academico }}</p>{% endif %}
+            <div class="chips espaco">
                 {% for curso in universidade.cursos.all %}
                 <span class="chip">{{ curso.nome }}</span>
                 {% empty %}
@@ -83,6 +84,47 @@
             </tbody>
         </table>
     </div>
+    <div class="duas-colunas mais-espaco">
+        {% if requisitos_academicos %}
+        <div class="card-info">
+            <h3>Requisitos acadêmicos</h3>
+            <ul class="lista-info">
+                {% for item in requisitos_academicos %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if certificados %}
+        <div class="card-info">
+            <h3>Certificados de aptidão e línguas aceitos</h3>
+            <ul class="lista-info">
+                {% for item in certificados %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if custos_e_bolsas %}
+        <div class="card-info">
+            <h3>Custos e bolsas</h3>
+            <ul class="lista-info">
+                {% for item in custos_e_bolsas %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if documentos %}
+        <div class="card-info">
+            <h3>Documentação necessária</h3>
+            <ul class="lista-info">
+                {% for item in documentos %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if universidade.email_contato %}
+    <div class="card-info mais-espaco">
+        <h3>Contato com a instituição</h3>
+        <p>{{ universidade.email_contato }}</p>
+    </div>
+    {% endif %}
 
     <div class="card-info mais-espaco" style="margin-top: 32px;">
         <h3>Requisitos de entrada em {{ universidade.pais.nome }}</h3>

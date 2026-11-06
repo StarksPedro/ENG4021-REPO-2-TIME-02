@@ -2,7 +2,9 @@ from django.contrib import admin
 from .models import (
     Pais, Curso, Universidade, ItemUniversidade, Depoimento, Programa, Aluno, Pergunta, Resposta,
     NotaDeCorte, PreRequisito, EtapaProcesso, BlocoEtapa, ContatoCoordenacao, PaginaInstitucional,
+    FonteNotasDeCorte,
 )
+from .notas_corte import atualizar
 
 # Registrando os modelos no admin para poder cadastrar, editar e apagar os dados
 # pelo /admin. Os list_display escolhem as colunas que aparecem na listagem,
@@ -113,3 +115,17 @@ class ContatoCoordenacaoAdmin(admin.ModelAdmin):
 class PaginaInstitucionalAdmin(admin.ModelAdmin):
     list_display = ("titulo", "slug")
     prepopulated_fields = {"slug": ("titulo",)}
+
+@admin.register(FonteNotasDeCorte)
+class FonteNotasDeCorteAdmin(admin.ModelAdmin):
+    list_display = ("url", "intervalo_dias", "ultima_checagem_ok", "ultima_atualizacao", "ultimo_resultado")
+    readonly_fields = ("ultima_tentativa", "ultima_checagem_ok", "ultima_atualizacao", "ultimo_resultado")
+    actions = ["checar_agora"]
+
+    @admin.action(description="Checar o PDF agora")
+    def checar_agora(self, request, queryset):
+        for fonte in queryset:
+            try:
+                self.message_user(request, atualizar(fonte, forcar=True))
+            except Exception as erro:
+                self.message_user(request, f"Falhou: {erro}", level="error")

@@ -4,7 +4,7 @@ from django.utils.text import slugify
 class Pais(models.Model):
     nome = models.CharField(max_length=70)
     continente = models.CharField(max_length=15)
-    idioma_oficial = models.CharField(max_length=25)
+        idioma_oficial = models.CharField(max_length=120)
     moeda = models.CharField(max_length=45)
     # Código da moeda no padrão ISO 4217 (EUR, ARS, CLP, USD...). É com ele que a página
     # do país busca a cotação em reais na API de câmbio (ver cotacao.py).
@@ -13,7 +13,9 @@ class Pais(models.Model):
         help_text="Código de 3 letras da moeda, ex.: EUR, ARS, CLP. Usado para mostrar a cotação.",
     )
     requisitos_para_entrar = models.TextField()
-
+    fuso_horario = models.CharField(max_length=100, blank=True, default="")
+    informacoes_adicionais = models.TextField(blank=True, default="")
+    
     class Meta:
         verbose_name = "País"
         verbose_name_plural = "Países"
@@ -275,3 +277,32 @@ class PaginaInstitucional(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class FonteNotasDeCorte(models.Model):
+    # Guarda de onde vem o PDF da lista de CR e o controle da checagem automática.
+    # Existe um registro só: ele é criado sozinho na primeira vez que for preciso.
+    url = models.URLField(
+        max_length=300,
+        default="https://www.puc-rio.br/ensinopesq/ccci/download/Tabela_de_CRs_2026.2.pdf",
+        help_text="Endereço do PDF da lista de CR. Se a PUC mudar o padrão do link, cole o novo aqui.",
+    )
+    intervalo_dias = models.PositiveIntegerField(
+        default=30, help_text="De quantos em quantos dias o site confere se há PDF novo."
+    )
+    hash_pdf = models.CharField(max_length=64, blank=True, editable=False)
+    ultima_tentativa = models.DateTimeField(null=True, blank=True, editable=False)
+    ultima_checagem_ok = models.DateTimeField(null=True, blank=True, editable=False)
+    ultima_atualizacao = models.DateTimeField(null=True, blank=True, editable=False)
+    ultimo_resultado = models.CharField(max_length=250, blank=True, editable=False)
+
+    class Meta:
+        verbose_name = "Fonte das notas de corte"
+        verbose_name_plural = "Fonte das notas de corte"
+
+    def __str__(self):
+        return f"Lista de CR - {self.url}"
+
+    @classmethod
+    def obter(cls):
+        fonte = cls.objects.first()
+        return fonte or cls.objects.create()
