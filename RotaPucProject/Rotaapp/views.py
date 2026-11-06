@@ -108,12 +108,21 @@ def pais(request, id):
         'pais': pais,
         'universidades': pais.universidades.all(),
         'requisitos': separar_linhas(pais.requisitos_para_entrar),
+        'informacoes': separar_linhas(pais.informacoes_adicionais),
     })
 
 def universidade(request, id):
     universidade = get_object_or_404(Universidade, id=id)
-    programas = universidade.programas.all()
+
+    def itens(tipo):
+        # Textos de um tipo de item (requisito, certificado, custo, bolsa, documento), na ordem cadastrada
+        return [item.texto for item in universidade.itens.filter(tipo=tipo)]
+
     return render(request, 'Manu/html-paginas-manu/universidade.html', {
         'universidade': universidade,
-        'programas': programas,
+        'programas': universidade.programas.all(),
+        'requisitos_academicos': itens("requisito"),
+        'certificados': itens("certificado"),
+        'custos_e_bolsas': itens("custo") + itens("bolsa"),
+        'documentos': itens("documento"),
     })

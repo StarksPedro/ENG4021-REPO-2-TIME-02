@@ -4,10 +4,12 @@ from django.utils.text import slugify
 class Pais(models.Model):
     nome = models.CharField(max_length=70)
     continente = models.CharField(max_length=15)
-    idioma_oficial = models.CharField(max_length=25)
+        idioma_oficial = models.CharField(max_length=120)
     moeda = models.CharField(max_length=45)
     requisitos_para_entrar = models.TextField()
-
+    fuso_horario = models.CharField(max_length=100, blank=True, default="")
+    informacoes_adicionais = models.TextField(blank=True, default="")
+    
     class Meta:
         verbose_name = "País"
         verbose_name_plural = "Países"
