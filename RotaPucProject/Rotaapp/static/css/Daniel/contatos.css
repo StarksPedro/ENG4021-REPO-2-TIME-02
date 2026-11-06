@@ -1,64 +1,12 @@
-/* Página de Contatos: mesmas cores, fonte e cabeçalho das outras páginas do RotaPUC */
+/* Página de Contatos. O cabeçalho e o rodapé ficam no base.css */
 
 body {
-    background-color: #ffffff;
-    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0 10px;
 }
 
-/* CABEÇALHO (igual ao das outras páginas) */
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-ul {
-    list-style: none;
-    display: flex;
-    gap: 8px;
-}
-
-nav a {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid #165dad;
-    border-radius: 999px;
-    color: #165dad;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-/* Destaca no menu a página em que a pessoa está */
-nav a.ativo {
-    background-color: #165dad;
-    color: #ffffff;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #103b66;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.logo span {
-    color: #f4b942;
-}
-
 .selo {
     display: inline-block;
-    background-color: #165dad;
-    color: #ffffff;
-    padding: 8px 20px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
 }
 
 /* CONTEÚDO */

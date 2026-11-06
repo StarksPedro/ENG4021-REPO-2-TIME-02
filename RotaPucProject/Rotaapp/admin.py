@@ -13,7 +13,7 @@ from .notas_corte import atualizar
 
 @admin.register(Pais)
 class PaisAdmin(admin.ModelAdmin):
-    list_display = ("nome", "continente", "idioma_oficial", "moeda")
+    list_display = ("nome", "continente", "idioma_oficial", "moeda", "codigo_moeda")
     list_filter = ("continente",)
     search_fields = ("nome",)
 

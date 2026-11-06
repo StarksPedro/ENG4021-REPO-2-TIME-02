@@ -1,0 +1,44 @@
+{% extends 'Pedro/index5.html' %}
+{% load static %}
+
+{% block titulo %}Cadastro - RotaPUC{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/Daniel/autenticacao.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+    <main class="pagina-conta">
+        <section class="caixa-conta">
+            <span class="selo">Área do aluno</span>
+            <h1>Criar conta</h1>
+            <p class="subtitulo">Cadastre-se para tirar suas dúvidas sobre intercâmbio no fórum.</p>
+
+            <form method="post" class="form-conta">
+                {% csrf_token %}
+
+                {% for erro in form.non_field_errors %}
+                <p class="erro">{{ erro }}</p>
+                {% endfor %}
+
+                <!-- Percorre todos os campos do CadastroForm (nome, usuário, e-mail e as duas senhas) -->
+                {% for campo in form %}
+                <div class="campo-conta">
+                    <label for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+                    {{ campo }}
+                    {% for erro in campo.errors %}
+                    <p class="erro">{{ erro }}</p>
+                    {% endfor %}
+                    {% if campo.name == 'password1' %}
+                    <p class="dica">Use pelo menos 8 caracteres, sem ser só números.</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="botao-conta">Criar conta</button>
+            </form>
+
+            <p class="troca-conta">Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+        </section>
+    </main>
+{% endblock %}

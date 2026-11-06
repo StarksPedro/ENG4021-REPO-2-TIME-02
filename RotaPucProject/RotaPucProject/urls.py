@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from Rotaapp.views import *
 
 urlpatterns = [
@@ -30,4 +31,12 @@ urlpatterns = [
     path('forum/', forum, name='forum'),
     path('pais/<int:id>/', pais, name='pais'),
     path('universidade/<int:id>/', universidade, name='universidade'),
+
+    # Cadastro, login e logout
+    path('cadastro/', cadastro, name='cadastro'),
+    path('login/', auth_views.LoginView.as_view(
+        template_name='Daniel/html-paginas-daniel/login.html',
+        redirect_authenticated_user=True,   # quem já está logado volta para a página inicial
+    ), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

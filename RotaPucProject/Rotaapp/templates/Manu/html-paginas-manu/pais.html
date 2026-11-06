@@ -1,34 +1,13 @@
+{% extends 'Pedro/index5.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-Br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ pais.nome }} | RotaPUC</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/Manu/pais.css' %}">
-    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
-</head>
-<body>
-    <header>
-        <a href="{% url 'home' %}" class="logo">
-            <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
-            Rota<span>PUC</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'universidades' %}">Universidades</a></li>
-                <li><a href="{% url 'paises' %}">Países</a></li>
-                <li><a href="{% url 'processo_seletivo' %}">Processo Seletivo</a></li>
-                <li><a href="{% url 'forum' %}">Fórum</a></li>
-                <li><a href="{% url 'contatos' %}">Contatos</a></li>
-                <li><a href="{% url 'quem_somos' %}">Quem somos</a></li>
-            </ul>
-        </nav>
-    </header>
+
+{% block titulo %}{{ pais.nome }} | RotaPUC{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/Manu/pais.css' %}">
+{% endblock %}
+
+{% block conteudo %}
     <hr>
 
     <div class="caminho">
@@ -50,6 +29,19 @@
             <div class="card-info">
                 <h3>Moeda</h3>
                 <p>{{ pais.moeda }}</p>
+            </div>
+            <!-- Cotação em tempo real, vinda da API de câmbio (cotacao.py) -->
+            <div class="card-info card-cotacao">
+                <h3>Cotação hoje</h3>
+                {% if cotacao %}
+                <p class="valor-cotacao">1 {{ cotacao.codigo }} = R$ {{ cotacao.valor|floatformat:cotacao.casas }}</p>
+                <p>Com R$ 100 você compra cerca de {{ cotacao.cem_reais|floatformat:"2g" }} {{ cotacao.codigo }}.</p>
+                <p class="fonte-cotacao">Atualizado em {{ cotacao.atualizado_em|date:"d/m/Y \à\s H:i" }} · Fonte: AwesomeAPI</p>
+                {% elif pais.codigo_moeda %}
+                <p>Cotação indisponível no momento. Tente novamente mais tarde.</p>
+                {% else %}
+                <p>Cadastre o código da moeda deste país no admin para ver a cotação.</p>
+                {% endif %}
             </div>
         </div>
         <div class="pilha">
@@ -86,44 +78,4 @@
         <p>Nenhuma universidade cadastrada para este país.</p>
         {% endfor %}
     </div>
-
-    <footer class="rodape">
-        <a class="selo" href="{% url 'contatos' %}">contato com a coordenação</a>
-
-        <div class="contatos">
-            <div>
-                <h3>Endereço</h3>
-                <p>Rua Marquês de São Vicente, 225</p>
-                <p>Gávea, Rio de Janeiro - RJ</p>
-                <p>Edificio Cardeal Leme, Sala 130</p>
-            </div>
-
-            <div>
-                <h3>Email</h3>
-                <p>ccci-puc@puc-rio.br</p>
-                <p>info.ccci@puc-rio.br</p>
-                <p>intercambio@puc-rio.br</p>
-            </div>
-
-            <div>
-                <h3>Telefone</h3>
-                <p>+55 (21) 3527-1577</p>
-                <p>+55 (21) 3527-1578</p>
-                <p>Fax: ramal 1579</p>
-            </div>
-
-            <div>
-                <h3>Instagram</h3>
-                <p>@ccci_pucrio</p>
-                <p>#PUCRioIntercambio</p>
-            </div>
-
-            <div>
-                <h3>Horário de funcionamento</h3>
-                <p>9h00 às 12h00</p>
-                <p>14h00 às 17h00</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock %}

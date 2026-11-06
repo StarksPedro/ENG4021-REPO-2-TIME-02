@@ -62,6 +62,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Coloca os contatos da coordenação (do banco) no rodapé de todas as páginas
+                'Rotaapp.context_processors.rodape',
             ],
         },
     },
@@ -103,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'  # mensagens do Django (erros de login, senha...) em português
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'  # datas das perguntas no horário de Brasília
 
 USE_I18N = True
 
@@ -126,3 +128,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+# Login e logout
+LOGIN_URL = 'login'             # para onde vai quem tenta abrir uma página que exige login
+LOGIN_REDIRECT_URL = 'home'     # para onde vai depois de entrar
+LOGOUT_REDIRECT_URL = 'home'    # para onde vai depois de sair

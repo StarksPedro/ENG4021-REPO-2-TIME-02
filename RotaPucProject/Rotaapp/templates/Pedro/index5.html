@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}RotaPUC{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/Pedro/base.css' %}?v=2">
+    {% block css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
+</head>
+<body>
+    {% with pagina_atual=request.resolver_match.url_name %}
+    <header>
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'css/Manu/logo.jpg' %}" alt="Logo do RotaPUC" width="58">
+            Rota<span>PUC</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}" {% if pagina_atual == 'home' %}class="ativo"{% endif %}>Inicio</a></li>
+                <li><a href="{% url 'universidades' %}" {% if pagina_atual == 'universidades' or pagina_atual == 'universidade' %}class="ativo"{% endif %}>Universidades</a></li>
+                <li><a href="{% url 'paises' %}" {% if pagina_atual == 'paises' or pagina_atual == 'pais' %}class="ativo"{% endif %}>Países</a></li>
+                <li><a href="{% url 'processo_seletivo' %}" {% if pagina_atual == 'processo_seletivo' %}class="ativo"{% endif %}>Processo Seletivo</a></li>
+                <li><a href="{% url 'forum' %}" {% if pagina_atual == 'forum' or pagina_atual == 'nova_pergunta' %}class="ativo"{% endif %}>Fórum</a></li>
+                <li><a href="{% url 'contatos' %}" {% if pagina_atual == 'contatos' %}class="ativo"{% endif %}>Contatos</a></li>
+                <li><a href="{% url 'quem_somos' %}" {% if pagina_atual == 'quem_somos' %}class="ativo"{% endif %}>Quem somos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conta do usuário: muda conforme a pessoa está logada ou não.
+             "user" vem do context processor de autenticação do Django. -->
+        <div class="conta">
+            {% if user.is_authenticated %}
+            <span class="ola">Olá, {{ user.first_name|default:user.username }}</span>
+            <!-- O logout é feito por POST (com csrf_token), como o Django exige -->
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="botao-sair">Sair</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" class="botao-entrar {% if pagina_atual == 'login' %}ativo{% endif %}">Entrar</a>
+            <a href="{% url 'cadastro' %}" class="botao-cadastrar">Cadastrar</a>
+            {% endif %}
+        </div>
+    </header>
+    {% endwith %}
+
+    <!-- Mensagens do sistema (ex.: conta criada, pergunta postada) -->
+    {% if messages %}
+    <div class="mensagens">
+        {% for mensagem in messages %}
+        <p class="mensagem mensagem-{{ mensagem.tags }}">{{ mensagem }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block conteudo %}{% endblock %}
+
+    {% block rodape %}
+    <!-- Rodapé com os dados do banco (modelo ContatoCoordenacao, editável no /admin).
+         "rodape" vem do context processor em Rotaapp/context_processors.py -->
+    {% if rodape.contato %}
+    <footer class="rodape">
+        <div class="rodape-cards">
+            <article class="rodape-card">
+                <span class="rodape-icone" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <h3>Endereço</h3>
+                {% for linha in rodape.enderecos %}
+                <p>{{ linha }}</p>
+                {% endfor %}
+            </article>
+
+            <article class="rodape-card">
+                <span class="rodape-icone" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </span>
+                <h3>E-mail</h3>
+                {% for email in rodape.emails %}
+                <p><a href="mailto:{{ email }}">{{ email }}</a></p>
+                {% endfor %}
+            </article>
+
+            <article class="rodape-card">
+                <span class="rodape-icone" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <h3>Telefone</h3>
+                {% for telefone in rodape.telefones %}
+                <p><a href="tel:{{ telefone.link }}">{{ telefone.texto }}</a></p>
+                {% endfor %}
+            </article>
+
+            <article class="rodape-card">
+                <span class="rodape-icone" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </span>
+                <h3>Instagram</h3>
+                <p><a href="{{ rodape.instagram_link }}" target="_blank">{{ rodape.contato.instagram }}</a></p>
+            </article>
+
+            <article class="rodape-card">
+                <span class="rodape-icone" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <h3>Horário de funcionamento</h3>
+                {% for linha in rodape.horarios %}
+                <p>{{ linha }}</p>
+                {% endfor %}
+            </article>
+        </div>
+    </footer>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

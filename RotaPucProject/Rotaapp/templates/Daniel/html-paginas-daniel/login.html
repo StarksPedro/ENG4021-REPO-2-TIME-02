@@ -1,0 +1,49 @@
+{% extends 'Pedro/index5.html' %}
+{% load static %}
+
+{% block titulo %}Entrar - RotaPUC{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/Daniel/autenticacao.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+    <main class="pagina-conta">
+        <section class="caixa-conta">
+            <span class="selo">Área do aluno</span>
+            <h1>Entrar</h1>
+            <p class="subtitulo">Entre na sua conta para postar perguntas no fórum.</p>
+
+            {% if next and not user.is_authenticated %}
+            <!-- "next" é a página que a pessoa tentou abrir sem estar logada (ex.: Nova Pergunta) -->
+            <p class="aviso-conta">Você precisa entrar para acessar essa página.</p>
+            {% endif %}
+
+            <form method="post" class="form-conta">
+                {% csrf_token %}
+
+                <!-- Erro geral, ex.: "usuário ou senha incorretos" -->
+                {% for erro in form.non_field_errors %}
+                <p class="erro">{{ erro }}</p>
+                {% endfor %}
+
+                <div class="campo-conta">
+                    <label for="{{ form.username.id_for_label }}">Nome de usuário</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="campo-conta">
+                    <label for="{{ form.password.id_for_label }}">Senha</label>
+                    {{ form.password }}
+                </div>
+
+                <!-- Depois de entrar, volta para a página que a pessoa queria abrir -->
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <button type="submit" class="botao-conta">Entrar</button>
+            </form>
+
+            <p class="troca-conta">Ainda não tem conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+        </section>
+    </main>
+{% endblock %}

@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from .models import Pergunta
 
 
@@ -24,3 +26,23 @@ class PerguntaForm(forms.ModelForm):
                 "placeholder": "Digite o problema...",
             }),
         }
+
+
+class CadastroForm(UserCreationForm):
+    # UserCreationForm já traz o nome de usuário e os dois campos de senha, com as validações
+    # do Django (senha parecida com o nome, senha só com números, senhas diferentes...).
+    # Aqui acrescentamos o nome e o e-mail.
+    first_name = forms.CharField(label="Nome", max_length=150)
+    email = forms.EmailField(label="E-mail")
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ("first_name", "username", "email")
+        labels = {"username": "Nome de usuário"}
+
+    def clean_email(self):
+        # Não deixa criar duas contas com o mesmo e-mail
+        email = self.cleaned_data["email"].lower()
+        if User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError("Já existe uma conta com este e-mail.")
+        return email

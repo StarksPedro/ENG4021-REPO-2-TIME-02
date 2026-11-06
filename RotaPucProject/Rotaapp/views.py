@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from .models import (
     Pais, Universidade, Pergunta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
-    ContatoCoordenacao,
 )
-from .forms import PerguntaForm
-from .notas_corte import checar_se_necessario
+from .forms import PerguntaForm, CadastroForm
+from .context_processors import separar_linhas, dados_do_contato
+from .cotacao import buscar_cotacao
 
 
 def home(request):
@@ -28,41 +30,23 @@ def paises(request):
     return render(request, 'Manu/html-paginas-manu/paises.html', {'paises': paises})
 
 
-def separar_linhas(texto):
-    # Os campos do contato guardam um item por linha: "linha 1\nlinha 2" vira ["linha 1", "linha 2"]
-    return [linha.strip() for linha in texto.splitlines() if linha.strip()]
-
-
 def contatos(request):
-    # Só existe um registro de contato (cadastrado no /admin). .first() devolve None se ele não existir.
-    contato = ContatoCoordenacao.objects.first()
-    contexto = {'contato': contato}
-
-    if contato:
-        telefones = []
-        for telefone in separar_linhas(contato.telefones):
-            # Para o link "tel:" só servem os números: "+55 21 3527-1578" vira "+552135271578"
-            numeros = "".join(caractere for caractere in telefone if caractere.isdigit())
-            telefones.append({'texto': telefone, 'link': "+" + numeros})
-
-        contexto.update({
-            'enderecos': separar_linhas(contato.endereco),
-            'emails': separar_linhas(contato.emails),
-            'telefones': telefones,
-            'horarios': separar_linhas(contato.horario),
-            # "@ccci.pucrio" vira o endereço do perfil no Instagram
-            'instagram_link': "https://www.instagram.com/" + contato.instagram.lstrip("@") + "/",
-        })
-
+    # Os dados vêm do modelo ContatoCoordenacao (cadastrado no /admin).
+    # A função dados_do_contato fica em context_processors.py porque o rodapé usa a mesma lógica.
+    contexto = dados_do_contato()
     return render(request, 'Daniel/html-paginas-daniel/contatos.html', contexto)
 
 
+@login_required  # só quem está logado pode perguntar; os outros vão para a tela de login
 def nova_pergunta(request):
     if request.method == 'POST':
         # Formulário enviado: preenche o form com o que o usuário digitou
         form = PerguntaForm(request.POST)
         if form.is_valid():
-            form.save()
+            # commit=False cria a pergunta sem salvar ainda, para preencher o autor antes
+            pergunta = form.save(commit=False)
+            pergunta.autor = request.user.get_full_name() or request.user.username
+            pergunta.save()
             messages.success(request, 'Sua pergunta foi postada!')
             return redirect('nova_pergunta')
     else:
@@ -108,7 +92,8 @@ def pais(request, id):
         'pais': pais,
         'universidades': pais.universidades.all(),
         'requisitos': separar_linhas(pais.requisitos_para_entrar),
-        'informacoes': separar_linhas(pais.informacoes_adicionais),
+        # Integração com API: cotação da moeda do país em reais (ver cotacao.py)
+        'cotacao': buscar_cotacao(pais.codigo_moeda),
     })
 
 def universidade(request, id):
@@ -120,9 +105,28 @@ def universidade(request, id):
 
     return render(request, 'Manu/html-paginas-manu/universidade.html', {
         'universidade': universidade,
-        'programas': universidade.programas.all(),
-        'requisitos_academicos': itens("requisito"),
-        'certificados': itens("certificado"),
-        'custos_e_bolsas': itens("custo") + itens("bolsa"),
-        'documentos': itens("documento"),
+        'programas': programas,
     })
+
+
+# ===================== CADASTRO, LOGIN E LOGOUT =====================
+# Usamos o sistema de usuários que já vem no Django (django.contrib.auth):
+# a senha é guardada criptografada e o login fica salvo na sessão do navegador.
+# O login e o logout usam as views prontas do Django (LoginView e LogoutView), ligadas em urls.py.
+# Só o cadastro precisa de uma view nossa.
+
+def cadastro(request):
+    if request.user.is_authenticated:
+        return redirect('home')  # quem já está logado não precisa se cadastrar
+
+    if request.method == 'POST':
+        form = CadastroForm(request.POST)
+        if form.is_valid():
+            usuario = form.save()      # cria o usuário no banco (tabela auth_user)
+            login(request, usuario)    # já deixa a pessoa logada depois de se cadastrar
+            messages.success(request, f'Conta criada! Bem-vindo(a), {usuario.first_name}.')
+            return redirect('home')
+    else:
+        form = CadastroForm()
+
+    return render(request, 'Daniel/html-paginas-daniel/cadastro.html', {'form': form})
