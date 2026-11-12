@@ -41,22 +41,13 @@
                 </span>
             </div>
 
-            {# Só quem está logado vê o formulário; a view também confere isso ao receber o POST #}
-            {% if user.is_authenticated %}
+            <!-- Ainda não salva: falta a view tratar o POST (tarefa do formulário) -->
             <form class="form-resposta" method="post">
                 {% csrf_token %}
-                <label for="{{ form.texto.id_for_label }}">{{ form.texto.label }}</label>
-                {{ form.texto }}
-                {% for erro in form.texto.errors %}
-                <p class="erro">{{ erro }}</p>
-                {% endfor %}
+                <label for="resposta-principal">Responder</label>
+                <textarea id="resposta-principal" name="texto" rows="4" placeholder="Compartilhe sua experiência ou resposta"></textarea>
                 <button type="submit" class="botao-publicar">Publicar resposta</button>
             </form>
-            {% else %}
-            <p class="form-resposta aviso-login">
-                <a href="{% url 'login' %}?next={{ request.path }}">Entre na sua conta</a> para responder.
-            </p>
-            {% endif %}
         </article>
 
         <section class="respostas" id="respostas">

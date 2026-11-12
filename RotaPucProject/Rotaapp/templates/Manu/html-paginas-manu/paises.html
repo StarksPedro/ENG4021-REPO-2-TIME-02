@@ -4,61 +4,34 @@
 {% block titulo %}RotaPuc-Universidades{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/Manu/paises.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'css/Manu/paises.css' %}">
 {% endblock %}
 
 {% block conteudo %}
-    {# Filtros enviados por GET: os selects filtram ao trocar de opção e a busca ao apertar Enter #}
-    <form method="get" class="filtros">
+    <hr>
+    <div class="centro">
         <span class="selo">GUIA DE DESTINOS</span>
-        <h2>Países Parceiros</h2>
-        <div class="campos">
-            <div class="campo">
-                <label for="busca">Busca País</label>
-                <input type="search" id="busca" name="busca" value="{{ busca }}" placeholder="Nome do país">
-            </div>
-            <div class="campo">
-                <label for="continente">Continente</label>
-                <select id="continente" name="continente" onchange="this.form.submit()">
-                    <option value="">Todos</option>
-                    {% for opcao in continentes %}
-                    <option value="{{ opcao }}" {% if opcao == continente %}selected{% endif %}>{{ opcao }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="campo">
-                <label for="lingua">Língua</label>
-                <select id="lingua" name="lingua" onchange="this.form.submit()">
-                    <option value="">Todos</option>
-                    {% for opcao in linguas %}
-                    <option value="{{ opcao }}" {% if opcao == lingua %}selected{% endif %}>{{ opcao }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-    </form>
-
-    <section class="resultados">
-        {% regroup paises by continente as grupos %}
-        {% for grupo in grupos %}
-        <h3 class="titulo-continentes">{{ grupo.grouper }}</h3>
-        <div class="continentes">
-            {% for pais in grupo.list %}
-            {% with total=pais.universidades.count %}
-            <a class="card-pais" href="{% url 'pais' pais.id %}">
-                <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
-                <h4 class="titulos-paises">{{ pais.nome }}</h4>
-                <p class="card-texto">{{ total }} universidade{{ total|pluralize }} conveniada{{ total|pluralize }}</p>
-            </a>
-            {% endwith %}
-            {% endfor %}
-        </div>
-        {% empty %}
-            {% if busca or continente or lingua %}
-            <p class="sem-resultados">Nenhum país encontrado com esses filtros. <a href="{% url 'paises' %}">Limpar filtros</a></p>
-            {% else %}
-            <p class="sem-resultados">Nenhum país cadastrado ainda.</p>
-            {% endif %}
+        <h2 class="titulo-paises">Países Parceiros</h2>
+        <p class="explore"> Explore os destinos com convênio ativo da
+            PUC-Rio e veja quantas universidades estão
+            disponíveis em cada país.
+        </p>
+    </div>
+    {% regroup paises by continente as grupos %}
+    {% for grupo in grupos %}
+    <h3 class="titulo-continentes">{{ grupo.grouper }}</h3>
+    <div class="continentes">
+        {% for pais in grupo.list %}
+        {% with total=pais.universidades.count %}
+        <a class="card-pais" href="{% url 'pais' pais.id %}">
+            <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
+            <h4 class="titulos-paises">{{ pais.nome }}</h4>
+            <p class="card-texto">{{ total }} universidade{{ total|pluralize }} conveniada{{ total|pluralize }}</p>
+        </a>
+        {% endwith %}
         {% endfor %}
-    </section>
+    </div>
+    {% empty %}
+    <p class="explore">Nenhum país cadastrado ainda.</p>
+    {% endfor %}
 {% endblock %}

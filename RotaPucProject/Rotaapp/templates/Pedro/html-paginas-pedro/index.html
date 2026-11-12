@@ -4,7 +4,7 @@
 {% block titulo %}RotaPuc-Pagina-Inicial{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/Pedro/inicio.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'css/Pedro/inicio.css' %}">
 {% endblock %}
 
 {% block conteudo %}
@@ -45,11 +45,11 @@
     <section class="continentes">
         {% for pais in grupo.list %}
         {% with total=pais.universidades.count %}
-        <a class="card-pais" href="{% url 'pais' pais.id %}">
+        <div class="card-pais">
             <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
             <h4 class="titulos-paises">{{ pais.nome }}</h4>
             <p class="card-texto">{{ total }} universidade{{ total|pluralize }} conveniada{{ total|pluralize }}</p>
-        </a>
+        </div>
         {% endwith %}
         {% endfor %}
     </section>

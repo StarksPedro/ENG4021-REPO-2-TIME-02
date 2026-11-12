@@ -104,14 +104,6 @@
     margin-bottom: 20px;
     color: darkgrey;
 }
-/* O card é um link para a página do país: tira o estilo padrão de link */
-a.card-pais{
-    color: inherit;
-    text-decoration: none;
-}
-a.card-pais:hover{
-    box-shadow: 0 8px 24px rgba(16, 59, 102, 0.14);
-}
 
 mark {
     background-color: transparent;
