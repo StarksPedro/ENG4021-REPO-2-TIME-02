@@ -29,6 +29,7 @@ urlpatterns = [
     path('quemsomos/', quem_somos, name='quem_somos'),
     path('processo-seletivo/', processo_seletivo, name='processo_seletivo'),
     path('forum/', forum, name='forum'),
+    path('forum/<int:id>/', discussao, name='discussao'),
     path('pais/<int:id>/', pais, name='pais'),
     path('universidade/<int:id>/', universidade, name='universidade'),
 

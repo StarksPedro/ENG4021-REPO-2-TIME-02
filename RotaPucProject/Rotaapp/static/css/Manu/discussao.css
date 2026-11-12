@@ -1,0 +1,220 @@
+.pagina-discussao{
+    max-width: 896px;
+    margin: 0 auto;
+    padding: 0 16px 60px 16px;
+}
+
+.voltar{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 30px;
+    color: #165dad;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.voltar:hover{
+    text-decoration: underline;
+}
+.centro{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.post{
+    margin-top: 32px;
+    padding: 32px;
+    border: 1px solid #dbe4ec;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(16, 59, 102, 0.08);
+}
+.titulo-post{
+    margin: 0;
+    color: #103b66;
+    font-size: 28px;
+    line-height: 1.3;
+}
+.texto-post{
+    margin: 16px 0 0 0;
+    color: #172b3a;
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.info-post{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #667684;
+}
+.info-post p{
+    margin: 0;
+}
+.info-post .nome{
+    color: #172b3a;
+    font-weight: 600;
+}
+.avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background-color: #eaf3fc;
+    color: #103b66;
+    font-size: 12px;
+    font-weight: 700;
+}
+.avatar.grande{
+    width: 40px;
+    height: 40px;
+}
+.botao-upvote{
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #165dad;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #165dad;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.botao-upvote:hover{
+    background-color: #eaf3fc;
+}
+.icone-texto{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-resposta{
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #dbe4ec;
+}
+.form-resposta label{
+    display: block;
+    color: #103b66;
+    font-size: 14px;
+    font-weight: 600;
+}
+.form-resposta textarea{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px 16px;
+    border: 1px solid #dbe4ec;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #172b3a;
+    resize: vertical;
+}
+.botao-publicar{
+    margin-top: 12px;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 999px;
+    background-color: #165dad;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.botao-publicar:hover{
+    background-color: #103b66;
+}
+
+.respostas{
+    margin-top: 40px;
+}
+.respostas h2{
+    margin: 0;
+    color: #103b66;
+    font-size: 20px;
+}
+.lista-respostas{
+    list-style: none;
+    display: block;
+    margin: 16px 0 0 0;
+    padding: 0;
+}
+.resposta{
+    margin-bottom: 16px;
+    padding: 20px;
+    border: 1px solid #dbe4ec;
+    border-radius: 16px;
+}
+.resposta-topo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.resposta-topo p{
+    margin: 0;
+}
+.nome-resposta{
+    color: #172b3a;
+    font-size: 14px;
+    font-weight: 600;
+}
+.data-resposta{
+    color: #667684;
+    font-size: 12px;
+}
+.texto-resposta{
+    margin: 12px 0 0 0;
+    color: #172b3a;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.vazio{
+    margin-top: 16px;
+    padding: 40px;
+    text-align: center;
+    background-color: #f5f7f9;
+    border: 1px dashed #dbe4ec;
+    border-radius: 16px;
+    color: #667684;
+    font-size: 14px;
+}
+.vazio p{
+    margin: 0;
+}
+.vazio-titulo{
+    margin-bottom: 8px !important;
+    color: #103b66;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px){
+    .post{
+        padding: 20px;
+    }
+    .titulo-post{
+        font-size: 22px;
+    }
+    .botao-upvote{
+        margin-left: 0;
+    }
+}

@@ -8,6 +8,8 @@ from .models import (
 from .forms import PerguntaForm, CadastroForm
 from .context_processors import separar_linhas, dados_do_contato
 from .cotacao import buscar_cotacao
+from .notas_corte import checar_se_necessario
+from django.db.models import Count
 
 
 def home(request):
@@ -83,7 +85,16 @@ def processo_seletivo(request):
     })
     
 def forum(request):
-    return render(request, 'Manu/html-paginas-manu/forum.html')
+    # Perguntas mais novas primeiro, já com o total de respostas de cada uma
+    perguntas = Pergunta.objects.annotate(total_respostas=Count('respostas')).order_by('-data_criacao')
+    return render(request, 'Manu/html-paginas-manu/forum.html', {'perguntas': perguntas})
+    
+def discussao(request, id):
+    pergunta = get_object_or_404(Pergunta, id=id)
+    return render(request, 'Manu/html-paginas-manu/discussao.html', {
+        'pergunta': pergunta,
+        'respostas': pergunta.respostas.all(),
+    })
 
 
 def pais(request, id):
@@ -105,7 +116,7 @@ def universidade(request, id):
 
     return render(request, 'Manu/html-paginas-manu/universidade.html', {
         'universidade': universidade,
-        'programas': programas,
+        'programas': universidade.programas.all(),
     })
 
 

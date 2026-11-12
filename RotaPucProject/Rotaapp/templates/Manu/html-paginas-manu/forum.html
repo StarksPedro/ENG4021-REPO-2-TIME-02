@@ -18,7 +18,7 @@
     </div>
 
     <div class="barra-forum">
-        <h3 class="contagem">Todas as discussões (6)</h3>
+        <h3 class="contagem">Todas as discussões ({{ perguntas|length }})</h3>
         <a class="botao" href="{% url 'nova_pergunta' %}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
             Adicionar Pergunta
@@ -26,91 +26,30 @@
     </div>
 
     <div class="lista-discussoes">
-
-        <div class="card-discussao">
-            <h4 class="titulo-discussao">Como é o processo de matrícula na TUM?</h4>
-            <p class="descricao">Fui nomeada para a Technical University of Munich e estou com dúvidas sobre o prazo de escolha das disciplinas e o registro no sistema deles. Alguém já passou por isso?</p>
+        {% for pergunta in perguntas %}
+        <a class="card-discussao" href="{% url 'discussao' pergunta.id %}">
+            <h4 class="titulo-discussao">{{ pergunta.titulo }}</h4>
+            <p class="descricao">{{ pergunta.descricao|truncatechars:200 }}</p>
             <div class="info">
-                <span class="avatar">MC</span>
-                <span class="autor">Mariana Costa</span>
+                <span class="avatar">{{ pergunta.autor|default:"A"|slice:":1"|upper }}</span>
+                <span class="autor">{{ pergunta.autor|default:"Anônimo" }}</span>
                 <span>·</span>
-                <span>12/08/2026</span>
+                <span>{{ pergunta.data_criacao|date:"d/m/Y" }}</span>
                 <div class="info-direita">
                     <span class="icone-texto">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
-                        24
+                        {{ pergunta.curtidas }}
                     </span>
                     <span class="icone-texto">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        3 respostas
+                        {{ pergunta.total_respostas }} resposta{{ pergunta.total_respostas|pluralize }}
                     </span>
                 </div>
             </div>
-        </div>
-
-        <div class="card-discussao">
-            <h4 class="titulo-discussao">Alguém já fez intercâmbio na UBA?</h4>
-            <p class="descricao">Queria saber como funciona a vida acadêmica na Universidad de Buenos Aires, principalmente carga horária e moradia perto da faculdade.</p>
-            <div class="info">
-                <span class="avatar">RL</span>
-                <span class="autor">Rafael Lima</span>
-                <span>·</span>
-                <span>05/08/2026</span>
-                <div class="info-direita">
-                    <span class="icone-texto">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
-                        17
-                    </span>
-                    <span class="icone-texto">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        1 resposta
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-discussao">
-            <h4 class="titulo-discussao">Qual nível de proficiência em espanhol exigido na Universidad de Salamanca?</h4>
-            <p class="descricao">Tenho DELE B1 e estou em dúvida se é suficiente para as disciplinas regulares ou se preciso subir para B2 antes da inscrição.</p>
-            <div class="info">
-                <span class="avatar">BN</span>
-                <span class="autor">Beatriz Nunes</span>
-                <span>·</span>
-                <span>28/07/2026</span>
-                <div class="info-direita">
-                    <span class="icone-texto">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
-                        11
-                    </span>
-                    <span class="icone-texto">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        1 resposta
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-discussao">
-            <h4 class="titulo-discussao">Visto de estudante para a Alemanha: quanto tempo demora?</h4>
-            <p class="descricao">Estou organizando a documentação e a comprovação financeira. Quanto tempo levou entre o agendamento no consulado e a emissão do visto?</p>
-            <div class="info">
-                <span class="avatar">LA</span>
-                <span class="autor">Lucas Andrade</span>
-                <span>·</span>
-                <span>20/07/2026</span>
-                <div class="info-direita">
-                    <span class="icone-texto">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18v-6H5l7-7 7 7h-4v6H9z"/></svg>
-                        9
-                    </span>
-                    <span class="icone-texto">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        0 respostas
-                    </span>
-                </div>
-            </div>
-        </div>
-
+        </a>
+        {% empty %}
+        <p>Nenhuma pergunta cadastrada ainda.</p>
+        {% endfor %}
     </div>
 
     <div class="bolinhas">
