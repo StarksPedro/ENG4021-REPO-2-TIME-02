@@ -14,7 +14,7 @@
         <p>Veja a lista de CR, os pré-requisitos e cada etapa do processo, em ordem, até o embarque. Clique em um passo para abrir ou fechar.</p>
     </section>
 
-    <section class="lista-cr">
+    <section class="lista-cr" id="lista-cr">
         <h2>Lista de CR</h2>
         <div class="bloco-cr">
             {% for coluna in colunas_cr %}
@@ -35,6 +35,35 @@
             <p class="nota">Nenhuma nota de corte cadastrada ainda.</p>
             {% endfor %}
         </div>
+
+        {% if pagina_cr.has_other_pages %}
+        <!-- Paginação: os links mudam só o ?pagina= da URL.
+             O #lista-cr no final faz a página voltar direto para a tabela, em vez de subir para o topo. -->
+        <nav class="paginacao" aria-label="Páginas da lista de CR">
+            {% if pagina_cr.has_previous %}
+            <a href="?pagina={{ pagina_cr.previous_page_number }}#lista-cr" class="botao-pagina">‹ Anterior</a>
+            {% else %}
+            <span class="botao-pagina desativado">‹ Anterior</span>
+            {% endif %}
+
+            {% for numero in pagina_cr.paginator.page_range %}
+            {% if numero == pagina_cr.number %}
+            <span class="numero-pagina atual" aria-current="page">{{ numero }}</span>
+            {% else %}
+            <a href="?pagina={{ numero }}#lista-cr" class="numero-pagina">{{ numero }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if pagina_cr.has_next %}
+            <a href="?pagina={{ pagina_cr.next_page_number }}#lista-cr" class="botao-pagina">Próxima ›</a>
+            {% else %}
+            <span class="botao-pagina desativado">Próxima ›</span>
+            {% endif %}
+        </nav>
+        <p class="nota contagem-cr">
+            Mostrando {{ pagina_cr.start_index }}–{{ pagina_cr.end_index }} de {{ pagina_cr.paginator.count }} departamentos
+        </p>
+        {% endif %}
         {% if semestre %}
         <p class="nota">Base de dados sujeita a variações. Lista de CR / Corte 50% - {{ semestre }}</p>
         {% endif %}

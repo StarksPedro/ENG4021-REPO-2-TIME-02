@@ -47,17 +47,27 @@
                         {% endfor %}
                     </div>
 
+                    <!-- Marcadores: cada opção vem da tabela Marcador (cadastrada no /admin).
+                         Cada "opcao" tem a caixinha (opcao.tag) e o nome (opcao.choice_label).
+                         Clicar no nome marca/desmarca a caixinha, porque ela está dentro do <label>. -->
                     <div class="marcadores">
                         <span class="texto-marcadores">
-                            Marcadores sugeridos:
+                            Marcadores (opcional):
                         </span>
 
                         <div class="lista-marcadores">
-                            <span>+Alemanha</span>
-                            <span>+Europa</span>
-                            <span>+Matrícula</span>
-                            <span>+Visto</span>
+                            {% for opcao in form.marcadores %}
+                            <label class="marcador-opcao">
+                                {{ opcao.tag }}
+                                {{ opcao.choice_label }}
+                            </label>
+                            {% empty %}
+                            <span class="sem-marcadores">Nenhum marcador cadastrado ainda.</span>
+                            {% endfor %}
                         </div>
+                        {% for erro in form.marcadores.errors %}
+                        <p class="erro">{{ erro }}</p>
+                        {% endfor %}
                     </div>
 
                     <div class="area-botao">
@@ -76,6 +86,13 @@
                 <article class="pergunta">
                     <h3>{{ pergunta.titulo }}</h3>
                     <p>{{ pergunta.descricao|truncatewords:30 }}</p>
+                    {% if pergunta.marcadores.all %}
+                    <div class="marcadores-card">
+                        {% for marcador in pergunta.marcadores.all %}
+                        <span class="marcador">{{ marcador.nome }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     <span class="data-pergunta">{{ pergunta.data_criacao|date:"d/m/Y H:i" }}</span>
                 </article>
                 {% empty %}

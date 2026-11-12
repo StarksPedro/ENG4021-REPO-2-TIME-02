@@ -1,0 +1,100 @@
+[
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 1,
+    "fields": {
+      "nome": "Alemanha"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 2,
+    "fields": {
+      "nome": "Argentina"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 3,
+    "fields": {
+      "nome": "Chile"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 4,
+    "fields": {
+      "nome": "Espanha"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 5,
+    "fields": {
+      "nome": "Europa"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 6,
+    "fields": {
+      "nome": "América do Sul"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 7,
+    "fields": {
+      "nome": "Visto"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 8,
+    "fields": {
+      "nome": "Matrícula"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 9,
+    "fields": {
+      "nome": "Bolsas"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 10,
+    "fields": {
+      "nome": "Custos"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 11,
+    "fields": {
+      "nome": "Idioma"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 12,
+    "fields": {
+      "nome": "Documentos"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 13,
+    "fields": {
+      "nome": "Moradia"
+    }
+  },
+  {
+    "model": "Rotaapp.marcador",
+    "pk": 14,
+    "fields": {
+      "nome": "Equivalência de disciplinas"
+    }
+  }
+]

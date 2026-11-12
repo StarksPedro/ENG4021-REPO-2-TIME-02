@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     Pais, Curso, Universidade, ItemUniversidade, Depoimento, Programa, Aluno, Pergunta, Resposta,
     NotaDeCorte, PreRequisito, EtapaProcesso, BlocoEtapa, ContatoCoordenacao, PaginaInstitucional,
-    FonteNotasDeCorte,
+    FonteNotasDeCorte, Marcador,
 )
 from .notas_corte import atualizar
 
@@ -78,7 +78,15 @@ class RespostaInline(admin.StackedInline):
 class PerguntaAdmin(admin.ModelAdmin):
     list_display = ("titulo", "autor", "curtidas", "data_criacao")
     search_fields = ("titulo", "descricao", "autor")
+    list_filter = ("marcadores",)          # filtro lateral: ver só as perguntas de um marcador
+    filter_horizontal = ("marcadores",)    # caixa de escolha dos marcadores na página da pergunta
     inlines = [RespostaInline]
+
+
+@admin.register(Marcador)
+class MarcadorAdmin(admin.ModelAdmin):
+    list_display = ("nome",)
+    search_fields = ("nome",)
 
 
 @admin.register(NotaDeCorte)

@@ -10,6 +10,7 @@ from .context_processors import separar_linhas, dados_do_contato
 from .cotacao import buscar_cotacao
 from .notas_corte import checar_se_necessario
 from django.db.models import Count
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -49,13 +50,18 @@ def nova_pergunta(request):
             pergunta = form.save(commit=False)
             pergunta.autor = request.user.get_full_name() or request.user.username
             pergunta.save()
+            # Com commit=False, os campos ManyToMany (os marcadores) não são salvos junto,
+            # porque a ligação só pode ser gravada depois que a pergunta já tem um id no banco.
+            # save_m2m() grava agora os marcadores que a pessoa marcou.
+            form.save_m2m()
             messages.success(request, 'Sua pergunta foi postada!')
             return redirect('nova_pergunta')
     else:
         # Acesso normal à página: formulário vazio
         form = PerguntaForm()
 
-    perguntas = Pergunta.objects.order_by('-data_criacao')[:5]
+    # prefetch_related busca os marcadores das 5 perguntas de uma vez só (em vez de uma consulta por pergunta)
+    perguntas = Pergunta.objects.prefetch_related('marcadores').order_by('-data_criacao')[:5]
     return render(request, 'Daniel/html-paginas-daniel/nova-pergunta.html', {
         'form': form,
         'perguntas': perguntas,
@@ -72,13 +78,22 @@ def processo_seletivo(request):
     checar_se_necessario()
     # Mostra só a lista de CR do semestre mais recente cadastrado
     semestre = NotaDeCorte.objects.order_by("-semestre").values_list("semestre", flat=True).first()
-    notas = list(NotaDeCorte.objects.filter(semestre=semestre))
-    # A tabela da página é dividida em colunas de 4 departamentos cada
-    colunas_cr = [notas[i:i + 4] for i in range(0, len(notas), 4)]
+    notas = NotaDeCorte.objects.filter(semestre=semestre)
+
+    # PAGINAÇÃO: em vez de mostrar todos os departamentos de uma vez, mostra 12 por página.
+    # O Paginator divide a lista em páginas; o número da página vem da URL (?pagina=2).
+    # get_page() é tolerante: se vier um número inválido ou grande demais, devolve a 1ª ou a última página.
+    paginador = Paginator(notas, 12)
+    pagina_cr = paginador.get_page(request.GET.get('pagina'))
+
+    # A tabela da página é dividida em colunas de 4 departamentos cada (só os da página atual)
+    notas_da_pagina = list(pagina_cr.object_list)
+    colunas_cr = [notas_da_pagina[i:i + 4] for i in range(0, len(notas_da_pagina), 4)]
 
     return render(request, 'Pedro/html-paginas-pedro/index4.html', {
         'semestre': semestre,
         'colunas_cr': colunas_cr,
+        'pagina_cr': pagina_cr,
         'pre_requisitos': PreRequisito.objects.all(),
         # prefetch_related busca os blocos de todos os passos de uma vez só
         'etapas': EtapaProcesso.objects.prefetch_related("blocos"),

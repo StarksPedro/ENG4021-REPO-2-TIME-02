@@ -267,3 +267,53 @@
     color: #165dad;
     font-weight: 600;
 }
+/* PAGINAÇÃO DA LISTA DE CR */
+
+.paginacao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.botao-pagina,
+.numero-pagina {
+    display: inline-block;
+    min-width: 36px;
+    box-sizing: border-box;
+    padding: 8px 14px;
+    border: 1px solid #165dad;
+    border-radius: 999px;
+    color: #165dad;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botao-pagina:hover,
+.numero-pagina:hover {
+    background-color: #eaf3fc;
+}
+
+.numero-pagina.atual {
+    background-color: #165dad;
+    color: #ffffff;
+}
+
+.botao-pagina.desativado {
+    border-color: #dbe4ec;
+    color: #a6b3c2;
+    cursor: default;
+}
+
+.botao-pagina.desativado:hover {
+    background-color: transparent;
+}
+
+.contagem-cr {
+    max-width: none;
+    text-align: center;
+}

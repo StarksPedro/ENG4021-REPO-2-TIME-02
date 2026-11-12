@@ -141,3 +141,18 @@ a.card-discussao{
     color: inherit;
     text-decoration: none;
 }
+/* Marcadores nos cards das perguntas */
+.marcadores-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+.marcador{
+    background-color: #eaf3fc;
+    color: #165dad;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+}

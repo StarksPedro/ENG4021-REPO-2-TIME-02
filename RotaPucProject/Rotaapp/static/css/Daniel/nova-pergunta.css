@@ -116,12 +116,74 @@ body {
     flex-wrap: wrap;
 }
 
-.lista-marcadores span {
+/* Cada marcador é um <label> com uma caixinha escondida dentro.
+   Ao clicar, a caixinha é marcada e o :has(input:checked) pinta o marcador de azul. */
+.marcador-opcao {
     background-color: #e8f2fc;
     color: #1766c4;
     font-size: 11px;
     font-weight: bold;
     padding: 7px 11px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+.marcador-opcao::before {
+    content: "+";
+}
+
+.marcador-opcao {
+    position: relative;
+}
+
+/* Esconde a caixinha sem desativá-la: o marcador inteiro funciona como botão
+   e ainda dá para usar com o teclado (Tab + espaço) */
+.marcador-opcao input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.marcador-opcao:has(input:focus-visible) {
+    outline: 2px solid #1766c4;
+    outline-offset: 2px;
+}
+
+.marcador-opcao:hover {
+    border-color: #1766c4;
+}
+
+.marcador-opcao:has(input:checked) {
+    background-color: #1766c4;
+    color: #ffffff;
+}
+
+.marcador-opcao:has(input:checked)::before {
+    content: "✓ ";
+}
+
+.sem-marcadores {
+    color: #60738f;
+    font-size: 12px;
+}
+
+/* Marcadores mostrados nas perguntas recentes */
+.marcadores-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 8px;
+}
+
+.marcador {
+    background-color: #e8f2fc;
+    color: #1766c4;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 9px;
     border-radius: 4px;
 }
 

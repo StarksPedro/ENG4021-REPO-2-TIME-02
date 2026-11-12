@@ -122,6 +122,20 @@ class Aluno(models.Model):
         return self.nome
 
 
+class Marcador(models.Model):
+    # Etiquetas que a pessoa escolhe ao postar uma pergunta (ex.: "Alemanha", "Visto", "Bolsas").
+    # Ajudam a saber de que assunto a pergunta trata. São cadastradas pelo /admin.
+    nome = models.CharField(max_length=40, unique=True)  # unique: não deixa repetir o mesmo marcador
+
+    class Meta:
+        ordering = ["nome"]
+        verbose_name = "Marcador"
+        verbose_name_plural = "Marcadores"
+
+    def __str__(self):
+        return self.nome
+
+
 class Pergunta(models.Model):
     titulo = models.CharField(max_length=150)
     descricao = models.TextField()
@@ -130,6 +144,10 @@ class Pergunta(models.Model):
     # continuar funcionando sem pedir esses campos.
     autor = models.CharField(max_length=100, blank=True, default="")
     curtidas = models.PositiveIntegerField(default=0)
+    # ManyToMany ("muitos para muitos"): uma pergunta pode ter vários marcadores
+    # e um marcador pode estar em várias perguntas. O Django cria uma tabela
+    # intermediária que liga as duas. blank=True: escolher marcador é opcional.
+    marcadores = models.ManyToManyField(Marcador, blank=True, related_name="perguntas")
 
     class Meta:
         verbose_name = "Pergunta"

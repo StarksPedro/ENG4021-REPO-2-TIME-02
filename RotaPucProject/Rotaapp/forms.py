@@ -9,10 +9,11 @@ class PerguntaForm(forms.ModelForm):
     # e, no form.save(), já cria a Pergunta no banco de dados.
     class Meta:
         model = Pergunta
-        fields = ["titulo", "descricao"]
+        fields = ["titulo", "descricao", "marcadores"]
         labels = {
             "titulo": "Título da Pergunta",
             "descricao": "Descrição detalhada",
+            "marcadores": "Marcadores",
         }
         # Os widgets mantêm os mesmos id e placeholder do HTML original,
         # para o CSS da página continuar funcionando.
@@ -25,6 +26,10 @@ class PerguntaForm(forms.ModelForm):
                 "id": "descricao",
                 "placeholder": "Digite o problema...",
             }),
+            # Como "marcadores" é ManyToMany, o Django criaria uma lista de seleção múltipla
+            # (que exige segurar Ctrl). Com CheckboxSelectMultiple vira uma caixinha por marcador.
+            # As opções saem da tabela Marcador, ou seja, do banco.
+            "marcadores": forms.CheckboxSelectMultiple,
         }
 
 

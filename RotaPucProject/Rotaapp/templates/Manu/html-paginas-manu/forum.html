@@ -30,6 +30,14 @@
         <a class="card-discussao" href="{% url 'discussao' pergunta.id %}">
             <h4 class="titulo-discussao">{{ pergunta.titulo }}</h4>
             <p class="descricao">{{ pergunta.descricao|truncatechars:200 }}</p>
+            {% if pergunta.marcadores.all %}
+            <!-- Marcadores escolhidos na Nova Pergunta (tabela Marcador, ligada por ManyToMany) -->
+            <div class="marcadores-card">
+                {% for marcador in pergunta.marcadores.all %}
+                <span class="marcador">{{ marcador.nome }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
             <div class="info">
                 <span class="avatar">{{ pergunta.autor|default:"A"|slice:":1"|upper }}</span>
                 <span class="autor">{{ pergunta.autor|default:"Anônimo" }}</span>
