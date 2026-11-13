@@ -5,28 +5,57 @@
        padding-left: 10px;
    }
 
-.centro{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+/* Faixa de filtros: mesmo visual da página de Universidades */
+.filtros {
+    display: block;
+    background-color: #eaf3fc;
+    padding: 40px 48px;
 }
-.centro > * {
-    margin-top: 0;
-    margin-bottom: 0;
 
-}
-.titulo-paises{
+.filtros h2 {
     color: #103b66;
-    font-size: 40px;
+    font-size: 32px;
 }
-.explore{
-    color:darkgrey;
-    margin-left: 200px;
-    margin-right: 200px;
-    text-align: center;
+
+.filtros label {
+    color: #103b66;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.filtros input,
+.filtros select {
+    padding: 10px 16px;
+    border: 1px solid #dbe4ec;
+    border-radius: 999px;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.campos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mesmo recuo lateral da faixa de filtros, para os cards ficarem alinhados */
+.resultados {
+    padding: 0 48px;
+}
+
+.sem-resultados {
+    color: darkgrey;
+    margin: 48px 0;
+}
+
+.sem-resultados a {
+    color: #165dad;
 }
 .titulo-continentes{
     font-size: 30px;

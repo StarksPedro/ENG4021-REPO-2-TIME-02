@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .models import (
     Pais, Universidade, Pergunta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
 )
-from .forms import PerguntaForm, CadastroForm
+from .forms import PerguntaForm, RespostaForm, CadastroForm
 from .context_processors import separar_linhas, dados_do_contato
 from .cotacao import buscar_cotacao
 from .notas_corte import checar_se_necessario
@@ -29,8 +30,30 @@ def universidades(request):
 
 
 def paises(request):
+    # Filtros vêm na URL (ex.: /paises/?continente=Europa&lingua=Alemão)
+    busca = request.GET.get('busca', '').strip()
+    continente = request.GET.get('continente', '')
+    lingua = request.GET.get('lingua', '')
+
     paises = Pais.objects.order_by("-continente", "nome")
-    return render(request, 'Manu/html-paginas-manu/paises.html', {'paises': paises})
+    # Cada filtro só é aplicado se o usuário escolheu algo
+    if busca:
+        paises = paises.filter(nome__icontains=busca)
+    if continente:
+        paises = paises.filter(continente=continente)
+    if lingua:
+        paises = paises.filter(idioma_oficial=lingua)
+
+    return render(request, 'Manu/html-paginas-manu/paises.html', {
+        'paises': paises,
+        # As opções dos selects saem do próprio banco, sem repetir valores,
+        # para sempre baterem com o que está cadastrado (ex.: "América do Sul" com acento)
+        'continentes': Pais.objects.order_by('continente').values_list('continente', flat=True).distinct(),
+        'linguas': Pais.objects.order_by('idioma_oficial').values_list('idioma_oficial', flat=True).distinct(),
+        'busca': busca,
+        'continente': continente,
+        'lingua': lingua,
+    })
 
 
 def contatos(request):
@@ -106,9 +129,31 @@ def forum(request):
     
 def discussao(request, id):
     pergunta = get_object_or_404(Pergunta, id=id)
+
+    if request.method == 'POST':
+        # Qualquer um pode LER a discussão, mas só quem está logado pode RESPONDER.
+        # Por isso o login é conferido aqui, e não com @login_required na view inteira.
+        if not request.user.is_authenticated:
+            # ?next= faz a pessoa voltar para esta pergunta depois de entrar
+            return redirect(f"{reverse('login')}?next={request.path}")
+
+        form = RespostaForm(request.POST)
+        if form.is_valid():
+            # commit=False cria a resposta sem salvar ainda, para preencher a pergunta e o autor
+            resposta = form.save(commit=False)
+            resposta.pergunta = pergunta
+            resposta.autor = request.user.get_full_name() or request.user.username
+            resposta.save()
+            messages.success(request, 'Sua resposta foi publicada!')
+            # Redireciona para não reenviar a resposta se a pessoa apertar F5
+            return redirect(reverse('discussao', args=[pergunta.id]) + '#respostas')
+    else:
+        form = RespostaForm()
+
     return render(request, 'Manu/html-paginas-manu/discussao.html', {
         'pergunta': pergunta,
         'respostas': pergunta.respostas.all(),
+        'form': form,
     })
 
 

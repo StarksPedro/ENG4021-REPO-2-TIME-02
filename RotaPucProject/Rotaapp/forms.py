@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Pergunta
+from .models import Pergunta, Resposta
 
 
 class PerguntaForm(forms.ModelForm):
@@ -30,6 +30,23 @@ class PerguntaForm(forms.ModelForm):
             # (que exige segurar Ctrl). Com CheckboxSelectMultiple vira uma caixinha por marcador.
             # As opções saem da tabela Marcador, ou seja, do banco.
             "marcadores": forms.CheckboxSelectMultiple,
+        }
+
+
+class RespostaForm(forms.ModelForm):
+    # Só o texto vem do formulário: a pergunta vem da URL e o autor vem de quem está logado
+    # (os dois são preenchidos na view, com form.save(commit=False)).
+    class Meta:
+        model = Resposta
+        fields = ["texto"]
+        labels = {"texto": "Responder"}
+        widgets = {
+            # Mesmo id e placeholder do HTML original, para o CSS da página continuar funcionando
+            "texto": forms.Textarea(attrs={
+                "id": "resposta-principal",
+                "rows": 4,
+                "placeholder": "Compartilhe sua experiência ou resposta",
+            }),
         }
 
 

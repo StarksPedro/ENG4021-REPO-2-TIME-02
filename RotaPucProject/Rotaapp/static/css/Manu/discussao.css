@@ -141,6 +141,22 @@
 .botao-publicar:hover{
     background-color: #103b66;
 }
+/* Erro do formulário (ex.: resposta vazia) */
+.form-resposta .erro{
+    margin: 6px 0 0;
+    color: #c62828;
+    font-size: 12px;
+}
+/* Aviso para quem não está logado */
+.aviso-login{
+    margin-bottom: 0;
+    color: #667684;
+    font-size: 14px;
+}
+.aviso-login a{
+    color: #165dad;
+    font-weight: 600;
+}
 
 .respostas{
     margin-top: 40px;
