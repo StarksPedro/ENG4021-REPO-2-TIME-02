@@ -30,7 +30,7 @@ def universidades(request):
 
 
 def paises(request):
-    # Filtros vêm na URL (ex.: /paises/?continente=Europa&lingua=Alemão)
+    # Filtros vêm na URL ( /paises/?continente=Europa&lingua=Alemão)
     busca = request.GET.get('busca', '').strip()
     continente = request.GET.get('continente', '')
     lingua = request.GET.get('lingua', '')
@@ -132,9 +132,8 @@ def discussao(request, id):
 
     if request.method == 'POST':
         # Qualquer um pode LER a discussão, mas só quem está logado pode RESPONDER.
-        # Por isso o login é conferido aqui, e não com @login_required na view inteira.
         if not request.user.is_authenticated:
-            # ?next= faz a pessoa voltar para esta pergunta depois de entrar
+            # ?next= faz a pessoa voltar pra pergunta
             return redirect(f"{reverse('login')}?next={request.path}")
 
         form = RespostaForm(request.POST)
@@ -145,7 +144,7 @@ def discussao(request, id):
             resposta.autor = request.user.get_full_name() or request.user.username
             resposta.save()
             messages.success(request, 'Sua resposta foi publicada!')
-            # Redireciona para não reenviar a resposta se a pessoa apertar F5
+            # Redireciona para não reenviar a resposta se apertar F5
             return redirect(reverse('discussao', args=[pergunta.id]) + '#respostas')
     else:
         form = RespostaForm()

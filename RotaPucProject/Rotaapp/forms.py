@@ -41,7 +41,6 @@ class RespostaForm(forms.ModelForm):
         fields = ["texto"]
         labels = {"texto": "Responder"}
         widgets = {
-            # Mesmo id e placeholder do HTML original, para o CSS da página continuar funcionando
             "texto": forms.Textarea(attrs={
                 "id": "resposta-principal",
                 "rows": 4,

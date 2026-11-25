@@ -5,7 +5,7 @@
        padding-left: 10px;
    }
 
-/* Faixa de filtros: mesmo visual da página de Universidades */
+/* Faixa de filtros */
 .filtros {
     display: block;
     background-color: #eaf3fc;
@@ -44,7 +44,7 @@
     gap: 8px;
 }
 
-/* Mesmo recuo lateral da faixa de filtros, para os cards ficarem alinhados */
+/* recuo lateral para os cards ficarem alinhados */
 .resultados {
     padding: 0 48px;
 }
