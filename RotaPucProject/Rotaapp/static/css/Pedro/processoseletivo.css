@@ -317,3 +317,70 @@
     max-width: none;
     text-align: center;
 }
+
+/* BUSCA POR DEPARTAMENTO */
+
+.busca-cr {
+    margin: 16px 0 8px;
+}
+
+.rotulo-busca {
+    display: block;
+    color: #103b66;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.linha-busca {
+    display: flex;
+    flex-wrap: wrap;            /* no celular o botão desce para a linha de baixo */
+    align-items: center;
+    gap: 8px;
+}
+
+.linha-busca input {
+    flex: 1 1 260px;
+    max-width: 420px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid #c5d6e6;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.linha-busca input:focus {
+    outline: none;
+    border-color: #165dad;
+    box-shadow: 0 0 0 3px rgba(22, 93, 173, 0.15);
+}
+
+.botao-buscar {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 999px;
+    background-color: #165dad;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-buscar:hover {
+    background-color: #103b66;
+}
+
+.limpar-busca {
+    color: #165dad;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.resultado-busca {
+    color: #667684;
+    font-size: 14px;
+    margin: 8px 0 0;
+}
