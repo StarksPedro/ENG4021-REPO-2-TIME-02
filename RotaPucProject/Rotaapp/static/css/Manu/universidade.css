@@ -164,3 +164,13 @@ td{
 .rodape{
     margin-top: 50px;
 }
+.foto-padrao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #165dad, #103b66);
+    color: #ffffff;
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}

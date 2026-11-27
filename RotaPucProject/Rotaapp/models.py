@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.conf import settings
 
 class Pais(models.Model):
     nome = models.CharField(max_length=70)
@@ -148,6 +149,12 @@ class Pergunta(models.Model):
     # e um marcador pode estar em várias perguntas. O Django cria uma tabela
     # intermediária que liga as duas. blank=True: escolher marcador é opcional.
     marcadores = models.ManyToManyField(Marcador, blank=True, related_name="perguntas")
+    # Quem postou (conta de login). Dois usuários podem ter o mesmo nome, então a permissão
+    # de apagar confere o USUÁRIO, não o nome. Perguntas antigas ficam sem usuário.
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, blank=True, editable=False,
+        on_delete=models.SET_NULL, related_name="perguntas",
+    )
 
     class Meta:
         verbose_name = "Pergunta"
@@ -156,6 +163,10 @@ class Pergunta(models.Model):
     def __str__(self):
         return self.titulo
 
+    def pode_apagar_por(self, user):
+    # Quem postou ou a equipe (is_staff) pode apagar
+        return user.is_authenticated and (user.is_staff or self.usuario_id == user.id)
+
 
 class Resposta(models.Model):
     pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE, related_name="respostas")
@@ -163,12 +174,19 @@ class Resposta(models.Model):
     texto = models.TextField()
     data_criacao = models.DateTimeField(auto_now_add=True)
     curtidas = models.PositiveIntegerField(default=0)
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, blank=True, editable=False,
+        on_delete=models.SET_NULL, related_name="respostas",
+    )
 
     class Meta:
         ordering = ["data_criacao"]
 
     def __str__(self):
         return f"Resposta de {self.autor} em {self.pergunta}"
+    
+    def pode_apagar_por(self, user):
+        return user.is_authenticated and (user.is_staff or self.usuario_id == user.id)
 
 
 class NotaDeCorte(models.Model):
