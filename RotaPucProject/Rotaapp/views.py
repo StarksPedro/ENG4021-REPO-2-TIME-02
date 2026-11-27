@@ -168,6 +168,14 @@ def processo_seletivo(request):
     semestre = NotaDeCorte.objects.order_by("-semestre").values_list("semestre", flat=True).first()
     notas = NotaDeCorte.objects.filter(semestre=semestre)
 
+    # BUSCA POR DEPARTAMENTO: o texto digitado no campo de pesquisa vem na URL (?busca=engenharia).
+    # strip() tira espaços sobrando no começo e no fim.
+    busca = request.GET.get('busca', '').strip()
+    if busca:
+        # icontains = "contém", sem diferenciar maiúscula de minúscula:
+        # "engen" encontra "Engenharia Ciclo Básico" e "Engenharia Ciclo Profissional"
+        notas = notas.filter(departamento__icontains=busca)
+
     # PAGINAÇÃO: em vez de mostrar todos os departamentos de uma vez, mostra 12 por página.
     # O Paginator divide a lista em páginas; o número da página vem da URL (?pagina=2).
     # get_page() é tolerante: se vier um número inválido ou grande demais, devolve a 1ª ou a última página.
@@ -182,6 +190,7 @@ def processo_seletivo(request):
         'semestre': semestre,
         'colunas_cr': colunas_cr,
         'pagina_cr': pagina_cr,
+        'busca': busca,  # volta para o template para o campo continuar preenchido e os links da paginação manterem a busca
         'pre_requisitos': PreRequisito.objects.all(),
         # prefetch_related busca os blocos de todos os passos de uma vez só
         'etapas': EtapaProcesso.objects.prefetch_related("blocos"),
@@ -274,6 +283,13 @@ def universidade(request, id):
     return render(request, 'Manu/html-paginas-manu/universidade.html', {
         'universidade': universidade,
         'programas': universidade.programas.all(),
+        # As listas dos quatro cards de baixo vêm da tabela ItemUniversidade (cadastrada no /admin).
+        # Antes a função itens() existia mas não era usada, então os cards nunca apareciam.
+        # Os nomes à esquerda são os que o template universidade.html usa.
+        'requisitos_academicos': itens('requisito'),
+        'certificados': itens('certificado'),
+        'custos_e_bolsas': itens('custo') + itens('bolsa'),  # custos e bolsas ficam no mesmo card
+        'documentos': itens('documento'),
     })
 
 

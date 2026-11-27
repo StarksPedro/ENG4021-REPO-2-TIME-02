@@ -16,6 +16,27 @@
 
     <section class="lista-cr" id="lista-cr">
         <h2>Lista de CR</h2>
+
+        <!-- Busca por departamento: formulário GET (só consulta, não grava nada no banco).
+             O texto vai para a URL como ?busca=... e a view filtra a lista.
+             O #lista-cr faz a página abrir já na tabela depois de buscar. -->
+        <form method="get" action="{% url 'processo_seletivo' %}#lista-cr" class="busca-cr">
+            <label for="busca-cr" class="rotulo-busca">Buscar departamento</label>
+            <div class="linha-busca">
+                <input type="search" id="busca-cr" name="busca" value="{{ busca }}" placeholder="Ex.: Engenharia, Direito, Economia...">
+                <button type="submit" class="botao-buscar">Buscar</button>
+                {% if busca %}
+                <a href="{% url 'processo_seletivo' %}#lista-cr" class="limpar-busca">Limpar</a>
+                {% endif %}
+            </div>
+        </form>
+
+        {% if busca %}
+        <p class="resultado-busca">
+            {{ pagina_cr.paginator.count }} departamento{{ pagina_cr.paginator.count|pluralize }} encontrado{{ pagina_cr.paginator.count|pluralize }} para "<strong>{{ busca }}</strong>"
+        </p>
+        {% endif %}
+
         <div class="bloco-cr">
             {% for coluna in colunas_cr %}
             <table class="coluna-cr">
@@ -32,16 +53,21 @@
                 </tbody>
             </table>
             {% empty %}
+            {% if busca %}
+            <p class="nota">Nenhum departamento encontrado. Confira a grafia ou tente só parte do nome.</p>
+            {% else %}
             <p class="nota">Nenhuma nota de corte cadastrada ainda.</p>
+            {% endif %}
             {% endfor %}
         </div>
 
         {% if pagina_cr.has_other_pages %}
-        <!-- Paginação: os links mudam só o ?pagina= da URL.
+        <!-- Paginação: os links mudam o ?pagina= da URL.
+             Se houver busca, o &busca=... vai junto, para a página 2 continuar mostrando só o que foi buscado.
              O #lista-cr no final faz a página voltar direto para a tabela, em vez de subir para o topo. -->
         <nav class="paginacao" aria-label="Páginas da lista de CR">
             {% if pagina_cr.has_previous %}
-            <a href="?pagina={{ pagina_cr.previous_page_number }}#lista-cr" class="botao-pagina">‹ Anterior</a>
+            <a href="?pagina={{ pagina_cr.previous_page_number }}{% if busca %}&amp;busca={{ busca|urlencode }}{% endif %}#lista-cr" class="botao-pagina">‹ Anterior</a>
             {% else %}
             <span class="botao-pagina desativado">‹ Anterior</span>
             {% endif %}
@@ -50,12 +76,12 @@
             {% if numero == pagina_cr.number %}
             <span class="numero-pagina atual" aria-current="page">{{ numero }}</span>
             {% else %}
-            <a href="?pagina={{ numero }}#lista-cr" class="numero-pagina">{{ numero }}</a>
+            <a href="?pagina={{ numero }}{% if busca %}&amp;busca={{ busca|urlencode }}{% endif %}#lista-cr" class="numero-pagina">{{ numero }}</a>
             {% endif %}
             {% endfor %}
 
             {% if pagina_cr.has_next %}
-            <a href="?pagina={{ pagina_cr.next_page_number }}#lista-cr" class="botao-pagina">Próxima ›</a>
+            <a href="?pagina={{ pagina_cr.next_page_number }}{% if busca %}&amp;busca={{ busca|urlencode }}{% endif %}#lista-cr" class="botao-pagina">Próxima ›</a>
             {% else %}
             <span class="botao-pagina desativado">Próxima ›</span>
             {% endif %}
