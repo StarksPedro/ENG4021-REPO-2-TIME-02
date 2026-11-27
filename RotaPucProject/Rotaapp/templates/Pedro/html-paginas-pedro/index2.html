@@ -11,77 +11,83 @@
 <section class="filtros">
     <span class="selo">Universidades conveniadas</span>
     <h2>Encontre sua universidade</h2>
-    <div class="campos">
-        <div class="campo">
-            <label for="busca">Busca Universidade</label>
-            <input type="search" id="busca" placeholder="Nome, cidade ou pais">
+    {# method="get": os filtros vão na URL (?busca=...&continente=...), a view lê com request.GET #}
+    <form method="get" action="{% url 'universidades' %}">
+        <div class="campos">
+            <div class="campo campo-busca">
+                <label for="busca">Busca Universidade</label>
+                <input type="search" id="busca" name="busca" value="{{ busca }}" placeholder="Nome, cidade ou país">
+            </div>
+            <div class="campo">
+                <label for="continente">Continente</label>
+                <select id="continente" name="continente">
+                    <option value="">Todos</option>
+                    {% for c in continentes %}
+                    <option value="{{ c }}" {% if c == continente %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="campo">
+                <label for="lingua">Língua</label>
+                <select id="lingua" name="lingua">
+                    <option value="">Todos</option>
+                    {% for l in linguas %}
+                    <option value="{{ l }}" {% if l == lingua %}selected{% endif %}>{{ l }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="campo">
+                <label for="nivel">Nível</label>
+                <select id="nivel" name="nivel">
+                    <option value="">Todos</option>
+                    {% for n in niveis %}
+                    <option value="{{ n }}" {% if n == nivel %}selected{% endif %}>{{ n }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="campo">
+                <label for="duracao">Duração</label>
+                <select id="duracao" name="duracao">
+                    <option value="">Todos</option>
+                    {% for chave, nome in duracoes %}
+                    <option value="{{ chave }}" {% if chave == duracao %}selected{% endif %}>{{ nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="campo">
+                <label for="curso">Curso</label>
+                <select id="curso" name="curso">
+                    <option value="">Todos</option>
+                    {% for c in cursos %}
+                    <option value="{{ c }}" {% if c == curso %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="campo">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo">
+                    <option value="">Todos</option>
+                    {% for t in tipos %}
+                    <option value="{{ t }}" {% if t == tipo %}selected{% endif %}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
-        <div class="campo">
-            <label for="continente">Continente</label>
-            <select id="continente">
-                <option>Todos</option>
-                <option>Europa</option>
-                <option>America do Sul</option>
-            </select>
+        <div class="acoes-filtro">
+            <button type="submit" class="botao-azul">Aplicar filtros</button>
+            <a class="limpar-filtros" href="{% url 'universidades' %}">Limpar filtros</a>
         </div>
-        <div class="campo">
-            <label for="lingua">Lingua</label>
-            <select id="lingua">
-                <option>Todos</option>
-                <option>Alemão</option>
-                <option>Inglês</option>
-                <option>Espanhol</option>
-            </select>
-        </div>
-        <div class="campo">
-            <label for="nivel">Nivel</label>
-            <select id="nivel">
-                <option>Todos</option>
-                <option>Graduação</option>
-                <option>Pos-Graduação</option>
-            </select>
-        </div>
-        <div class="campo">
-            <label for="duração">Duração</label>
-            <select id="duração">
-                <option>Todos</option>
-                <option>1 semestre</option>
-                <option>2 semestres</option>
-            </select>
-        </div>
-        <div class="campo">
-            <label for="curso">Curso</label>
-            <select id="curso">
-                <option>Todos</option>
-                <option>Engenharias</option>
-                <option>Design</option>
-                <option>Direito</option>
-                <option>Economia</option>
-                <option>Ciencia da computação</option>
-                <option>Arquitetura</option>
-            </select>
-        </div>
-        <div class="campo">
-            <label for="tipo">Tipo</label>
-            <select id="tipo">
-                <option>Todos</option>
-                <option>Convênio</option>
-                <option>Duplo diploma</option>
-                <option>Verão</option>
-            </select>
-        </div>
-    </div>
+    </form>
 </section>
 
 <section class="resultados">
     <p>{{ total_universidades }} universidade{{ total_universidades|pluralize }} encontrada{{ total_universidades|pluralize }}</p>
-    {% for pais in paises %}
-        {% if pais.universidades.all %}
+    {% for grupo in grupos %}
         <section class="bloco-pais">
-            <span class="selo">{{ pais.nome }}</span>
+            <span class="selo">{{ grupo.pais.nome }}</span>
             <div class="cards">
-                {% for universidade in pais.universidades.all %}
-                    <article class="card-univ">
+                {% for universidade in grupo.universidades %}
+                <article class="card-univ">
                     <div class="foto-card">
                         {% if universidade.foto %}
                         <img src="{{ universidade.foto }}" alt="{{ universidade.nome }}">
@@ -91,7 +97,7 @@
                     </div>
                     <div class="corpo-card">
                         <h3>{{ universidade.nome }}</h3>
-                        <p>{{ universidade.cidade }}{% if universidade.cidade %}, {% endif %}{{ pais.nome }}</p>
+                        <p>{{ universidade.cidade }}{% if universidade.cidade %}, {% endif %}{{ grupo.pais.nome }}</p>
                         <a href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a>
                         <a class="botao-azul" href="{% url 'universidade' universidade.id %}">saiba mais</a>
                     </div>
@@ -99,9 +105,8 @@
                 {% endfor %}
             </div>
         </section>
-        {% endif %}
     {% empty %}
-        <p>Nenhuma universidade cadastrada ainda.</p>
+        <p>Nenhuma universidade encontrada com esses filtros.</p>
     {% endfor %}
 </section>
 {% endblock %}

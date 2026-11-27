@@ -4,13 +4,13 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .models import (
-    Pais, Universidade, Pergunta, Resposta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
+    Pais, Universidade, Curso, Programa, Pergunta, Resposta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
 )
 from .forms import PerguntaForm, RespostaForm, CadastroForm
 from .context_processors import separar_linhas, dados_do_contato
 from .cotacao import buscar_cotacao
 from .notas_corte import checar_se_necessario
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.core.paginator import Paginator
 from django.core.exceptions import PermissionDenied
 from django.views.decorators.http import require_POST
@@ -22,12 +22,74 @@ def home(request):
     return render(request, 'Pedro/html-paginas-pedro/index.html', {'paises': paises})
 
 
+# Opções do filtro "Duração". A duração dos programas está em MESES no banco,
+# então cada opção vira uma condição sobre esse número.
+DURACOES = {
+    'curta': ('Curta (até 3 meses)', {'programas__duracao__lte': 3}),
+    'semestre': ('1 semestre', {'programas__duracao__gte': 4, 'programas__duracao__lte': 8}),
+    'longa': ('Mais de 1 semestre', {'programas__duracao__gt': 8}),
+}
+
+
 def universidades(request):
-    paises = Pais.objects.all()
-    total_universidades = Universidade.objects.count()
+    # Filtros vêm na URL ( /universidades/?busca=munique&continente=Europa )
+    busca = request.GET.get('busca', '').strip()
+    continente = request.GET.get('continente', '')
+    lingua = request.GET.get('lingua', '')
+    nivel = request.GET.get('nivel', '')
+    duracao = request.GET.get('duracao', '')
+    curso = request.GET.get('curso', '')
+    tipo = request.GET.get('tipo', '')
+
+    lista = Universidade.objects.select_related('pais').order_by('pais__nome', 'nome')
+
+    # Cada filtro só é aplicado se a pessoa escolheu algo
+    if busca:
+        lista = lista.filter(
+            Q(nome__icontains=busca) | Q(sigla__icontains=busca)
+            | Q(cidade__icontains=busca) | Q(pais__nome__icontains=busca)
+        )
+    if continente:
+        lista = lista.filter(pais__continente=continente)
+    if curso:
+        lista = lista.filter(cursos__nome=curso)
+
+    # Os filtros de programa ficam num ÚNICO filter(): assim todas as condições valem
+    # para o MESMO programa (ex.: "Duplo diploma" E "24 meses" têm que ser do mesmo programa)
+    filtros_programa = {}
+    if lingua:
+        filtros_programa['programas__idioma__icontains'] = lingua
+    if nivel:
+        filtros_programa['programas__nivel'] = nivel
+    if tipo:
+        filtros_programa['programas__tipo_de_intercambio'] = tipo
+    if duracao in DURACOES:
+        filtros_programa.update(DURACOES[duracao][1])
+    if filtros_programa:
+        lista = lista.filter(**filtros_programa)
+
+    lista = lista.distinct()
+
+    # Agrupa as universidades por país (a lista já vem ordenada por país)
+    grupos = []
+    for universidade in lista:
+        if not grupos or grupos[-1]['pais'] != universidade.pais:
+            grupos.append({'pais': universidade.pais, 'universidades': []})
+        grupos[-1]['universidades'].append(universidade)
+
     return render(request, 'Pedro/html-paginas-pedro/index2.html', {
-        'paises': paises,
-        'total_universidades': total_universidades,
+        'grupos': grupos,
+        'total_universidades': len(lista),
+        # As opções saem do banco (sem repetir valores), para sempre baterem com o cadastrado
+        'continentes': Pais.objects.order_by('continente').values_list('continente', flat=True).distinct(),
+        'cursos': Curso.objects.order_by('nome').values_list('nome', flat=True),
+        'niveis': Programa.objects.order_by('nivel').values_list('nivel', flat=True).distinct(),
+        'tipos': Programa.objects.order_by('tipo_de_intercambio').values_list('tipo_de_intercambio', flat=True).distinct(),
+        'linguas': ['Alemão', 'Espanhol', 'Inglês'],
+        'duracoes': [(chave, valor[0]) for chave, valor in DURACOES.items()],
+        # Valores escolhidos, para o formulário continuar preenchido depois de filtrar
+        'busca': busca, 'continente': continente, 'lingua': lingua,
+        'nivel': nivel, 'duracao': duracao, 'curso': curso, 'tipo': tipo,
     })
 
 
@@ -49,7 +111,7 @@ def paises(request):
     return render(request, 'Manu/html-paginas-manu/paises.html', {
         'paises': paises,
         # As opções dos selects saem do próprio banco, sem repetir valores,
-        # para sempre baterem com o que está cadastrado (ex.: "América do Sul" com acento)
+        # para sdef uempre baterem com o que está cadastrado (ex.: "América do Sul" com acento)
         'continentes': Pais.objects.order_by('continente').values_list('continente', flat=True).distinct(),
         'linguas': Pais.objects.order_by('idioma_oficial').values_list('idioma_oficial', flat=True).distinct(),
         'busca': busca,
