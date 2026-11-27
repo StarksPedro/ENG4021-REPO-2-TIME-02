@@ -33,16 +33,41 @@ input, select {
     background-color: #ffffff;
 }
 
+/* Grade de 4 colunas: todos os campos com a mesma largura, nome em cima de cada um */
 .campos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 24px;
 }
 
 .campo {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-busca {
+    grid-column: span 2;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.filtros h2 {
+    margin: 16px 0 28px;
+}
+
+@media (max-width: 900px) {
+    .campos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .campos { grid-template-columns: 1fr; }
+    .campo-busca { grid-column: auto; }
 }
 
 .resultados {
@@ -129,4 +154,38 @@ input, select {
 .card-univ .botao-azul {
     margin-top: auto;
     align-self: flex-start;
+}
+/* Botões do formulário de filtros */
+/* Botões do formulário de filtros */
+.acoes-filtro {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.acoes-filtro button.botao-azul {
+    border: none;
+    cursor: pointer;
+    padding: 12px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.acoes-filtro button.botao-azul:hover {
+    background-color: #103b66;
+}
+
+/* :visited evita o roxo de link já visitado */
+.limpar-filtros,
+.limpar-filtros:visited {
+    color: #165dad;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.limpar-filtros:hover {
+    color: #103b66;
 }
