@@ -65,7 +65,7 @@
             {% if universidade.foto %}
             <img src="{{ universidade.foto }}" alt="{{ universidade.nome }}">
             {% else %}
-            <img src="{% static pais.imagem %}" alt="{{ pais.nome }}">
+            <div class="foto-padrao">{{ universidade.sigla }}</div>
             {% endif %}
             <div class="corpo-card">
                 <h3>{{ universidade.nome }}</h3>

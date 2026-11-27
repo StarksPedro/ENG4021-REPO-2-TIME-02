@@ -4,7 +4,7 @@
 {% block titulo %}RotaPuc-Universidades{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/Pedro/universidades.css' %}">
+<link rel="stylesheet" href="{% static 'css/Pedro/universidades.css' %}?v=3">
 {% endblock %}
 
 {% block conteudo %}
@@ -81,11 +81,20 @@
             <span class="selo">{{ pais.nome }}</span>
             <div class="cards">
                 {% for universidade in pais.universidades.all %}
-                <article class="card-univ">
-                    <h3>{{ universidade.nome }}</h3>
-                    <p>{{ universidade.endereco }}</p>
-                    <a href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a>
-                    <a class="botao-azul" href="{% url 'universidade' universidade.id %}">saiba mais</a>
+                    <article class="card-univ">
+                    <div class="foto-card">
+                        {% if universidade.foto %}
+                        <img src="{{ universidade.foto }}" alt="{{ universidade.nome }}">
+                        {% else %}
+                        <div class="foto-padrao">{{ universidade.sigla }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="corpo-card">
+                        <h3>{{ universidade.nome }}</h3>
+                        <p>{{ universidade.cidade }}{% if universidade.cidade %}, {% endif %}{{ pais.nome }}</p>
+                        <a href="{{ universidade.site_oficial }}" target="_blank">{{ universidade.site_oficial|cut:"https://"|cut:"http://" }}</a>
+                        <a class="botao-azul" href="{% url 'universidade' universidade.id %}">saiba mais</a>
+                    </div>
                 </article>
                 {% endfor %}
             </div>

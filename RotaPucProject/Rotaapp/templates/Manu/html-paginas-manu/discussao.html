@@ -4,7 +4,7 @@
 {% block titulo %}{{ pergunta.titulo }} | Fórum RotaPUC{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/Manu/discussao.css' %}">
+<link rel="stylesheet" href="{% static 'css/Manu/discussao.css' %}?v=2">
 {% endblock %}
 
 {% block conteudo %}
@@ -20,7 +20,7 @@
             <span class="selo">FÓRUM DE PERGUNTAS</span>
         </div>
 
-        {% with total=respostas.count %}
+        {% with total=respostas|length %}
         <article class="post">
             <h1 class="titulo-post">{{ pergunta.titulo }}</h1>
             <p class="texto-post">{{ pergunta.descricao }}</p>
@@ -39,6 +39,12 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     {{ total }} resposta{{ total|pluralize }}
                 </span>
+                {% if pode_apagar_pergunta %}
+                <form method="post" action="{% url 'apagar_pergunta' pergunta.id %}" onsubmit="return confirm('Apagar esta pergunta e todas as respostas dela?');">
+                    {% csrf_token %}
+                    <button type="submit" class="botao-apagar">Apagar pergunta</button>
+                </form>
+                {% endif %}
             </div>
 
             {# Só quem está logado vê o formulário; a view também confere isso ao receber o POST #}
@@ -71,6 +77,12 @@
                             <p class="nome-resposta">{{ resposta.autor }}</p>
                             <p class="data-resposta">{{ resposta.data_criacao|date:"d/m/Y" }}</p>
                         </div>
+                        {% if resposta.pode_apagar %}
+                        <form class="apagar-resposta" method="post" action="{% url 'apagar_resposta' resposta.id %}" onsubmit="return confirm('Apagar esta resposta?');">
+                            {% csrf_token %}
+                            <button type="submit" class="botao-apagar">Apagar</button>
+                        </form>
+                        {% endif %}
                     </div>
                     <p class="texto-resposta">{{ resposta.texto }}</p>
                 </li>

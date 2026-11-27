@@ -24,7 +24,7 @@
     {% if universidade.foto %}
     <img class="foto-universidade" src="{{ universidade.foto }}" alt="{{ universidade.nome }}">
     {% else %}
-    <img class="foto-universidade" src="{% static universidade.pais.imagem %}" alt="{{ universidade.pais.nome }}">
+    <div class="foto-universidade foto-padrao">{{ universidade.sigla }}</div>
     {% endif %}
 
     <div class="duas-colunas">

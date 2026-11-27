@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .models import (
-    Pais, Universidade, Pergunta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
+    Pais, Universidade, Pergunta, Resposta, NotaDeCorte, PreRequisito, EtapaProcesso, PaginaInstitucional,
 )
 from .forms import PerguntaForm, RespostaForm, CadastroForm
 from .context_processors import separar_linhas, dados_do_contato
@@ -12,6 +12,8 @@ from .cotacao import buscar_cotacao
 from .notas_corte import checar_se_necessario
 from django.db.models import Count
 from django.core.paginator import Paginator
+from django.core.exceptions import PermissionDenied
+from django.views.decorators.http import require_POST
 
 
 def home(request):
@@ -72,6 +74,7 @@ def nova_pergunta(request):
             # commit=False cria a pergunta sem salvar ainda, para preencher o autor antes
             pergunta = form.save(commit=False)
             pergunta.autor = request.user.get_full_name() or request.user.username
+            pergunta.usuario = request.user
             pergunta.save()
             # Com commit=False, os campos ManyToMany (os marcadores) não são salvos junto,
             # porque a ligação só pode ser gravada depois que a pergunta já tem um id no banco.
@@ -142,6 +145,7 @@ def discussao(request, id):
             resposta = form.save(commit=False)
             resposta.pergunta = pergunta
             resposta.autor = request.user.get_full_name() or request.user.username
+            resposta.usuario = request.user
             resposta.save()
             messages.success(request, 'Sua resposta foi publicada!')
             # Redireciona para não reenviar a resposta se apertar F5
@@ -149,11 +153,43 @@ def discussao(request, id):
     else:
         form = RespostaForm()
 
+    # Para cada resposta, guardamos se a pessoa logada pode apagá-la (o template usa isso
+    # para mostrar ou esconder o botão "Apagar")
+    respostas = list(pergunta.respostas.all())
+    for resposta in respostas:
+        resposta.pode_apagar = resposta.pode_apagar_por(request.user)
+
     return render(request, 'Manu/html-paginas-manu/discussao.html', {
         'pergunta': pergunta,
-        'respostas': pergunta.respostas.all(),
+        'pode_apagar_pergunta': pergunta.pode_apagar_por(request.user),
+        'respostas': respostas,
         'form': form,
     })
+
+
+# Apagar muda dados, então só aceita POST e só vale para quem está logado
+# e é dono do conteúdo (ou da equipe).
+@login_required
+@require_POST
+def apagar_pergunta(request, id):
+    pergunta = get_object_or_404(Pergunta, id=id)
+    if not pergunta.pode_apagar_por(request.user):
+        raise PermissionDenied  # página 403 (acesso negado)
+    pergunta.delete()  # as respostas também são apagadas (on_delete=CASCADE)
+    messages.success(request, 'Pergunta apagada.')
+    return redirect('forum')
+
+
+@login_required
+@require_POST
+def apagar_resposta(request, id):
+    resposta = get_object_or_404(Resposta, id=id)
+    if not resposta.pode_apagar_por(request.user):
+        raise PermissionDenied
+    pergunta_id = resposta.pergunta_id
+    resposta.delete()
+    messages.success(request, 'Resposta apagada.')
+    return redirect(reverse('discussao', args=[pergunta_id]) + '#respostas')
 
 
 def pais(request, id):

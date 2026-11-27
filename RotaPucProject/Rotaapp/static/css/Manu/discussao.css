@@ -234,3 +234,23 @@
         margin-left: 0;
     }
 }
+/* Botão de apagar pergunta/resposta */
+.botao-apagar{
+    padding: 6px 14px;
+    border: 1px solid #dbe4ec;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #667684;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.botao-apagar:hover{
+    border-color: #c0392b;
+    background-color: #fdecea;
+    color: #c0392b;
+}
+.apagar-resposta{
+    margin-left: auto;
+}

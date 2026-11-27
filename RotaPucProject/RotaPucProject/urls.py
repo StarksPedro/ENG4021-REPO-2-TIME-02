@@ -30,6 +30,8 @@ urlpatterns = [
     path('processo-seletivo/', processo_seletivo, name='processo_seletivo'),
     path('forum/', forum, name='forum'),
     path('forum/<int:id>/', discussao, name='discussao'),
+    path('forum/<int:id>/apagar/', apagar_pergunta, name='apagar_pergunta'),
+    path('resposta/<int:id>/apagar/', apagar_resposta, name='apagar_resposta'),
     path('pais/<int:id>/', pais, name='pais'),
     path('universidade/<int:id>/', universidade, name='universidade'),
 
